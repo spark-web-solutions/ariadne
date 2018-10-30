@@ -7,6 +7,7 @@
 function spark_get_panels() {
     $panels = wp_cache_get('spark_panels');
     if (false === $panels) {
+        $panels = array();
         $args = array(
                 'posts_per_page' => -1,
                 'post_type' => 'panel',

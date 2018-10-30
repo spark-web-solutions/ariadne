@@ -1,9 +1,7 @@
 <?php
 register_nav_menus(array(
         'top' => 'Top',
-//         'main' => 'Main',
-        'footer-left' => 'Footer Left',
-        'footer-right' => 'Footer Right',
+        'footer' => 'Footer',
 ));
 
 function spark_menu($args, $echo = true) {

@@ -40,9 +40,9 @@ wp_head();
 <?php
 Spark_Theme::section('name=top&file=top.php');
 Spark_Theme::section('name=hero&file=hero.php&class=full&inner_class=relative hero-height ');
-Spark_Theme::section('name=breadcrumbs&file=breadcrumbs.php');
 ?>
             </header>
             <section class="main-section">
 <?php
+Spark_Theme::section('name=breadcrumbs&file=breadcrumbs.php');
 spark_show_panels('top');

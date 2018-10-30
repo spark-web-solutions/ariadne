@@ -21,13 +21,15 @@ if (!Spark_Transients::use_transients()) {
 }
 if (false === ($ob = get_transient($transient))) {
     ob_start();
-    ?>
+?>
 <style>
 /* START: <?php echo $file.' - '.date("Y-m-d H:i:s"); ?> */
 @media only screen {
-    body .gform_wrapper.spark_cart_checkout_wrapper .gform_fields .payment_options .gfield_radio li label { margin: 0.2rem 0 0 0.3rem; max-width:100%;}
-    body .gform_wrapper.spark_cart_checkout_wrapper .gform_fields .payment_options .gfield_radio li input { margin-bottom:0.4rem;}
-    body .gform_wrapper.spark_cart_checkout_wrapper .gform_fields .payment_options .gfield_radio li { margin-right:1rem;}
+    body .gform_wrapper.bb_cart_checkout_wrapper .gform_fields .payment_options .gfield_radio li label { margin: 0.2rem 0 0 0.3rem; max-width:100%;}
+    body .gform_wrapper.bb_cart_checkout_wrapper .gform_fields .payment_options .gfield_radio li input { margin-bottom:0.4rem;}
+    body .gform_wrapper.bb_cart_checkout_wrapper .gform_fields .payment_options .gfield_radio li { margin-right:1rem;}
+
+    #row-footer, #breadcrumbs, #row-top .top-bar .donate, #row-top ul.menu, #row-top .title-bar-content, #row-hero .navigation .menu {display: none;}
 }
 @media only screen and (min-width: 40em) { /* <-- min-width 640px - medium screens and up */}
 @media only screen and (min-width: 64em) { /* <-- min-width 1024px - large screens and up */ }
@@ -69,33 +71,16 @@ if (false === ($ob = get_transient($transient))) {
 echo $ob;
 unset($ob, $t_args, $transient);
 
-// ----------------------------
-// 4. setup output transient/s
-// ----------------------------
-$t_args = array('name' => 'markup'.$transient_suffix, 'file' => $file);
-$transient = Spark_Transients::name($t_args);
-if (!Spark_Transients::use_transients()) {
-    delete_transient($transient);
-}
-if (false === ($ob = get_transient($transient))) {
-    ob_start();
+// section content - start
+echo '<!-- START: '.$file.' -->'."\n";
 
-    // section content - start
-    echo '<!-- START: '.$file.' -->'."\n";
+// section content
+echo '<div class="small-24 medium-9 medium-order-2 large-7 cell">'."\n";
+echo do_shortcode('[bb_cart_table]');
+echo '</div>'."\n";
+echo '<div class="small-24 medium-15 medium-order-1 large-17 cell">'."\n";
+echo gravity_form(bb_cart_get_checkout_form(), false, false, false, null, false, 12);
+echo '</div>'."\n";
 
-    // section content
-    echo '<div class="small-24 medium-9 medium-order-2 large-7 cell">'."\n";
-    echo do_shortcode('[spark_cart_table]');
-    echo '</div>'."\n";
-    echo '<div class="small-24 medium-15 medium-order-1 large-17 cell">'."\n";
-    echo gravity_form(spark_cart_get_checkout_form(), false, false, false, null, false, 12);
-    echo '</div>'."\n";
-
-    // section content - end
-    echo '<!-- END:'.$file.' -->'."\n";
-
-    $ob = ob_get_clean();
-    set_transient($transient, $ob, $t_period);
-}
-echo $ob;
-unset($ob, $t_args, $transient);
+// section content - end
+echo '<!-- END:'.$file.' -->'."\n";

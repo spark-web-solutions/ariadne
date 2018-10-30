@@ -31,9 +31,9 @@ if (false === ($ob = get_transient($transient))) {
     .gform_bb.gfield_click_array div.s-html-wrapper div.s-html-value {font-family: 'Arvo'; }
     .gform_bb.gfield_click_array div.s-html-wrapper label {padding: 0!important;}
 
-    body .gform_wrapper .spark_cart_donations .gform_fields .horizontal .gfield_radio > li {display: inline-flex!important; margin-right:1rem;}
-    body .gform_wrapper .spark_cart_donations ul.gfield_radio li input[type="radio"]:checked + label {color: #000;font-weight: bold!important;}
-    body .gform_wrapper .spark_cart_donations .gform_fields .horizontal .gfield_radio > li > label {vertical-align: top;}
+    body .gform_wrapper .bb_cart_donations .gform_fields .horizontal .gfield_radio > li {display: inline-flex!important; margin-right:1rem;}
+    body .gform_wrapper .bb_cart_donations ul.gfield_radio li input[type="radio"]:checked + label {color: #000;font-weight: bold!important;}
+    body .gform_wrapper .bb_cart_donations .gform_fields .horizontal .gfield_radio > li > label {vertical-align: top;}
 
     /* Hiding Navigation for Donation Template */
     #row-footer {display: none;}
@@ -52,23 +52,23 @@ if (false === ($ob = get_transient($transient))) {
 
     a.pseudo-submit.payment-method.button {background-color: <?php echo spark_get_theme_mod('colour5');?>; font-family: 'Arvo';}
     a.pseudo-submit.payment-method.button:hover {background-color: <?php echo spark_get_theme_mod('colour8');?>;}
-    body .gform_wrapper .spark_cart_donations .gform_fields .horizontal .gfield_radio > li > label {background: transparent!important; margin: 0.2rem 0 0 0.5rem;}
+    body .gform_wrapper .bb_cart_donations .gform_fields .horizontal .gfield_radio > li > label {background: transparent!important; margin: 0.2rem 0 0 0.5rem;}
 
     .donations-allocation-section .other-ways i {margin-right: 0.5rem;}
     .donations-allocation-section h4 {font-weight: 700;}
     .donations-allocation-section {background-color: rgba(207, 215, 221, 0.18); padding: 0.25rem 1rem; border-radius: 2px; box-shadow: 0px 1px 2px rgba(0,0,0,0.2);}
 
-    body .gform_wrapper.spark_cart_donations_wrapper li.tabs {background-color: white; margin-left: -0.5rem !important; border:none;}
-    body .gform_wrapper.spark_cart_donations_wrapper li.tabs > label {display: none;}
-    body .gform_wrapper.spark_cart_donations_wrapper li.tabs ul.gfield_radio {margin-bottom: 2rem!important; min-height: 10px; width: 100%;}
-    body .gform_wrapper.spark_cart_donations_wrapper li.tabs ul.gfield_radio li {height: 4rem; margin: 0!important; overflow: visible; float: left; width: 33.3333% !important;}
-    body .gform_wrapper.spark_cart_donations_wrapper li.tabs ul.gfield_radio li input[type="radio"] {visibility: hidden; display: none !important;}
-    body .gform_wrapper.spark_cart_donations_wrapper li.tabs ul.gfield_radio li label {background-color: #eee; color: black; width: 100%; height: 3.5rem; padding: 0.5rem 1rem!important; margin: 0!important; border-radius: 10px 10px 0 0 !important; max-width:100%;}
-    body .gform_wrapper.spark_cart_donations_wrapper li.tabs ul.gfield_radio li input[type="radio"]:checked+label {background-color: <?php echo spark_get_theme_mod('colour4'); ?>; color: white;}
-    body .gform_wrapper.spark_cart_donations_wrapper .ginput_bb.ginput_click_array_other { display: block !important;}
-    body .gform_wrapper.spark_cart_donations_wrapper .ginput_container label.ginput_spark_click_array_other_label {display: block !important;}
-    body .gform_wrapper.spark_cart_donations_wrapper .anonymous .gfield_label {display:none;}
-    body .gform_wrapper.spark_cart_donations_wrapper .spark_cart_donations .gform_footer { width: 100%; margin-left: 0;}
+    body .gform_wrapper.bb_cart_donations_wrapper li.tabs {background-color: white; margin-left: -0.5rem !important; border:none;}
+    body .gform_wrapper.bb_cart_donations_wrapper li.tabs > label {display: none;}
+    body .gform_wrapper.bb_cart_donations_wrapper li.tabs ul.gfield_radio {margin-bottom: 2rem!important; min-height: 10px; width: 100%;}
+    body .gform_wrapper.bb_cart_donations_wrapper li.tabs ul.gfield_radio li {height: 4rem; margin: 0!important; overflow: visible; float: left; width: 33.3333% !important;}
+    body .gform_wrapper.bb_cart_donations_wrapper li.tabs ul.gfield_radio li input[type="radio"] {visibility: hidden; display: none !important;}
+    body .gform_wrapper.bb_cart_donations_wrapper li.tabs ul.gfield_radio li label {background-color: #eee; color: black; width: 100%; height: 3.5rem; padding: 0.5rem 1rem!important; margin: 0!important; border-radius: 10px 10px 0 0 !important; max-width:100%;}
+    body .gform_wrapper.bb_cart_donations_wrapper li.tabs ul.gfield_radio li input[type="radio"]:checked+label {background-color: <?php echo spark_get_theme_mod('colour4'); ?>; color: white;}
+    body .gform_wrapper.bb_cart_donations_wrapper .ginput_bb.ginput_click_array_other { display: block !important;}
+    body .gform_wrapper.bb_cart_donations_wrapper .ginput_container label.ginput_spark_click_array_other_label {display: block !important;}
+    body .gform_wrapper.bb_cart_donations_wrapper .anonymous .gfield_label {display:none;}
+    body .gform_wrapper.bb_cart_donations_wrapper .bb_cart_donations .gform_footer { width: 100%; margin-left: 0;}
 
     .gform_bb #input_21_4_1 {max-width: 95%;}
 }
@@ -140,7 +140,7 @@ if (false === ($ob = get_transient($transient))) {
 <div class="small-24 medium-24 large-12 cell">
     <h1 class="text4"><?php the_title(); ?></h1>
     <article>
-        <?php gravity_form(spark_cart_get_donate_form(), false, false, false, null, false, 12); ?>
+        <?php gravity_form(bb_cart_get_donate_form(), false, false, false, null, false, 12); ?>
         <p><small><strong>Secure 128bit encryption</strong><br>
             Protected by an industry-standard high grade 128bit encryption, using SSL technology.</small></p>
          <img class="secure-seal show-for-small-only float-center" src="<?php echo '../wp-content/uploads/comodo-padlock.png'; ?>" alt="This site is secured with Comodo" width="150" >

@@ -25,8 +25,7 @@ if (false === ($ob = get_transient($transient))) {
 <style>
 /* START: <?php echo $file.' - '.date("Y-m-d H:i:s"); ?> */
 @media only screen {
-    #row-footer {padding-top:1rem; border-top: 1px solid <?php echo spark_get_theme_mod('colour4'); ?>; background: <?php echo spark_get_theme_mod('colour3'); ?>;}
-    #row-footer, #row-footer a {color: <?php echo spark_get_theme_mod('colour1'); ?>}
+    #row-footer {padding-top:1rem;}
     #row-footer .logo {width: 100%; padding-bottom:1rem;}
 /*     #row-footer .logo-registered {max-width: 80%; padding-bottom: 1rem;} */
     #row-footer .about {padding-top: 1rem; font-size: 1rem; font-weight: 400;}
@@ -38,7 +37,7 @@ if (false === ($ob = get_transient($transient))) {
     #row-footer .search_wrapper .search-form input {margin-bottom:0; border-radius: 0; padding-left: 2rem;}
     #row-footer .search_wrapper .search-form input[type=submit] {position: absolute; top: 0; right: 0; padding: 0.65rem 1rem; border:none; border-radius: 0; background-color: <?php echo spark_get_theme_mod('colour6');?>; color:<?php echo spark_get_theme_mod('colour1');?>;}
     #row-footer .search_wrapper .search-form input {padding-left: 2rem;}
-    #row-footer .search_wrapper .button {position: absolute; margin-top: -2.7rem; background-color: transparent;}
+    #row-footer .search_wrapper .button {position: absolute; margin-top: -2.7rem; background-color: transparent; border: none;}
 
     #row-footer hr {margin-top:0; border: 2px solid <?php echo spark_get_theme_mod('colour6');?>;}
     #row-footer .h4 {font-size: 1.2rem; margin-bottom: 0.4rem;}
@@ -89,7 +88,7 @@ if (false === ($ob = get_transient($transient))) {
     $phone = spark_get_theme_mod(ns_.'contact_phone');
     $address = spark_get_theme_mod(ns_.'contact_address');
 ?>
-<div class="small-24 medium-7 cell hide-for-print">
+<div class="small-24 medium-7 cell">
 <?php
     if (!empty($logo_footer)) {
         echo '<img class="logo" src="'.$logo_footer.'" alt="">'."\n";
@@ -106,7 +105,7 @@ if (false === ($ob = get_transient($transient))) {
     echo '</div>'."\n";
 ?>
 </div>
-<div class="show-for-medium medium-11 cell grid-x grid-margin-x hide-for-print">
+<div class="show-for-medium medium-11 cell grid-x grid-margin-x">
     <ul class="no-bullet medium-12 cell">
         <?php spark_menu(array('menu' => 'footer-left', 'display_children' => true)); ?>
     </ul>
@@ -114,7 +113,7 @@ if (false === ($ob = get_transient($transient))) {
         <?php spark_menu(array('menu' => 'footer-right','display_children' => true)); ?>
     </ul>
 </div>
-<div class="show-for-small-only small-24 cell hide-for-print">
+<div class="show-for-small-only small-24 cell">
     <ul class="no-bullet grid-x grid-margin-x small-up-1">
         <?php spark_menu(array('menu' => 'footer-left', 'display_children' => false, 'li_class' => 'cell')); ?>
         <?php spark_menu(array('menu' => 'footer-right', 'display_children' => false, 'li_class' => 'cell')); ?>

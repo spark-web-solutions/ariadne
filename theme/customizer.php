@@ -122,16 +122,6 @@ function spark_theme_customizer(WP_Customize_Manager $wp_customize) {
             'type' => 'textarea',
             'priority' => 10,
     ));
-//     $wp_customize->add_setting(ns_.'typekit', array(
-//             'sanitize_callback' => 'sanitize_text_field',
-//             'type' => 'option',
-//     ));
-//     $wp_customize->add_control(ns_.'typekit', array(
-//             'label' => __('Adobe TypeKit ID', ns_),
-//             'section' => ns_.'fonts',
-//             'type' => 'text',
-//             'priority' => 15,
-//     ));
 
     // Palette
     $wp_customize->add_section(ns_.'palette', array(
@@ -226,7 +216,9 @@ function spark_theme_customizer(WP_Customize_Manager $wp_customize) {
                 'description' => 'Select which colour from the palette to use for each page element. You should generally configure the theme palette first.',
                 'priority' => 51,
         ));
-        $palette_options = array();
+        $palette_options = array(
+                0 => 'None (transparent)',
+        );
         for ($i = 1; $i <= $colours; $i++) {
             $palette_options[$i] = 'Colour '.$i.' ('.spark_get_theme_mod(ns_.'colour'.$i).')';
         }
@@ -372,7 +364,6 @@ function spark_theme_customizer(WP_Customize_Manager $wp_customize) {
             'priority' => 30,
     ));
 
-
     // Copyright
     $wp_customize->add_section(ns_.'copyright_section', array(
             'title' => __('Copyright Statement', ns_),
@@ -458,14 +449,14 @@ function spark_get_dynamic_styles_filename() {
 
 function spark_get_page_elements() {
     return array(
-            'content_background' => 'section.main-section, .callout-wrapper:nth-of-type(2n)',
+            'content_background' => 'section.main-section, .panel-wrapper:nth-of-type(2n)',
             'heading_text' => 'h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6',
             'body_text' => 'body, *',
             'link_text' => 'a:link, a:link:hover, a:visited, a:link:focus',
             'main_menu_background' => 'nav.title-bar, nav.top-bar, nav.top-bar ul',
             'main_menu_text' => 'nav.title-bar .fa-bars, nav .menu > li > a, nav .menu > li > a:hover',
             'footer_background' => 'footer',
-            'footer_text' => 'footer, footer *',
+            'footer_text' => '#row-footer, #row-footer *',
             'copyright_background' => 'body, footer#row-copyright',
             'copyright_text' => 'footer#row-copyright, footer#row-copyright *',
             'button_background' => 'button:not(.close-button), .button, a.button:link, a.button:visited, input[type=submit]',
@@ -482,8 +473,8 @@ function spark_get_page_elements() {
             'call_to_action_hover_border' => '.cta:hover, .cta:focus, button.cta:hover, button.cta:focus, .button.cta:hover, .button.cta:focus, a.button.cta:hover, a.button.cta:focus, .panel-wrapper .action-button a.button:hover, .panel-wrapper .action-button a.button:focus',
             'panel_background' => '.panel-wrapper',
             'panel_text' => '.panel-wrapper h1, .panel-wrapper h2, .panel-wrapper h3, .panel-wrapper h4, .panel-wrapper h5, .panel-wrapper h6',
-            'hero_background' => '.hero',
-            'hero_text' => '.hero h1, .hero .h1',
+            'hero_background' => '#row-hero',
+            'hero_text' => '#row-hero h1, #row-hero .h1',
             'click_array_background' => 'body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper',
             'click_array_text' => 'body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper',
             'click_array_border' => 'body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper',
@@ -551,17 +542,23 @@ function spark_generate_dynamic_styles() {
                 $rule = 'color';
             }
             $palette_colour = spark_get_theme_mod(ns_.'element_'.$element);
-            $element_colour = ${'colour'.$palette_colour};
-            $styles .= $css_selectors.' {'.$rule.': '.$element_colour.';}'."\n";
+            if (!empty($palette_colour)) {
+                if (is_numeric($palette_colour)) {
+                    $element_colour = ${'colour'.$palette_colour};
+                } else {
+                    $element_colour = $palette_colour;
+                }
+                $styles .= $css_selectors.' {'.$rule.': '.$element_colour.';}'."\n";
+            }
         }
     }
 
     // Helper classes for text, background and border colours
     for ($i = 0; $i <= $colour_count; $i++) {
-        $styles .= '.text'.$i.', .panel-wrapper.text'.$i.' * {color: '.${'colour'.$i}.';}'."\n";
+        $styles .= '.text'.$i.', .panel-wrapper.text'.$i.' *:not(input):not(select):not(textarea) {color: '.${'colour'.$i}.';}'."\n";
         $styles .= '.bg'.$i.' {background-color: '.${'colour'.$i}.';}'."\n";
         $styles .= '.border'.$i.' {border-color: '.${'colour'.$i}.';}'."\n";
-        $styles .= '.htext'.$i.':hover, .panel-wrapper.text'.$i.':hover * {color: '.${'colour'.$i}.';}'."\n";
+        $styles .= '.htext'.$i.':hover, .panel-wrapper.text'.$i.':hover *:not(input):not(select):not(textarea) {color: '.${'colour'.$i}.';}'."\n";
         $styles .= '.hbg'.$i.':hover {background-color: '.${'colour'.$i}.';} '."\n";
         $styles .= '.hborder'.$i.':hover {border-color: '.${'colour'.$i}.';}'."\n";
     }

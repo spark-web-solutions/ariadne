@@ -25,12 +25,7 @@ if (false === ($ob = get_transient($transient))) {
 <style>
 /* START: <?php echo $file.' - '.date("Y-m-d H:i:s"); ?> */
 @media only screen {
-    #row-copyright {background-color: <?php echo spark_get_theme_mod('colour2'); ?>;color: <?php echo spark_get_theme_mod('colour1'); ?>;font-weight: 700; font-size:0.8rem; padding-top: 1rem; padding-left: .9375rem; padding-right: .9375rem; }
-    #row-copyright div { padding-bottom: 1rem; }
-    #row-copyright a {color:<?php echo spark_get_theme_mod('colour6'); ?>; }
-    #row-copyright li {display: inline-block; text-align: center;}
-    #row-copyright li:after {content:"|"; padding-left: 0.5rem; padding-right: 0.5rem;}
-    #row-copyright li:last-of-type:after {content:" ";}
+    #row-copyright {font-weight: 700; font-size:0.8rem; padding-top: 1rem; padding-left: .9375rem; padding-right: .9375rem;}
 }
 @media only screen and (min-width: 40em) { /* <-- min-width 640px - medium screens and up */}
 @media only screen and (min-width: 64em) { /* <-- min-width 1024px - large screens and up */ }
@@ -88,12 +83,8 @@ if (false === ($ob = get_transient($transient))) {
 
     // section content
 ?>
-
-<div class="gf2 small-24 hide-for-medium text-center cell hide-for-print">
-    <?php echo spark_get_theme_mod('copyright'); ?> | <a class="gf2" href="/privacy">Privacy Policy</a><br><a href="https://sparkweb.com.au/">Website design and development by Spark Web Solutions</a>
-</div>
-<div class="gf2 show-for-medium medium-24 cell hide-for-print">
-    <?php echo spark_get_theme_mod('copyright'); ?> | <a class="gf2" href="/privacy">Privacy Policy</a> | <a href="https://sparkweb.com.au/">Website design and development by Spark Web Solutions</a>
+<div class="small-24 text-center medium-text-left column hide-for-print">
+    <?php echo spark_get_theme_mod('copyright').date(' Y'); ?> | <a href="/privacy">Privacy Policy</a> <p class="float-right"><a href="https://sparkweb.com.au/" target="_blank">Website design and development by Spark Web Solutions</a></p>
 </div>
 <?php
     // section content - end

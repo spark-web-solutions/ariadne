@@ -367,8 +367,18 @@ class Spark_Theme {
 
     static function setup_data($file, $term = MEDIUM_TERM) {
         global $post;
+        $current_id = $post->ID;
+        $archive_page = null;
+        if (is_archive()) {
+            $archive_page = get_page_by_path(get_query_var('post_type'));
+            $current_id = $archive_page->ID;
+        } elseif (is_home() && !is_front_page()) {
+            $current_id = get_option('page_for_posts', true);
+            $archive_page = get_post($current_id);
+        }
+
         $filename = str_replace(get_stylesheet_directory(), '', $file);
-        $t_args = array('name' => 'var_'.$post->ID, 'file' => $filename);
+        $t_args = array('name' => 'var_'.$current_id, 'file' => $filename);
         $transient_name = Spark_Transients::name($t_args);
         if (!Spark_Transients::use_transients()) {
             delete_transient($transient_name);
@@ -379,7 +389,7 @@ class Spark_Theme {
                     'meta' => array(),
                     'ancestors' => array(),
                     'ancestor_string' => '',
-                    'archive_page' => null,
+                    'archive_page' => $archive_page,
                     'transient_suffix' => '',
             );
 
@@ -388,22 +398,24 @@ class Spark_Theme {
                 $var['search_string'] = $_GET['s'];
             }
 
+            if (is_404()) {
+                $var['transient_suffix'] .= '_404';
+            }
+
             if (is_singular()) {
                 $var['meta'] = spark_get_post_meta($post->ID);
                 $var['ancestors'] = get_ancestors($post->ID, get_post_type($post));
                 if (!empty($var['ancestors'])) {
-                    $var['ancestor_string'] .= '_'.implode('_', $ancestors);
+                    $var['ancestor_string'] .= '_'.implode('_', $var['ancestors']);
                 }
                 $var['transient_suffix'] .= $var['ancestor_string'].'_'.$post->ID;
             }
 
             if (is_archive()) {
                 $var['transient_suffix'] .= '_'.get_query_var('post_type');
-                $var['archive_page'] = get_page_by_path(get_query_var('post_type'));
                 $var['meta'] = spark_get_post_meta($var['archive_page']->ID);
             } elseif (is_home() && !is_front_page()) {
                 $var['transient_suffix'] .= '_post';
-                $var['archive_page'] = get_option('page_for_posts', true);
                 $var['meta']= spark_get_post_meta($var['archive_page']);
             }
 

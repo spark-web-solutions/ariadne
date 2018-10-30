@@ -3,7 +3,7 @@
  * Template Name: Checkout
  */
 
-if(count($_SESSION[SPARK_CART_SESSION_ITEM]) == 0){
+if (count($_SESSION[BB_CART_SESSION_ITEM]) == 0) {
     wp_redirect('/donate');
     exit;
 }

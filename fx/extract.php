@@ -1,21 +1,22 @@
 <?php
 /**
  * Generate "teaser" text from longer content
-* @param string $content
-* @param integer $max_chars
-* @param string $suffix
-* @return string
-*/
+ * @param string $content
+ * @param integer $max_chars
+ * @param string $suffix
+ * @return string
+ */
 function spark_extract($content, $max_chars = 200, $suffix = '...') {
-    if (strlen(strip_tags(strip_shortcodes($content))) > $max_chars) {
-        return substr(strip_tags(strip_shortcodes($content)), 0, strrpos(substr(strip_tags(strip_shortcodes($content)), 0, $max_chars), ' ')+1).$suffix."\n";
+    $content = str_replace("\n", ' ', strip_shortcodes($content));
+    if (strlen(strip_tags($content)) > $max_chars) {
+        return substr(strip_tags($content), 0, strrpos(substr(strip_tags($content), 0, $max_chars), ' ')+1).$suffix."\n";
     } else {
-        return strip_shortcodes($content);
+        return $content;
     }
 }
 
 /**
- * Generate "teaser" text for post. Will use custom excerpt if defined, otherwise will look for WP "More" tag and return preceding content, else generate automatic extract via @see spark_extract.
+ * Generate "teaser" text for post. Will use custom excerpt if defined, otherwise will look for WP "More" tag and return preceding content, else generate automatic extract via @see spark_extract().
  * @param mixed $post
  * @param number $max_chars
  * @param string $suffix

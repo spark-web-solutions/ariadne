@@ -2,10 +2,11 @@
 /**
  * Gets the URL for the post featured image. Works with Multisite Featured Image plugin as well as native WP.
  * @param string $size
- * @param int|WP_Post $post Optional
+ * @param int|WP_Post $post Optional. Default global $post.
+ * @param boolean $with_fallback Optional. Whether to return default featured image if none set for selected post. Default false.
  * @return boolean|NULL|string False on error, null if no thumbnail, else string image URL
  */
-function spark_get_featured_image_url($size = 'single-post-thumbnail', $post = null) {
+function spark_get_featured_image_url($size = 'single-post-thumbnail', $post = null, $with_fallback = false) {
     if (is_null($post)) {
         global $post;
     } else {
@@ -14,7 +15,7 @@ function spark_get_featured_image_url($size = 'single-post-thumbnail', $post = n
     if (!($post instanceof WP_Post)) {
         return false;
     }
-    if (!has_post_thumbnail($post->ID)) {
+    if (!has_post_thumbnail($post->ID) && !$with_fallback) {
         return null;
     }
     $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), $size);
@@ -35,5 +36,10 @@ function spark_get_featured_image_url($size = 'single-post-thumbnail', $post = n
             $imgURL = get_post_meta($post->ID, '_ibenic_mufimg_src', true);
         }
     }
+
+    if (empty($imgURL) && $with_fallback) {
+        $imgURL = spark_get_theme_mod('default_featured_image');
+    }
+
     return $imgURL;
 }

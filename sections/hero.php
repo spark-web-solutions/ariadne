@@ -48,9 +48,9 @@ if (false === ($ob = get_transient($transient))) {
 <style>
 /* START: <?php echo $file.' - '.date("Y-m-d H:i:s"); ?> */
 @media only screen {
-    #row-hero {color: <?php echo spark_get_theme_mod('colour1'); ?>; text-shadow: 0.05rem 0.05rem 0.05rem rgba(86, 86, 86, 0.4);}
+    #row-hero {text-shadow: 0.05rem 0.05rem 0.05rem rgba(86, 86, 86, 0.4);}
     #row-hero .hero-content {bottom: 1rem; left: 0; position: absolute; margin: 0 0.9375rem;}
-    #row-hero h1 {z-index: 99;position: relative;}
+    #row-hero h1 {z-index: 99; position: relative;}
 }
 @media only screen and (min-width: 40em) { /* <-- min-width 640px - medium screens and up */
      #row-hero .navigation {position:relative; z-index:99;}
@@ -127,25 +127,22 @@ if (false === ($ob = get_transient($transient))) {
     if (!empty($images['large'])) {
 ?>
 <div class="navigation show-for-medium cell">
-       <ul class="menu align-right">
-      <?php spark_menu('main'); ?>
-       </ul>
-   </div>
-
+    <ul class="menu align-right">
+        <?php spark_menu('main'); ?>
+    </ul>
+</div>
 <div class="hero-content">
 <?php
-    if (!$meta['hide_title']) {
-        echo '<h1>'.$title.'</h1>'."\n";
-    }
-    if (!empty($meta['hero_tagline'])) {
-        echo '<p class="tagline">'.$meta['tagline'].'</p>'."\n";
-    }
-    if (!empty($meta['hero_destination']) && !empty($meta['hero_action_text'])) {
-        echo '<a class="button cta border1 text1 bg0 hbg2 hborder2" href="'.$meta['hero_destination'].'">'.$meta['hero_action_text'].'</a>'."\n";
-    }
-
+        if (!$meta['hide_title']) {
+            echo '<h1>'.$title.'</h1>'."\n";
+        }
+        if (!empty($meta['hero_tagline_desc'])) {
+            echo '<p class="tagline">'.$meta['hero_tagline_desc'].'</p>'."\n";
+        }
+        if (!empty($meta['hero_destination']) && !empty($meta['hero_action_text'])) {
+            echo '<a class="button cta" href="'.$meta['hero_destination'].'">'.$meta['hero_action_text'].'</a>'."\n";
+        }
 ?>
-
 </div>
 <?php
     }
