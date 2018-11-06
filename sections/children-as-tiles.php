@@ -79,7 +79,7 @@ $transient = Spark_Transients::name($t_args);
 if (!Spark_Transients::use_transients()) {
     delete_transient($transient);
 }
-if (false === ($ob = get_transient($transient))) {
+if (false === ($ob = get_transient($transient)) || strpos($ob, '<form') !== false) {
     ob_start();
 
     // section content - start
