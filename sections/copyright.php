@@ -84,7 +84,7 @@ if (false === ($ob = get_transient($transient))) {
     // section content
 ?>
 <div class="small-24 text-center medium-text-left column hide-for-print">
-    <?php echo spark_get_theme_mod('copyright').date(' Y'); ?> | <a href="/privacy">Privacy Policy</a> <p class="float-right"><a href="https://sparkweb.com.au/" target="_blank">Website design and development by Spark Web Solutions</a></p>
+    <?php echo spark_get_theme_mod('copyright').date(' Y'); ?> | <a href="/privacy-policy/">Privacy Policy</a> <p class="float-right"><a href="https://sparkweb.com.au/" target="_blank">Website design and development by Spark Web Solutions</a></p>
 </div>
 <?php
     // section content - end
