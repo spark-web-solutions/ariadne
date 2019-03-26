@@ -20,7 +20,7 @@ function get_card($args){
     }
 
     $transient = ns_.'card_'.$ID.'_'.$card;
-    if (!BB_Transients::use_transients()) {
+    if (!Spark_Transients::use_transients()) {
         delete_transient($transient);
     }
     if (false === ($ob = get_transient($transient))) {
@@ -37,7 +37,7 @@ function get_card($args){
         echo '<!-- END Card '.$ID.' -->'."\n";
 
         $ob = ob_get_clean();
-        if (BB_Transients::use_transients()) {
+        if (Spark_Transients::use_transients()) {
             set_transient($transient, $ob, LONG_TERM);
         }
     }
