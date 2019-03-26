@@ -61,7 +61,7 @@ class Spark_Theme {
         // setup the wrapper
         echo "\n".'<!-- '.$name.' -->'."\n";
         echo "\n".'<!-- '.$file.' -->'."\n";
-        echo '<'.$type.' '.$style.' id="row-'.$name.'" class="grid-container '.$class.'">'."\n";
+        echo '<'.$type.' id="row-'.$name.'" class="grid-container '.$class.'">'."\n";
         echo '    <div id="row-inner-'.$name.'" class="'.$grid_type.' '.$inner_class.'" data-section_name="'.$file.'">'."\n";
 
         if (isset($file) && $file != false) {
@@ -237,7 +237,7 @@ class Spark_Theme {
         global $post;
         $class = array();
 
-        $class[] = $args;
+        $class[] = $classes;
         $class[] = (is_archive())       ? '' : 'not-archive';
         $class[] = (is_attachment())    ? 'attachment' : 'not-attachment';
         $class[] = (is_front_page())    ? '' : 'not-home';

@@ -39,26 +39,7 @@ function spark_login_footer() {
     });
 </script>
 <style>
-
 body.login div#login h1 a {background-image: url(<?php echo spark_get_theme_mod(ns_.'logo_large')?>) !important; margin: 0 auto; background-size: contain; width: 220px; height: 109px;}
-
 </style>
 <?php
-}
-
-add_action('template_redirect', 'spark_redirect_login_page');
-function spark_redirect_login_page() {
-    if ($page_viewed == "wp-login.php" && $_SERVER['REQUEST_METHOD'] == 'GET') {
-        if (is_user_logged_in() && is_user_member_of_blog()) {
-            wp_redirect(site_url('/'));
-            exit;
-        }
-    }
-}
-
-add_action('wp_head', 'spark_hide_login_link');
-function spark_hide_login_link() {
-    if (is_user_logged_in()) {
-        echo '<style>.login {display: none !important;}</style>'."\n";
-    }
 }

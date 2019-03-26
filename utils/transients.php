@@ -17,7 +17,7 @@ class Spark_Transients {
     }
 
     public static function use_transients() {
-        if ($_GET['transients'] == 'false') {
+        if (isset($_GET['transients']) && $_GET['transients'] == 'false') {
             return false;
         }
         if (defined('SPARK_USE_TRANSIENTS')) {

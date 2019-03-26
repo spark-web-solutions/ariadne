@@ -187,20 +187,20 @@ if ( false === ( $ob = get_transient( $transient ) ) ) {
     }
 
     foreach ($menu_items as $item) {
-        if( $is_active == false ) {
+        $class = '';
+        if ($is_active == false) {
             $class = 'is-active';
             $is_active = true;
         }
-        $menu .= '        <li class="menu-item tabs-title '.$class.'"><hr>'."\n";
-        unset($class);
+        $menu .= '        <li class="menu-item tabs-title '.$class.'">'."\n";
         if (!$has_children) { // If we're showing siblings (and not linking to the full page), link to the anchor on the parent page
             $menu .= '            <a href="'.get_the_permalink($post->post_parent).'#'.get_the_slug($item->ID).'">'.$item->post_title.'</a>'."\n";
         } else { // Otherwise just link to the anchor on the current page
             $menu .= '            <a href="#'.get_the_slug($item->ID).'">'.$item->post_title.'</a>'."\n";
             if (spark_has_children($item->ID)) { // If child page has children of its own, add links to them
                 foreach (spark_get_children($item) as $grandchild) {
-                    $menu .= '        </li>'."\n";
-                    $menu .= '        <li class="menu-item sub-menu-item tabs-title '.$class.'"><hr>'."\n";
+                    $menu .= '        <hr></li>'."\n";
+                    $menu .= '        <li class="menu-item sub-menu-item tabs-title">'."\n";
                     $menu .= '            <a href="#'.get_the_slug($grandchild->ID).'">'.$grandchild->post_title.'</a>'."\n";
                 }
             }

@@ -18,20 +18,17 @@ function get_card($args){
     if (!empty($type)) {
         $card .= '.'.$type;
     }
-    
-    $transient_args = array(
-            'namespace' => 'card_', // Remember to use keywords like 'section' or 'nav' where logical
-            'transients' => false, // Set this to false to force all transients to refresh
-    );
 
-    $transient = ns_.$transient_args['namespace'].$ID.'_'.$card;
-    if (false === $transient_args['transients']) delete_transient($transient);
+    $transient = ns_.'card_'.$ID.'_'.$card;
+    if (!BB_Transients::use_transients()) {
+        delete_transient($transient);
+    }
     if (false === ($ob = get_transient($transient))) {
         ob_start();
 
         echo '<!-- START Card '.$ID.' -->'."\n";
 
-        if(file_exists(get_stylesheet_directory().'/cards/'.$card.'.php')) {
+        if (file_exists(get_stylesheet_directory().'/cards/'.$card.'.php')) {
             include(get_stylesheet_directory().'/cards/'.$card.'.php');
         } else {
             echo 'No card "/cards/'.$card.'.php" template :(';
@@ -40,10 +37,10 @@ function get_card($args){
         echo '<!-- END Card '.$ID.' -->'."\n";
 
         $ob = ob_get_clean();
-        if (true === $section_args['transients']) set_transient($transient, $ob, LONG_TERM);
+        if (BB_Transients::use_transients()) {
+            set_transient($transient, $ob, LONG_TERM);
+        }
     }
-    unset($transient);
-    
-    return $ob;
 
+    return $ob;
 }
