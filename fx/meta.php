@@ -15,7 +15,10 @@ function spark_get_post_meta($post = null, $key = '') {
             delete_transient($transient);
         }
         if (false === ($meta = get_transient($transient))) {
-            $meta = spark_rationalise_meta(get_post_meta($post->ID));
+            $meta = get_post_meta($post->ID);
+            if (is_array($meta)) {
+                $meta = spark_rationalise_meta($meta);
+            }
             if (true === $transients) {
                 set_transient($transient, $meta, LONG_TERM);
             }
