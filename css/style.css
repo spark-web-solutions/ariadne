@@ -14,6 +14,8 @@ a:not(.cta):not(.button):link:hover {opacity: 0.75;}
 .grid-container.full > .grid-x, .grid-container.full > .grid-y {margin-left: auto; margin-right: auto;}
 #row-hero {position: relative;}
 #row-hero:before {content: ' '; display: block; background-size: cover; background-position: center center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;}
+#row-hero .hero-video {position: absolute; width: 100%; height: 100%; top: 0; left: 0;}
+#row-hero .hero-video video {width: 100%; height: 100%;}
 
 .uppercase {text-transform: uppercase;}
 .lowercase {text-transform: lowercase;}
@@ -204,6 +206,10 @@ aside .sticky {background-color: white;}
 .panel-wrapper.video .wrapper {display: block; position: absolute; width: 100%; height: 100%;}
 .panel-wrapper.video .link {display: block; position: absolute; width: 100%; height: 100%;}
 .panel-wrapper.video .link .fa {color: #E62117; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    #row-hero .hero-video {display: none;}
+}
 
 /* Medium and up */
 @media only screen and (min-width: 40em) { /* <-- min-width 640px - medium screens and up */	

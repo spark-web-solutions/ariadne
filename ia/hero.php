@@ -40,6 +40,14 @@ if (function_exists("register_field_group")) {
                             'library' => 'all',
                     ),
                     array(
+                            'key' => 'spark_hero_video',
+                            'label' => 'Hero Video',
+                            'name' => 'hero_video',
+                            'type' => 'text',
+                            'placeholder' => 'https://',
+                            'instructions' => 'If included, video will be auto-played without sound. As such it should be brief (<30 seconds) and silent in order to minimise file size.',
+                    ),
+                    array(
                             'key' => 'spark_hero_bg_opacity',
                             'label' => 'Background Image Opacity',
                             'instructions' => 'Enter a number between 0 (completely transparent) and 1 (completely opaque).',

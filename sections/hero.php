@@ -33,6 +33,9 @@ if (is_post_type_archive() || (is_home() && !is_front_page())) {
 if (!empty($meta['hero_title'])) {
     $title = $meta['hero_title'];
 }
+if (!empty($meta['hero_video'])) {
+    $video = $meta['hero_video'];
+}
 
 // -------------------------------------------
 // 2. setup local css transient for this file
@@ -53,7 +56,7 @@ if (false === ($ob = get_transient($transient))) {
     #row-hero h1 {z-index: 99; position: relative;}
 }
 @media only screen and (min-width: 40em) { /* <-- min-width 640px - medium screens and up */
-     #row-hero .navigation {position:relative; z-index:99;}
+    #row-hero .navigation {position:relative; z-index:99;}
 }
 @media only screen and (min-width: 64em) { /* <-- min-width 1024px - large screens and up */ }
 @media only screen and (min-width: <?php echo ROW_MAX_WIDTH; ?> ) {}
@@ -124,7 +127,13 @@ if (false === ($ob = get_transient($transient))) {
     echo '<!-- START: '.$file.' -->'."\n";
 
     // section content
-    if (!empty($images['large'])) {
+    if (!empty($video)) {
+?>
+<div class="hero-video">
+    <video loop autoplay preload="auto"><source src="<?php echo $video; ?>" type="video/mp4"></video>
+</div>
+<?php
+    }
 ?>
 <div class="navigation show-for-medium cell">
     <ul class="menu align-right">
@@ -133,20 +142,18 @@ if (false === ($ob = get_transient($transient))) {
 </div>
 <div class="hero-content">
 <?php
-        if (!$meta['hide_title']) {
-            echo '<h1>'.$title.'</h1>'."\n";
-        }
-        if (!empty($meta['hero_tagline_desc'])) {
-            echo '<p class="tagline">'.$meta['hero_tagline_desc'].'</p>'."\n";
-        }
-        if (!empty($meta['hero_destination']) && !empty($meta['hero_action_text'])) {
-            echo '<a class="button cta" href="'.$meta['hero_destination'].'">'.$meta['hero_action_text'].'</a>'."\n";
-        }
+    if (!$meta['hide_title']) {
+        echo '<h1>'.$title.'</h1>'."\n";
+    }
+    if (!empty($meta['hero_tagline_desc'])) {
+        echo '<p class="tagline">'.$meta['hero_tagline_desc'].'</p>'."\n";
+    }
+    if (!empty($meta['hero_destination']) && !empty($meta['hero_action_text'])) {
+        echo '<a class="button cta" href="'.$meta['hero_destination'].'">'.$meta['hero_action_text'].'</a>'."\n";
+    }
 ?>
 </div>
 <?php
-    }
-
     // section content - end
     echo '<!-- END:'.$file.' -->'."\n";
 
