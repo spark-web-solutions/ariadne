@@ -34,7 +34,7 @@ if (function_exists("register_field_group")) {
                             'label' => 'Hero Image',
                             'name' => 'hero_image',
                             'type' => 'image',
-                            'instructions' => 'If no image is specified, the Featured Image will be used instead',
+                            'instructions' => 'If no image is specified, the Featured Image will be used instead.',
                             'save_format' => 'url',
                             'preview_size' => 'thumbnail',
                             'library' => 'all',

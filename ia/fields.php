@@ -1,6 +1,28 @@
 <?php
-// Hide ACF field group menu item - must be done before including ACF
-// define('ACF_LITE', true);
+// 1. customize ACF path
+add_filter('acf/settings/path', 'my_acf_settings_path');
 
-// Include ACF
-require_once (dirname(__FILE__).'/fields/acf.php');
+function my_acf_settings_path( $path ) {
+    // update path
+    $path = get_stylesheet_directory().'/ia/fields/';
+
+    // return
+    return $path;
+}
+
+
+// 2. customize ACF dir
+add_filter('acf/settings/dir', 'my_acf_settings_dir');
+function my_acf_settings_dir( $dir ) {
+    // update path
+    $dir = get_stylesheet_directory_uri().'/ia/fields/';
+
+    // return
+    return $dir;
+}
+
+// 3. Hide ACF field group menu item
+add_filter('acf/settings/show_admin', '__return_false');
+
+// 4. Include ACF
+require_once (get_stylesheet_directory().'/ia/fields/acf.php');
