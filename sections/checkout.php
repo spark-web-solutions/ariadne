@@ -21,7 +21,7 @@ if (!Spark_Transients::use_transients()) {
 }
 if (false === ($ob = get_transient($transient))) {
     ob_start();
-?>
+    ?>
 <style>
 /* START: <?php echo $file.' - '.date("Y-m-d H:i:s"); ?> */
 @media only screen {
@@ -29,7 +29,8 @@ if (false === ($ob = get_transient($transient))) {
     body .gform_wrapper.bb_cart_checkout_wrapper .gform_fields .payment_options .gfield_radio li input { margin-bottom:0.4rem;}
     body .gform_wrapper.bb_cart_checkout_wrapper .gform_fields .payment_options .gfield_radio li { margin-right:1rem;}
 
-    #row-footer, #breadcrumbs, #row-top .top-bar .donate, #row-top ul.menu, #row-top .title-bar-content, #row-hero .navigation .menu {display: none;}
+    #breadcrumbs, #row-top .top-bar .donate, #row-top ul.menu, #row-top .title-bar-content, #row-hero .navigation .menu, .off-canvas-menu {display: none;}
+    #row-hero .navigation {background-color: transparent;}
 }
 @media only screen and (min-width: 40em) { /* <-- min-width 640px - medium screens and up */}
 @media only screen and (min-width: 64em) { /* <-- min-width 1024px - large screens and up */ }

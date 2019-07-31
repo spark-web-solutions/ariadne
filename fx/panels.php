@@ -17,9 +17,9 @@ function spark_get_panels() {
         );
         if (!is_search() && !is_404()) {
             global $post;
-            if ($post->post_type == 'page' || is_archive() || (is_home() && !is_front_page())) {
+            if ($post->post_type == 'page' || is_post_type_archive() || (is_home() && !is_front_page())) {
                 $post_id = $post->ID;
-                if (is_archive()) {
+                if (is_post_type_archive()) {
                     $page = get_page_by_path(get_post_type($post));
                     $post_id = $page->ID;
                 }
@@ -31,7 +31,7 @@ function spark_get_panels() {
                                 'include_children' => false,
                         ),
                 );
-            } elseif (is_single()) {
+            } elseif (is_single() || is_archive()) {
                 $args['meta_query'] = array(
                         array(
                                 'key' => 'post_types',
@@ -137,9 +137,17 @@ function spark_panel_show_title(WP_Post $panel) {
  * Display the panel title (unless configured to hide title)
  * @param WP_Post $panel
  */
-function spark_panel_title(WP_Post $panel) {
+function spark_panel_title(WP_Post $panel, $url = '') {
     if (spark_panel_show_title($panel)) {
-        echo '<p class="h1">'.$panel->post_title.'</p>'."\n";
+        echo '<p class="h2">';
+        if (!empty($url)) {
+            echo '<a href="'.$url.'">';
+        }
+        echo $panel->post_title;
+        if (!empty($url)) {
+            echo '</a>';
+        }
+        echo '</p>'."\n";
     }
 }
 

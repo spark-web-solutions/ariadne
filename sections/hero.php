@@ -15,8 +15,13 @@ if (is_post_type_archive() || (is_home() && !is_front_page())) {
     $images = spark_get_hero_images($archive_page);
 } elseif (is_archive()) {
     $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
-    $title = $term->name;
-    $images = spark_get_hero_images($archive_page);
+    if (is_tax() && $term instanceof WP_Term) {
+        $title = $term->name;
+        $images = spark_get_hero_images($term);
+    } else {
+        $title = $archive_page->post_title;
+        $images = spark_get_hero_images($archive_page);
+    }
 } elseif (is_search()) {
     $title = 'Search Results';
     $default_featured_image = spark_get_theme_mod('default_featured_image');
@@ -130,7 +135,7 @@ if (false === ($ob = get_transient($transient))) {
     if (!empty($video)) {
 ?>
 <div class="hero-video">
-    <video loop autoplay preload="auto"><source src="<?php echo $video; ?>" type="video/mp4"></video>
+    <video loop autoplay muted playsinline preload="auto"><source src="<?php echo $video; ?>" type="video/mp4"></video>
 </div>
 <?php
     }

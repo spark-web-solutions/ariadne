@@ -29,7 +29,6 @@ $section_args = array(
 $transients = false; // change this to false to force all transients to refresh
 // reset_transients( $section_args['namespace'] ); // force a reset of all transients for this namespace.
 
-
 // -------------
 // get_post_meta
 // -------------
@@ -37,11 +36,9 @@ if( $section_args['get_meta'] === true ){
     $transient = ns_.'meta_'.$post->ID;
     if( false === $transients) delete_transient( $transient );
     if ( false === ( $meta = unserialize( get_transient( $transient ) ) ) ){
-
         $meta = get_post_meta( $post->ID );
         set_transient( $transient, serialize( $meta ), LONG_TERM );
         if( false === $transients) delete_transient( $transient );
-
     }
     unset( $transient );
 }
@@ -52,56 +49,36 @@ if( $section_args['get_meta'] === true ){
 $transient = ns_.$section_args['namespace'].'_css_'.$section_args['filename'].'_'.md5( $section_args['filename'] );
 if( false === $transients) delete_transient( $transient );
 if ( false === ( $ob = get_transient( $transient ) ) ) {
-
-    ob_start(); ?>
+    ob_start();
+?>
 <style>
 /* START: <?php echo $section_args['filename'].' - '.date("Y-m-d H:i:s"); ?> */
 @media only screen {
+    aside {margin-top: -1.5rem;}
     aside .row.sticky-container {margin-bottom: 1rem;}
-    aside .sticky  {background-color: <?php echo spark_get_theme_mod('colour4'); ?>; }
-    aside .sticky .tabs {background-color: <?php echo spark_get_theme_mod('colour4'); ?>; border:none;}
-    aside .menu > li > a {color: <?php echo spark_get_theme_mod('colour1'); ?>; }
-    aside .menu.vertical > li > a { padding-left: 1rem; padding-right: 1rem;}
-    aside .tabs-title > a {font-size: 1rem;}
+    aside .sticky {background-color: <?php echo spark_get_theme_mod('colour9'); ?>;}
+    aside .sticky.is-stuck.is-at-top {margin-top: 0!important;}
+    aside .sticky .tabs {background-color: transparent; border:none;}
+
+    aside .menu > li > a {color: <?php echo spark_get_theme_mod('colour1'); ?>;}
+    aside .menu.vertical > li > a {padding-left: 1rem; padding-right: 1rem;}
     aside .tabs-title:hover {background-color: transparent;}
     aside .tabs-title [aria-selected="true"] {background-color: transparent;}
-    aside .tabs-title > a:hover {background-color: transparent;}
-    aside .tabs-title > a[aria-selected="true"] {background-color: transparent;}
-    aside .menu.vertical > li.menu-item.sub-menu-item > a { font-size: 0.9rem; text-transform: none; font-weight: 400; padding-left: 2rem;}
+    aside .tabs-title > a:hover, aside .tabs-title > a:focus, aside .tabs-title > a[aria-selected="true"] {background-color: transparent;}
+    aside .menu.vertical > li.menu-item.sub-menu-item > a {font-size: 0.9rem; font-weight: 400; padding-left: 2rem;}
 
     aside .is-accordion-submenu-parent > a::after {border-color: <?php echo spark_get_theme_mod('colour1'); ?> transparent transparent;}
     aside .menu.nested {margin-left: 0;}
-    aside hr {margin: 0 1rem 0 1rem;}
-    /*aside ul li:last-of-type hr {display: none;}*/
-
-    aside .sticky.is-stuck.is-at-top {margin-top: 0!important;}
-
-    aside {margin-top: -1.5rem;}
-
-
-    /*li.sub-menu-item {padding-left: 1rem;}
-    li.sub-menu-item > a {max-width: 100%;}
-
-    aside .row.sticky-container {margin-bottom: 1rem;}
-
-    /*aside .sticky {background-color: <?php echo spark_get_theme_mod('colour8'); ?>; }
-    aside .menu > li > a {color: <?php echo spark_get_theme_mod('colour1'); ?>;}*/
-
-    /*aside .is-accordion-submenu-parent > a::after {border-color: <?php echo spark_get_theme_mod('colour1'); ?> transparent transparent;}
-    aside .menu.nested {margin-left: 0;}
     aside hr {margin: 0;}
-
-    aside .sticky.is-stuck.is-at-top {margin-top: 0!important;}*/
-
 }
 @media only screen and (min-width: 40em) { /* <-- min-width 640px - medium screens and up */
-    aside .menu > li > a {color: <?php echo spark_get_theme_mod('colour8'); ?>;}
+    aside.cell {margin-top: 0; margin-left: 0;}
+    aside .menu > li > a {color: <?php echo spark_get_theme_mod('colour5'); ?>;}
+    aside .menu > li > a:hover, aside .menu > li > a:focus, aside .menu > li > a[aria-selected="true"] {color: <?php echo spark_get_theme_mod('colour6'); ?>;}
+    aside .menu.vertical > li > a {padding-left: 0; padding-right: 0;}
     .tabs {border: none;}
-    aside {margin-top: 0;}
 }
 @media only screen and (min-width: 64em) { /* <-- min-width 1024px - large screens and up */
-
-
 }
 @media only screen and (min-width: <?php echo ROW_MAX_WIDTH; ?> ) {}
 @media only screen and (min-width: <?php echo SITE_MAX_WIDTH; ?> ) {}
@@ -181,7 +158,7 @@ if ( false === ( $ob = get_transient( $transient ) ) ) {
     $is_active = false;
     if(!empty($post->post_content)){
         $menu .= ' <li class="menu-item tabs-title is-active bg">'."\n";
-        $menu .= '      <a href="#'.get_the_slug($post->ID).'">'.$post->post_title.'</a>'."\n";
+        $menu .= '      <a data-tabs-target="'.get_the_slug($post->ID).'" href="#'.get_the_slug($post->ID).'">'.$post->post_title.'</a><hr>'."\n";
         $menu .= ' </li>'."\n";
         $is_active = true;
     }
@@ -196,16 +173,16 @@ if ( false === ( $ob = get_transient( $transient ) ) ) {
         if (!$has_children) { // If we're showing siblings (and not linking to the full page), link to the anchor on the parent page
             $menu .= '            <a href="'.get_the_permalink($post->post_parent).'#'.get_the_slug($item->ID).'">'.$item->post_title.'</a>'."\n";
         } else { // Otherwise just link to the anchor on the current page
-            $menu .= '            <a href="#'.get_the_slug($item->ID).'">'.$item->post_title.'</a>'."\n";
+            $menu .= '            <a data-tabs-target="'.get_the_slug($item->ID).'" href="#'.get_the_slug($item->ID).'">'.$item->post_title.'</a>'."\n";
             if (spark_has_children($item->ID)) { // If child page has children of its own, add links to them
                 foreach (spark_get_children($item) as $grandchild) {
                     $menu .= '        <hr></li>'."\n";
                     $menu .= '        <li class="menu-item sub-menu-item tabs-title">'."\n";
-                    $menu .= '            <a href="#'.get_the_slug($grandchild->ID).'">'.$grandchild->post_title.'</a>'."\n";
+                    $menu .= '            <a data-tabs-target="'.get_the_slug($grandchild->ID).'" href="#'.get_the_slug($grandchild->ID).'">'.$grandchild->post_title.'</a>'."\n";
                 }
             }
         }
-        $menu .= '        </li>'."\n";
+        $menu .= '        <hr></li>'."\n";
     }
 
 
@@ -216,14 +193,14 @@ if ( false === ( $ob = get_transient( $transient ) ) ) {
             <ul class="menu tabs vertical" data-accordion-menu>
                 <li class="selection">
                     <a href="#">Quicklinks</a>
-                    <ul class="menu tabs vertical nested" id="about-us-tabs" data-tabs>
+                    <ul class="menu tabs vertical nested" id="children-as-tabs" data-tabs data-deep-link="true" data-deep-link-smudge="true" data-update-history="true">
     					<?php echo $menu; ?>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
-    <ul class="show-for-medium menu tabs vertical" id="about-us-tabs" data-tabs>
+    <ul class="show-for-medium menu tabs vertical" id="children-as-tabs" data-tabs data-deep-link="true" data-deep-link-smudge="true" data-update-history="true">
     	<?php echo $menu; ?>
     </ul>
 <?php

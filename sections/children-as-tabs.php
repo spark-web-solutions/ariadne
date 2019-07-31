@@ -25,14 +25,11 @@ if (false === ($ob = get_transient($transient))) {
 <style>
 /* START: <?php echo $file.' - '.date("Y-m-d H:i:s"); ?> */
 @media only screen {
-    #row-children-as-tabs .tabs-content.vertical { border: none;}
-    h1 {font-weight: 900; color:<?php echo spark_get_theme_mod('colour5'); ?>; padding-left: 1rem;}
-    h2 {font-weight: 700; color:<?php echo spark_get_theme_mod('colour5'); ?>;}
-    aside .menu > li > a {color: <?php echo spark_get_theme_mod('colour8');?>; text-transform: uppercase; font-weight: 700;}
+    #row-children-as-tabs .tabs-content.vertical {border: none;}
+    .tabs-panel {padding: 0;}
 }
 @media only screen and (min-width: 40em) { /* <-- min-width 640px - medium screens and up */ }
 @media only screen and (min-width: 64em) { /* <-- min-width 1024px - large screens and up */
-    h1 {padding-bottom: 1rem;}
     #row-children-as-tabs .tabs-content {max-width: 45rem;}
 }
 @media only screen and (min-width: <?php echo ROW_MAX_WIDTH; ?> ) {}
@@ -88,14 +85,15 @@ if (false === ($ob = get_transient($transient)) || strpos($ob, '<form') !== fals
     echo '<!-- START: '.$file.' -->'."\n";
 
     // section content
-    ?>
-    <div class="children-as-tabs small-24 cell grid-x grid-margin-x" data-equalizer="tabs" data-equalize-on="medium">
+?>
+<div class=" small-24 cell">
+    <div class="children-as-tabs grid-x grid-margin-x" data-equalizer="tabs" data-equalize-on="medium">
         <aside class="medium-8 large-5 cell" data-equalizer-watch="tabs">
             <?php get_sidebar('children-as-tabs'); ?>
         </aside>
         <div class="small-24 medium-16 large-19 float-left cell">
             <h1><?php echo $post->post_title; ?></h1>
-            <div class="tabs-content vertical" data-tabs-content="about-us-tabs">
+            <div class="tabs-content vertical" data-tabs-content="children-as-tabs">
 <?php
     $is_active = false;
     if (!empty($post->post_content)) {
@@ -132,6 +130,7 @@ if (false === ($ob = get_transient($transient)) || strpos($ob, '<form') !== fals
             </div>
         </div>
     </div>
+</div>
 <?php
     // section content - end
     echo '<!-- END:'.$file.' -->'."\n";

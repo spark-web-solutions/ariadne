@@ -21,36 +21,17 @@ jQuery(document).ready(function() {
         Foundation.reInit('equalizer');
     });
     
-    /* Add ability to link directly to a specific tab */
-    var selector = '[data-tabs]';
-    jQuery(selector).each(function() {
-        var tabs = jQuery(this);
-        // append the hash on click
-        tabs.on('change.zf.tabs', function() {
-            Foundation.reInit('equalizer');
-            var anchor = tabs.find('.tabs-title.is-active a').attr('href');
-            history.pushState({}, "", anchor);
-        });
-    });
-
-    function selectTabForAnchor() {
-        jQuery(selector).each(function() {
-            var tabs = jQuery(this);
-            // match page load anchor
-            var anchor = window.location.hash;
-            if (anchor.length && tabs.find('[href="'+anchor+'"]').length) {
-                tabs.foundation('selectTab', jQuery(anchor));
-                // roll up a little to show the header
-                var offset = tabs.offset();
-                jQuery('html, body').animate({ scrollTop: offset.top }, 300);
+    // Smooth scrolling to anchors
+    jQuery('a[href*=#]:not([href=#]):not([role=tab])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = jQuery(this.hash);
+            target = target.length ? target : jQuery('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+                jQuery('html,body').stop().animate({scrollTop: target.offset().top}, 1000);
+                return false;
             }
-        });
-    }
-
-    selectTabForAnchor();
-
-    // Monitor for hash changes and select the matching tab
-    jQuery(window).bind('hashchange', function() {selectTabForAnchor();});
+        }
+    });
 });
 
 /* BG Srcset 1.0 - https://codepen.io/jessekernaghan/pen/wGjtC */

@@ -7,7 +7,7 @@ new Spark_Theme\cptClass('Panel','Panels', array(
         'menu_icon' => 'dashicons-layout',
 ));
 
-new Spark_Theme\taxClass('Page as Category', 'Pages as Categories', array('panel'));
+new Spark_Theme\taxClass('Page as Category', 'Pages as Categories', array('panel'), array('show_in_menu' => false, 'show_in_nav_menus' => false));
 
 /*
  * Page as category
@@ -350,6 +350,26 @@ function spark_panel_meta() {
                                 ),
                         ),
                         array(
+                                'key' => 'spark_panels_field_post_type',
+                                'label' => 'Post Type',
+                                'name' => 'post_type',
+                                'type' => 'select',
+                                'choices' => spark_panels_get_post_types(),
+                                'default_value' => 'post',
+                                'multiple' => 0,
+                                'conditional_logic' => array(
+                                        'status' => 1,
+                                        'rules' => array(
+                                                array(
+                                                        'field' => 'spark_panels_field_recipe',
+                                                        'operator' => '==',
+                                                        'value' => 'recent_posts',
+                                                ),
+                                        ),
+                                        'allorany' => 'any',
+                                ),
+                        ),
+                        array(
                                 'key' => 'spark_panels_field_post_category',
                                 'label' => 'Category',
                                 'name' => 'post_category',
@@ -365,8 +385,13 @@ function spark_panel_meta() {
                                                         'operator' => '==',
                                                         'value' => 'recent_posts',
                                                 ),
+                                                array(
+                                                        'field' => 'spark_panels_field_post_type',
+                                                        'operator' => '==',
+                                                        'value' => 'post',
+                                                ),
                                         ),
-                                        'allorany' => 'any',
+                                        'allorany' => 'all',
                                 ),
                         ),
                         array(

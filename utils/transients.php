@@ -20,6 +20,9 @@ class Spark_Transients {
         if (isset($_GET['transients']) && $_GET['transients'] == 'false') {
             return false;
         }
+        if (isset($_GET['preview']) && $_GET['preview'] == 'true') {
+            return false;
+        }
         if (defined('SPARK_USE_TRANSIENTS')) {
             return SPARK_USE_TRANSIENTS;
         }

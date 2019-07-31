@@ -20,6 +20,9 @@ function get_card($args){
     }
 
     $transient = ns_.'card_'.$ID.'_'.$card;
+    if (!empty($string)) {
+        $transient .= '_'.$string;
+    }
     if (!Spark_Transients::use_transients()) {
         delete_transient($transient);
     }

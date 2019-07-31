@@ -459,12 +459,12 @@ function spark_get_page_elements() {
             'footer_text' => '#row-footer, #row-footer *',
             'copyright_background' => 'body, footer#row-copyright',
             'copyright_text' => 'footer#row-copyright, footer#row-copyright *',
-            'button_background' => 'button:not(.close-button), .button, a.button:link, a.button:visited, input[type=submit]',
-            'button_text' => 'button:not(.close-button), .button, a.button:link, a.button:visited, input[type=submit]',
-            'button_border' => 'button:not(.close-button), .button, a.button:link, a.button:visited, input[type=submit]',
-            'button_hover_background' => 'button:not(.close-button):hover, button:not(.close-button):focus, .button:hover, .button:focus, a.button:link:hover, a.button:link:focus, a.button:visited:hover, a.button:visited:focus, input[type=submit]:hover, input[type=submit]:focus, .button.disabled:focus, .button.disabled:hover, .button[disabled]:focus, .button[disabled]:hover',
-            'button_hover_text' => 'button:not(.close-button):hover, button:not(.close-button):focus, .button:hover, .button:focus, a.button:link:hover, a.button:link:focus, a.button:visited:hover, a.button:visited:focus, input[type=submit]:hover, input[type=submit]:focus, .button.disabled:focus, .button.disabled:hover, .button[disabled]:focus, .button[disabled]:hover',
-            'button_hover_border' => 'button:not(.close-button):hover, button:not(.close-button):focus, .button:hover, .button:focus, a.button:link:hover, a.button:link:focus, a.button:visited:hover, a.button:visited:focus, input[type=submit]:hover, input[type=submit]:focus, .button.disabled:focus, .button.disabled:hover, .button[disabled]:focus, .button[disabled]:hover',
+            'button_background' => 'button:not(.close-button), .button, .wp-block-button__link, a.button:link, a.button:visited, a.wp-block-button__link:link, a.wp-block-button__link:visited, input[type=submit]',
+            'button_text' => 'button:not(.close-button), .button, .wp-block-button__link, a.button:link, a.button:visited, a.wp-block-button__link:link, a.wp-block-button__link:visited, input[type=submit], .button *',
+            'button_border' => 'button:not(.close-button), .button, .wp-block-button__link, a.button:link, a.button:visited, a.wp-block-button__link:link, a.wp-block-button__link:visited, input[type=submit]',
+            'button_hover_background' => 'button:not(.close-button):hover, button:not(.close-button):focus, .button:hover, .wp-block-button__link:hover, .button:focus, a.button:link:hover, a.button:link:focus, a.button:visited:hover, a.button:visited:focus, a.wp-block-button__link:link:hover, a.wp-block-button__link:link:focus, a.wp-block-button__link:visited:hover, a.wp-block-button__link:visited:focus, input[type=submit]:hover, input[type=submit]:focus, .button.disabled:focus, .button.disabled:hover, .button[disabled]:focus, .button[disabled]:hover',
+            'button_hover_text' => 'button:not(.close-button):hover, button:not(.close-button):focus, .button:hover, .wp-block-button__link:hover, .button:focus, a.button:link:hover, a.button:link:focus, a.button:visited:hover, a.button:visited:focus, a.wp-block-button__link:link:hover, a.wp-block-button__link:link:focus, a.wp-block-button__link:visited:hover, a.wp-block-button__link:visited:focus, input[type=submit]:hover, input[type=submit]:focus, .button.disabled:focus, .button.disabled:hover, .button[disabled]:focus, .button[disabled]:hover, .button:focus *, .button:hover *',
+            'button_hover_border' => 'button:not(.close-button):hover, button:not(.close-button):focus, .button:hover, .wp-block-button__link:hover, .button:focus, a.button:link:hover, a.button:link:focus, a.button:visited:hover, a.button:visited:focus, a.wp-block-button__link:link:hover, a.wp-block-button__link:link:focus, a.wp-block-button__link:visited:hover, a.wp-block-button__link:visited:focus, input[type=submit]:hover, input[type=submit]:focus, .button.disabled:focus, .button.disabled:hover, .button[disabled]:focus, .button[disabled]:hover',
             'call_to_action_background' => '.cta, button.cta, .button.cta, a.button.cta, a.button.cta::after, .panel-wrapper .action-button a.button',
             'call_to_action_text' => '.cta, button.cta, .button.cta, a.button.cta, .panel-wrapper .action-button a.button',
             'call_to_action_border' => '.cta, button.cta, .button.cta, a.button.cta, .panel-wrapper .action-button a.button',
@@ -476,10 +476,10 @@ function spark_get_page_elements() {
             'hero_background' => '#row-hero',
             'hero_text' => '#row-hero h1, #row-hero .h1',
             'click_array_background' => 'body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper',
-            'click_array_text' => 'body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper',
+            'click_array_text' => 'body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper *',
             'click_array_border' => 'body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper',
             'click_array_active_background' => 'body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-passive:hover, body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-active',
-            'click_array_active_text' => 'body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-passive:hover div.s-html-value, body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-active',
+            'click_array_active_text' => 'body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-passive:hover *, body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-active *',
             'click_array_active_border' => 'body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-passive:hover, body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper.s-active',
     );
 }
@@ -493,7 +493,7 @@ function spark_generate_dynamic_styles() {
     if (!empty($font)) {
         $fonts = explode(',', $font);
         for ($i=1; $i <=6; $i++) {
-            $heading_selectors .= 'body h'.$i.', body .h'.$i.', ';
+            $heading_selectors .= 'body h'.$i.', body .h'.$i.', body .h'.$i.' *, ';
         }
         for ($i = 0; $i < count($fonts); $i++) {
             if ($i == 0) {
@@ -504,7 +504,7 @@ function spark_generate_dynamic_styles() {
             } elseif ($i == 1) {
                 $styles .= $heading_selectors;
             }
-            $styles .= '.gf'.($i+1).' {font-family: "'.$fonts[$i].'", sans-serif;}'."\n";
+            $styles .= '.gf'.($i+1).', .gf'.($i+1).' * {font-family: "'.$fonts[$i].'", sans-serif;}'."\n";
         }
     }
 
@@ -555,8 +555,8 @@ function spark_generate_dynamic_styles() {
 
     // Helper classes for text, background and border colours
     for ($i = 0; $i <= $colour_count; $i++) {
-        $styles .= '.text'.$i.', .panel-wrapper.text'.$i.' *:not(input):not(select):not(textarea) {color: '.${'colour'.$i}.';}'."\n";
-        $styles .= '.bg'.$i.' {background-color: '.${'colour'.$i}.';}'."\n";
+        $styles .= '.text'.$i.', .has-colour-'.$i.'-color, a.has-colour-'.$i.'-color:link, a.has-colour-'.$i.'-color:visited, .panel-wrapper.text'.$i.' *:not(input):not(select):not(textarea) {color: '.${'colour'.$i}.';}'."\n";
+        $styles .= '.bg'.$i.', .has-colour-'.$i.'-background-color, a.has-colour-'.$i.'-background-color:link, a.has-colour-'.$i.'-background-color:visited {background-color: '.${'colour'.$i}.';}'."\n";
         $styles .= '.border'.$i.' {border-color: '.${'colour'.$i}.';}'."\n";
         $styles .= '.htext'.$i.':hover, .panel-wrapper.text'.$i.':hover *:not(input):not(select):not(textarea) {color: '.${'colour'.$i}.';}'."\n";
         $styles .= '.hbg'.$i.':hover {background-color: '.${'colour'.$i}.';} '."\n";
@@ -617,6 +617,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="'.$colour1.'"
 EOS;
     return $styles;
 }
+
+function spark_get_theme_palette() {
+    $colours = array();
+    $colour_count = spark_get_theme_mod(ns_.'colours', SPARK_DEFAULT_COLOUR_COUNT);
+
+    for ($i = 1; $i <= $colour_count; $i++) {
+        $colours[] = array(
+                'name' => 'Colour'.$i,
+                'slug' => 'colour-'.$i,
+                'color' => spark_get_theme_mod(ns_.'colour'.$i),
+        );
+    }
+
+    return $colours;
+}
+
+// Use our colour palette in the theme editor
+add_theme_support('editor-color-palette', spark_get_theme_palette());
+add_theme_support('disable-custom-colors');
 
 // Hack to load dynamic styles in head while in Customizer, so that changes show up on save without having to reload the page.
 global $wp_customize;

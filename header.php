@@ -21,9 +21,7 @@ wp_head();
 </script>
 <style>
 /* START: <?php echo $t_args['file'].' - '.date("Y-m-d H:i:s"); ?> */
-@media only screen {
-    header {background-image: url(<?php echo spark_get_theme_mod(ns_.'pattern1'); ?>);}
-}
+@media only screen {}
 @media only screen and (min-width: 40em) { /* <-- min-width 640px - medium screens and up */}
 @media only screen and (min-width: 64em) { /* <-- min-width 1024px - large screens and up */ }
 @media only screen and (min-width: <?php echo ROW_MAX_WIDTH; ?> ) {}
@@ -38,11 +36,12 @@ wp_head();
         <div class="off-canvas-content" data-off-canvas-content>
             <header class="hide-for-print clearfix">
 <?php
-Spark_Theme::section('name=top&file=top.php');
-Spark_Theme::section('name=hero&file=hero.php&class=full&inner_class=relative hero-height ');
+Spark_Theme::section('name=hero&file=hero.php&class=full&inner_class=relative hero-height&grid_type=');
 ?>
             </header>
             <section class="main-section">
 <?php
-Spark_Theme::section('name=breadcrumbs&file=breadcrumbs.php');
+if (!is_front_page()) {
+    Spark_Theme::section('name=breadcrumbs&file=breadcrumbs.php');
+}
 spark_show_panels('top');

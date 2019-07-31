@@ -8,24 +8,17 @@
 <style>
 /* START: <?php echo date("Y-m-d H:i:s"); ?> */
 @media only screen {
-    .h1 {font-weight: 900; color:<?php echo spark_get_theme_mod('colour5'); ?>; }
-    .h2 {font-weight: 700; color:<?php echo spark_get_theme_mod('colour5'); ?>; }
+	#row-search .cell {margin-bottom: 0.9375rem;}
+	#row-search .cell > a {display: inline-block; position: relative; height: 100%;}
 
-    #row-search .grid-x .grid-x {padding: 0.9375rem;}
-	#row-search .cell {margin-bottom: 0.2rem;}
-	#row-search .cell > a {background-color: rgba(<?php echo spark_convert_colour(spark_get_theme_mod(ns_.'colour5')); ?>,0.05); display: inline-block; padding: 1rem; width: 100%; position: relative;}
-	#row-search .cell > a {color: <?php echo spark_get_theme_mod('colour5');?>;}
-    #row-search .cell > a:hover {background-color: rgba(<?php echo spark_convert_colour(spark_get_theme_mod(ns_.'colour2')); ?>,1);}
-	#row-search .cell > a:hover span {color: #fff;}
+    #row-search ul#search_results {margin-left: -.9375rem;}
 
-	#row-search .card p {font-size: 0.9rem; line-height: 1.2rem; margin-bottom: 0.5rem;}
-	#row-search .card p.title {font-size: 1rem; font-weight: 800; line-height: 1.4rem;}
 	#row-search .search-counts {margin-left: 0px; list-style: none; clear: both;}
 	#row-search .search-counts > li {border-left: 1px solid rgba(0, 0, 0, 0.2); display: inline-block; height: 0.8rem; line-height: 0.7rem; margin-left: 0.5rem; padding-left: 0.5rem;}
 	#row-search .search-counts > li:first-of-type{border-left: none; margin-left: 0px; padding-left: 0px;}
 
 	/* search form */
-	#row-search .search-form {border: 2px solid rgba(<?php echo spark_convert_colour(spark_get_theme_mod(ns_.'colour6')); ?>,1); clear: both; display: block; max-width: 500px; margin-top: 0.5rem;}
+	#row-search .search-form {border: 2px solid rgba(<?php echo spark_convert_colour(spark_get_theme_mod(ns_.'colour9')); ?>,1); clear: both; display: block; max-width: 500px; margin-top: 0.5rem;}
 	#row-search .search-field {border: none; border-radius: 0; box-shadow: none; display: inline-block; float: left; height: 2.5rem; max-width: 75%;}
 	#row-search .search-submit {background-color:<?php echo spark_get_theme_mod('colour5');?>; border: 0px solid #fff; border-radius: 0; color: #fff; display: inline-block; height: 2.5rem; width: 25%;}
 
@@ -36,10 +29,9 @@
     #row-search .button {position: absolute;margin-top: -2.7rem;background-color: transparent;}
     #row-search .search_wrapper .search-form input {padding-left: 2rem;}*/
 
-	body.search #row-inner-hero {height: 100px;}
-	#row-search .highlight {background-color: rgba(255,255,255,0.4); padding: 1px 4px 1px 2px; color:rgba(<?php echo spark_convert_colour(spark_get_theme_mod(ns_.'colour3')); ?>,1); border-bottom: 1px solid rgba(<?php echo spark_convert_colour(spark_get_theme_mod(ns_.'colour2')); ?>,0.1);}
-	#row-search .count {background-color: rgba(<?php echo spark_convert_colour(spark_get_theme_mod(ns_.'colour3')); ?>,1);border-radius: 50%;bottom: -0.4rem;color: #fff;display: block;font-size: 0.8rem;height: 1.5rem;left: -0.4rem;line-height: 1.4rem;text-align: center;width: 1.5rem;}
-	#row-search .post_type {bottom: -2.25rem;left: 0; opacity: 0.2; position: absolute; text-transform: uppercase;font-size: 0.8rem;}
+	#row-search .highlight {background-color: <?php echo spark_get_theme_mod('colour1'); ?>; padding: 1px 4px 1px 2px; color: <?php echo spark_get_theme_mod('colour9'); ?>; border-bottom: 1px solid rgba(<?php echo spark_convert_colour(spark_get_theme_mod(ns_.'colour2')); ?>, 0.1);}
+	#row-search .count {background-color: rgba(<?php echo spark_convert_colour(spark_get_theme_mod(ns_.'colour3')); ?>,1); border-radius: 50%; bottom: 0.9375rem; right: 0.9375rem; color: #fff; display: block; font-size: 0.8rem; height: 1.5rem; line-height: 1.4rem; text-align: center; width: 1.5rem; margin-bottom: 0.5rem;}
+	#row-search .post_type {top: 0.9375rem; right: 0.9375rem; color: #FFF; font-weight: 600; text-transform: uppercase; font-size: 0.8rem;}
 	#row-search .filtered {background: rgba(<?php echo spark_convert_colour(spark_get_theme_mod(ns_.'colour3')); ?>,0.2);padding: 0.2rem 0.5rem;color:rgba(<?php echo spark_convert_colour(spark_get_theme_mod(ns_.'colour3')); ?>,1)}
 
 	.background-image {background-size: cover; background-position: center center; background-color: rgba(0,0,0,0.1)}
@@ -91,7 +83,10 @@ $search_args = array(
 );
 
 if (is_user_logged_in()) {
-    array_push($search_args['post_type'], array()); // add private post types here
+    $additional_types = array(); // add private post types to include in search here
+    foreach ($additional_types as $type) {
+        array_push($search_args['post_type'], $type);
+    }
 }
 if (isset($_GET['post_type']) && in_array($_GET['post_type'], $search_args['post_type'])) {
     $search_args['post_type'] = array($_GET['post_type']); // set this to filter to just 1 post type
@@ -176,7 +171,7 @@ if (false === ($markup = get_transient($markup_transient))) {
         if ($markup[$key]['count'] > 0) {
             // setup the intro
             $markup[$key]['intro'] .= '<div class="small-24 medium-24 large-24 cell">'."\n";
-            $markup[$key]['intro'] .= '    <span class="h1">We found '.$markup[$key]['count'].' page/s that '.$search_args['language'][$key].' your search request</span>'."\n";
+            $markup[$key]['intro'] .= '    <span class="h2">We found '.$markup[$key]['count'].' page/s that '.$search_args['language'][$key].' your search request</span>'."\n";
             $markup[$key]['intro'] .= '</div>'."\n";
 
             // track what we process

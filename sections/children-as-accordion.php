@@ -25,9 +25,6 @@ if (false === ($ob = get_transient($transient))) {
 <style>
 /* START: <?php echo $file.' - '.date("Y-m-d H:i:s"); ?> */
 @media only screen {
-    h1 {font-weight: 900; color:<?php echo spark_get_theme_mod('colour5'); ?>; }
-    h2 {font-weight: 700; color:<?php echo spark_get_theme_mod('colour5'); ?>; }
-
     article {padding-bottom: 1rem;}
 
     .accordion-title .h2 {font-size: 1rem; color:<?php echo spark_get_theme_mod('colour5'); ?>;}

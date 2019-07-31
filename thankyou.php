@@ -13,9 +13,6 @@
 }
 @media only screen and (min-width: 64em) { /* <-- min-width 1024px - large screens and up */
 	.bbconnect {width: 60%;float: left;}
-
-
-
 }
 @media only screen and (min-width: <?php echo ROW_MAX_WIDTH; ?> ) {}
 @media only screen and (min-width: <?php echo SITE_MAX_WIDTH; ?> ) {}
@@ -29,14 +26,11 @@ get_header();
 ob_start();
 Spark_Theme::section('name=content&file=content.php');
 $ob = ob_get_clean();
-$entry = GFAPI::get_entry( $_GET['e'] );
+$entry = GFAPI::get_entry($_GET['e']);
 switch ($_GET['f']) {
-    case 31: // checkout form
+    case bb_cart_get_checkout_form():
         $ob = str_replace('%%FirstName%%', $entry["1.3"], $ob);
-        $ob = str_replace('%%Amount%%', round(intval($entry["payment_amount"])), $ob);
-        break;
-    case 34: // checkout form
-        $ob = str_replace('%%FirstName%%', $entry["2.3"], $ob);
+        $ob = str_replace('%%Amount%%', GFCommon::to_money($entry["payment_amount"], $entry['currency']), $ob);
         break;
 }
 echo $ob;

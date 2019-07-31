@@ -103,7 +103,7 @@ if (false === ($ob = get_transient($transient)) || strpos($ob, '<form') !== fals
     }
 ?>
 <aside class="small-24 medium-9 large-7 cell">
-    <?php get_sidebar(); ?>
+    <?php get_sidebar(get_post_type()); ?>
 </aside>
 <?php
     // section content - end

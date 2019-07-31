@@ -1,7 +1,7 @@
 <?php
-if (function_exists("register_field_group")) {
-    register_field_group(array(
-            'id' => 'acf_hero',
+if (function_exists("acf_add_local_field_group")) {
+    acf_add_local_field_group(array(
+            'key' => 'acf_hero',
             'title' => 'Hero',
             'fields' => array(
                     array(
@@ -106,10 +106,17 @@ if (function_exists("register_field_group")) {
                             'type' => 'textarea',
                     ),
                     array(
-                            'key' => 'spark_hero_tagline_link',
-                            'label' => 'Hero Tagline Link',
-                            'name' => 'hero_tagline_link',
+                            'key' => 'spark_hero_cta_field_action_text',
+                            'label' => 'Action Text',
+                            'name' => 'hero_action_text',
                             'type' => 'text',
+                    ),
+                    array(
+                            'key' => 'spark_hero_cta_field_destination',
+                            'label' => 'Destination URL',
+                            'name' => 'hero_destination',
+                            'type' => 'text',
+                            'placeholder' => 'http://',
                     ),
                     array(
                             'key' => 'spark_hero_tab_medium',
@@ -205,42 +212,6 @@ if (function_exists("register_field_group")) {
                             'default_value' => '',
                             'layout' => 'vertical',
                     ),
-                    array(
-                            'key' => 'spark_hero_field_tagline',
-                            'label' => 'Tagline',
-                            'name' => 'hero_tagline',
-                            'type' => 'text',
-                            'default_value' => '',
-                            'placeholder' => '',
-                            'prepend' => '',
-                            'append' => '',
-                            'formatting' => 'html',
-                            'maxlength' => '',
-                    ),
-                    array(
-                            'key' => 'spark_hero_cta_field_action_text',
-                            'label' => 'Action Text',
-                            'name' => 'hero_action_text',
-                            'type' => 'text',
-                            'default_value' => '',
-                            'placeholder' => '',
-                            'prepend' => '',
-                            'append' => '',
-                            'formatting' => 'html',
-                            'maxlength' => '',
-                    ),
-                    array(
-                            'key' => 'spark_hero_cta_field_destination',
-                            'label' => 'Destination URL',
-                            'name' => 'hero_destination',
-                            'type' => 'text',
-                            'default_value' => '',
-                            'placeholder' => 'http://',
-                            'prepend' => '',
-                            'append' => '',
-                            'formatting' => 'html',
-                            'maxlength' => '',
-                    ),
             ),
             'location' => array(
                     array(
@@ -248,16 +219,18 @@ if (function_exists("register_field_group")) {
                                     'param' => 'post_type',
                                     'operator' => '==',
                                     'value' => 'page',
-                                    'order_no' => 0,
-                                    'group_no' => 0,
+                            ),
+                    ),
+                    array(
+                            array(
+                                    'param' => 'taxonomy',
+                                    'operator' => '==',
+                                    'value' => 'category',
                             ),
                     ),
             ),
-            'options' => array(
-                    'position' => 'normal',
-                    'layout' => 'default',
-                    'hide_on_screen' => array(),
-            ),
+            'position' => 'normal',
+            'style' => 'default',
             'menu_order' => 0,
     ));
 }

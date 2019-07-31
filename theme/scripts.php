@@ -1,5 +1,5 @@
 <?php
-if (is_admin() ) {
+if (is_admin()) {
     add_editor_style('css/foundation-min.css');
     add_editor_style('css/'.spark_get_dynamic_styles_filename());
     add_editor_style('css/style.css');
@@ -58,4 +58,12 @@ class spark_enqueue {
             wp_deregister_style('mainstyle');
         }
     }
+}
+
+/**
+ * Gutenberg scripts and styles
+ */
+add_action('enqueue_block_editor_assets', 'spark_gutenberg_scripts');
+function spark_gutenberg_scripts() {
+    wp_enqueue_script('spark-editor', get_stylesheet_directory_uri().'/js/editor.js', array('wp-blocks', 'wp-dom'), filemtime(get_stylesheet_directory().'/js/editor.js' ), true);
 }

@@ -1,21 +1,21 @@
 <style>
 /* START: <?php echo $section_args['filename'].' - '.date("Y-m-d H:i:s"); ?> */
 @media only screen {
-    aside .row.sticky-container {margin-bottom: 1rem;}
-    aside .menu > li > a { color: <?php echo spark_get_theme_mod('colour4');?>;text-transform: uppercase;font-weight: 700;}
-    aside .sticky {background-color: <?php echo spark_get_theme_mod('colour4'); ?>; }
-    aside .menu > li > a {color: <?php echo spark_get_theme_mod('colour1'); ?>;}
-    aside .is-accordion-submenu-parent > a::after {border-color: <?php echo spark_get_theme_mod('colour1'); ?> transparent transparent;}
-    aside .menu.nested {margin-left: 0;}
-    aside hr {margin: 0;}
-    /*aside ul li:last-of-type hr {display: none;}*/
-
-    aside .sticky.is-stuck.is-at-top {margin-top: 0!important;}
     aside {margin-top: -1.5rem;}
+    aside .row.sticky-container {margin-bottom: 1rem;}
+    aside .sticky {background-color: <?php echo spark_get_theme_mod('colour9'); ?>;}
+    aside .sticky.is-stuck.is-at-top {margin-top: 0!important;}
+    aside .sticky .menu.vertical > li > a {padding-left: 1rem; padding-right: 1rem;}
+
+    aside .menu > li > a {color: <?php echo spark_get_theme_mod('colour1');?>;}
+    aside .menu.nested {margin-left: 0;}
+    aside .is-accordion-submenu-parent > a::after {border-color: <?php echo spark_get_theme_mod('colour1'); ?> transparent transparent;}
+    aside hr {margin: 0;}
 }
 @media only screen and (min-width: 40em) { /* <-- min-width 640px - medium screens and up */
-     aside .menu > li > a {color: <?php echo spark_get_theme_mod('colour8'); ?>;}
-     aside {margin-top: 0;}
+    aside {margin-top: 0;}
+    aside .menu > li > a {color: <?php echo spark_get_theme_mod('colour5'); ?>;}
+    aside .menu > li > a:hover {color: <?php echo spark_get_theme_mod('colour6'); ?>;}
 }
 @media only screen and (min-width: 64em) { /* <-- min-width 1024px - large screens and up */ }
 @media only screen and (min-width: <?php echo ROW_MAX_WIDTH; ?> ) {}

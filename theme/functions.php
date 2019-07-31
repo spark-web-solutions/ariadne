@@ -365,20 +365,31 @@ class Spark_Theme {
         return $title;
     }
 
-    static function setup_data($file, $term = MEDIUM_TERM) {
+    static function setup_data($file, $transient_term = MEDIUM_TERM) {
         global $post;
         $current_id = $post->ID;
-        $archive_page = null;
+        $archive_page = $current_page = null;
+        $t_suffix = '';
         if (is_archive()) {
-            $archive_page = get_page_by_path(get_query_var('post_type'));
-            $current_id = $archive_page->ID;
+            $current_page = get_query_var('paged') ?: 1;
+            $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+            if (is_tax() && $term instanceof WP_Term) {
+                $current_id = 'term_'.$term->term_id;
+                $t_suffix .= '_'.get_query_var('taxonomy').'_'.$current_id.'_'.$current_page;
+            } else {
+                $archive_page = get_page_by_path(get_query_var('post_type'));
+                $current_id = $archive_page->ID;
+                $t_suffix .= '_'.get_query_var('post_type').'_'.$current_page;
+            }
         } elseif (is_home() && !is_front_page()) {
+            $current_page = get_query_var('paged') ?: 1;
             $current_id = get_option('page_for_posts', true);
             $archive_page = get_post($current_id);
+            $t_suffix .= '_post_'.$current_page;
         }
 
         $filename = str_replace(get_stylesheet_directory(), '', $file);
-        $t_args = array('name' => 'var_'.$current_id, 'file' => $filename);
+        $t_args = array('name' => 'var_'.$current_id.$t_suffix, 'file' => $filename);
         $transient_name = Spark_Transients::name($t_args);
         if (!Spark_Transients::use_transients()) {
             delete_transient($transient_name);
@@ -412,14 +423,19 @@ class Spark_Theme {
             }
 
             if (is_archive()) {
-                $var['transient_suffix'] .= '_'.get_query_var('post_type');
-                $var['meta'] = spark_get_post_meta($var['archive_page']->ID);
+                $var['transient_suffix'] .= $t_suffix;
+                if (is_tax() && $term instanceof WP_Term) {
+                    $var['term'] = $term;
+                    $var['meta'] = spark_get_term_meta($var['term']->term_id);
+                } else {
+                    $var['meta'] = spark_get_post_meta($var['archive_page']->ID);
+                }
             } elseif (is_home() && !is_front_page()) {
-                $var['transient_suffix'] .= '_post';
-                $var['meta']= spark_get_post_meta($var['archive_page']);
+                $var['transient_suffix'] .= $t_suffix;
+                $var['meta'] = spark_get_post_meta($var['archive_page']);
             }
 
-            set_transient($transient_name, $var, $term);
+            set_transient($transient_name, $var, $transient_term);
         }
 
         return $var;
@@ -500,14 +516,14 @@ class Spark_Theme {
     }
 
     static function register_widgets() {
-//         register_sidebar(array(
-//                 'name' => 'Example Widget',
-//                 'id' => 'example_widget',
-//                 'before_widget' => '',
-//                 'after_widget' => '',
-//                 'before_title' => '<h1>',
-//                 'after_title' => '</h1>',
-//         ));
+        register_sidebar(array(
+                'name' => 'Primary Sidebar',
+                'id' => 'primary_sidebar',
+                'before_widget' => '',
+                'after_widget' => '',
+                'before_title' => '<p class="h2">',
+                'after_title' => '</p>',
+        ));
     }
 
     static function template_name($t) {

@@ -1,21 +1,22 @@
 /* Default Styles - DO NOT EDIT */
 body {position: static !important;}
-body h1, .h1 {font-size: 2rem;}
-body h2, .h2 {font-size: 1.75rem;}
-body h3, .h3 {font-size: 1.5rem;}
-body h4, .h4 {font-size: 1.25rem;}
-body h5, .h5 {font-size: 1.1rem;}
-body h6, .h6 {font-size: 1rem;}
+body h1, .h1 {font-size: 2.986rem;}
+body h2, .h2 {font-size: 2.488rem;}
+body h3, .h3 {font-size: 2.074rem;}
+body h4, .h4 {font-size: 1.728rem;}
+body h5, .h5 {font-size: 1.44rem;}
+body h6, .h6 {font-size: 1.2rem;}
 
 .everything {border-left: 1px solid rgba(0, 0, 0, 0.1); border-right: 1px solid rgba(0, 0, 0, 0.1); margin-left: auto; margin-right: auto;}
 
+button, .button, .wp-block-button__link, body .gform_wrapper body .gform_footer input.button, body .gform_wrapper .gform_footer input[type="submit"], body .gform_wrapper .gform_page_footer input.button, body .gform_wrapper .gform_page_footer input[type="submit"] {border-radius: 4px; font-size: 1.5rem; font-weight: bold; padding: 0.8rem 1.5rem; line-height: 1 !important;}
 a:not(.cta):not(.button):link:hover {opacity: 0.75;}
 
 .grid-container.full > .grid-x, .grid-container.full > .grid-y {margin-left: auto; margin-right: auto;}
 #row-hero {position: relative;}
 #row-hero:before {content: ' '; display: block; background-size: cover; background-position: center center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;}
-#row-hero .hero-video {position: absolute; width: 100%; height: 100%; top: 0; left: 0;}
-#row-hero .hero-video video {width: 100%; height: 100%;}
+#row-hero .hero-video {position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 5;}
+#row-hero .hero-video video {width: 100%; height: 100%; object-fit: cover;}
 
 .uppercase {text-transform: uppercase;}
 .lowercase {text-transform: lowercase;}
@@ -54,9 +55,7 @@ nav.top-bar .top-bar-left {top: 0.5rem; position: absolute; left: 0.5rem;}
 nav.top-bar .menu > li > a {margin-left: 0.25rem; border-radius: 0rem; padding:0.5rem 0.75rem; font-size: 0.8rem;}
 nav.top-bar, nav.top-bar ul {background-color:transparent;}
 
-.menu > li {padding-right:2rem;}
-.menu > a {padding: .7rem 0;}
-.menu > a:hover, .menu .active > a {border-bottom:2px solid; background:transparent;padding: .7rem 0rem;}
+.menu > a:hover, .menu .active > a {background:transparent;}
 
 #template-name {background-color: rgba(255, 255, 255, 0.25); bottom: 0; display: inline-block; opacity: 0.5; padding: 1rem; position: fixed; right: 0;}
 
@@ -101,6 +100,14 @@ img.aligncenter {display: block; margin: 0.25rem auto 0;}
 .spark_posts_item {text-align: center;}
 .spark_posts_item img {border-radius: 50%; padding: 2rem;}
 
+/* Cards */
+.card {border: none; border-radius: 0;}
+.card .featured-image {position: relative; min-height: 200px; background-position: center center; background-size: cover;}
+.card .subheader {position: absolute; bottom: 0.9375rem; left: 0.9375rem; color: white; font-weight: bold;}
+
+.card.post-preview .article-excerpt {margin: 0 0.9375rem; width: calc(100% - 1.875rem);}
+.card.post-preview .button {margin: 0 0.9375rem 0.9375rem; max-width: calc(100% - 1.875rem);}
+
 /* Some tweaks to help GF and Zurb play nicely together */
 span>[type=text], span>[type=password], span>[type=date], span>[type=datetime], span>[type=datetime-local], span>[type=month], span>[type=week], span>[type=email], span>[type=tel], span>[type=time], span>[type=url], span>[type=color], span>[type=number], span>[type=search], span>textarea {margin-bottom: 0.25rem;}
 label.gfield_label {font-size: 1rem;}
@@ -134,13 +141,12 @@ aside .menu.vertical > li > a {padding-left: 0; padding-right: 0;}
 aside .sticky {background-color: white;}
 
 /* Children as Tiles */
-.child-tiles .cell {display: inline-block; height: 170px; overflow: hidden; position: relative;}
+.child-tiles .cell {display: inline-block; height: 250px; overflow: hidden; position: relative; padding-bottom: 0;}
 .child-tiles:not(.small-up-2) .cell:not(:nth-child(+n+6)) {margin-bottom: 2rem;}
-.child-tiles .image {position: relative; height: 100%; width: 100%; background-position: center center; background-size: cover; background-repeat: no-repeat;}
-.child-tiles .image::before {content: ''; height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: rgba(62, 62, 62, 0.5); transition: background-color 0.1s ease-in;}
-.child-tiles .image:hover::before {background-color: rgba(62, 62, 62, 0.7);}
-.child-tiles .link {display: table; height: 100%; width: 100%; -moz-transform: translateY(-0%); -ms-transform: translateY(-0%); transform: translateY(-0%);}
-.child-tiles span {display: table-cell; vertical-align: middle;}
+.child-tiles .image {display: table; height: 100%; width: 100%; background-position: center center; background-size: cover; background-repeat: no-repeat;}
+.child-tiles .image::before {content: ''; height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: rgba(56,56,56,0.6);}
+.child-tiles .link {display: table-row; height: 100%; width: 100%; -moz-transform: translateY(-0%); -ms-transform: translateY(-0%); transform: translateY(-0%);}
+.child-tiles span {display: table-cell; vertical-align: middle; font-weight: 600; color: white; font-size: 1.8rem; padding: 1rem; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);}
 
 /* START Panels */
 .panel-wrapper a:hover {opacity: 1;}
@@ -191,15 +197,17 @@ aside .sticky {background-color: white;}
 .panel-wrapper.half_image .image {background-position: center center; background-repeat: no-repeat; background-size: cover; height: 200px; width: 110%; margin-left: -1rem;}
 .panel-wrapper.half_image .content {padding-top: 0.975rem; padding-bottom: 0.975rem;}
 
-.panel-wrapper.recent_posts .image {display: table; height: 300px; width: 100%; background-position: center center; background-size: cover; background-repeat: no-repeat; text-align: center;}
-.panel-wrapper.recent_posts .title {margin-top: 1rem; text-transform: uppercase;}
-.panel-wrapper.recent_posts .content {margin-top: 1rem;}
+.panel-wrapper.recent_posts .image {display: table; height: 250px; width: 100%; background-position: center center; background-size: cover; background-repeat: no-repeat; text-align: center;}
+.panel-wrapper.recent_posts .subheader {position: absolute; bottom: 0.9375rem; left: 0.9375rem; color: white; font-weight: 600; margin-bottom: 0;}
+.panel-wrapper.recent_posts .article-excerpt {margin: 1rem 0.9375rem; width: calc(100% - 1.875rem);}
+.panel-wrapper.recent_posts .button {margin: 0 0.9375rem 0.9375rem; max-width: calc(100% - 1.875rem); font-weight: 600;}
 
-.panel-wrapper.tile_menu .cell {display: inline-block; padding: 0; height: 250px; overflow: hidden; position: relative; border: 4px solid transparent;}
+.panel-wrapper.tile_menu .panel-inner-wrapper > .cell {padding-top: 8px;}
+.panel-wrapper.tile_menu .cell.menu-item {display: inline-block; padding: 0; height: 250px; overflow: hidden; position: relative; border: 4px solid transparent;}
 .panel-wrapper.tile_menu .image {display: table; height: 100%; width: 100%; background-position: center center; background-size: cover; background-repeat: no-repeat;}
-.panel-wrapper.tile_menu .image::before {content: ''; height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: rgba(0,0,0,0.25);}
+.panel-wrapper.tile_menu .image::before {content: ''; height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: rgba(56,56,56,0.6);}
 .panel-wrapper.tile_menu .link {display: table-row;height: 100%;-moz-transform: translateY(-0%); -ms-transform: translateY(-0%); transform: translateY(-0%)}
-.panel-wrapper.tile_menu span {display: table-cell; vertical-align: middle;}
+.panel-wrapper.tile_menu span {display: table-cell; vertical-align: middle; font-weight: 600; color: white; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);}
 
 .panel-wrapper.video {height: 300px;}
 .panel-wrapper.video .cell {display: inline-block; padding: 0; height: 100%; overflow: hidden; position: relative; text-align: center;}
