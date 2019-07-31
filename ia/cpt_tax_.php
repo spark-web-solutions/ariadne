@@ -1,5 +1,5 @@
 <?php
-namespace spark_ia;
+namespace Spark_Theme;
 class cptTaxClass {
 	function __construct($singular, $plural, array $posttypes, array $post_args = array(), array $tax_args = array()) {
 	    $this->cpt = new cptClass($singular, $plural, $post_args);
