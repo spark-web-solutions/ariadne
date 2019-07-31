@@ -11,6 +11,8 @@ add_theme_support('title-tag');
 // Enable HTML for the search form
 add_theme_support('html5', array('search-form'));
 
+add_theme_support('editor-styles');
+
 // Add filters
 // add_filter('wp_title', array('Spark_Theme', 'title'), 10, 2);
 add_filter('template_include', array('Spark_Theme', 'template_name'), 9999);
