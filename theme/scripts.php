@@ -1,8 +1,8 @@
 <?php
 if (is_admin()) {
-    add_editor_style('css/foundation-min.css');
-    add_editor_style('css/'.spark_get_dynamic_styles_filename());
+    add_editor_style('css/foundation.min.css');
     add_editor_style('css/style.css');
+    add_editor_style('css/'.spark_get_dynamic_styles_filename());
     add_editor_style('css/editor.css');
     $google_fonts = spark_get_theme_mod('gf');
     if (!empty($google_fonts)) {

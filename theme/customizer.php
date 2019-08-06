@@ -489,6 +489,7 @@ function spark_generate_dynamic_styles() {
 
     // Font styles
     // Depending on number of fonts, will produce something like ... body, *, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .gf1 {font-family: "Raleway", sans-serif;}
+    $heading_selectors = 'body .editor-post-title__input, ';
     $font = spark_get_theme_mod(ns_.'font');
     if (!empty($font)) {
         $fonts = explode(',', $font);
