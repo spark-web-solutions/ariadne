@@ -1,6 +1,12 @@
 Release Notes
 =============
 
+1.2.0
+Removed bundled version of ACF - install it as a plugin instead (Pro recommended)
+Added custom Gutenberg block to insert panels into a page (requires ACF Pro 5.8+) 
+Editor styling better reflects front-end styles
+Removed tax meta class (use ACF instead)
+
 1.1.1
 Better Gutenberg integration and support
 Cleaned up default styling of various templates etc
