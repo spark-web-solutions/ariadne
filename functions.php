@@ -41,11 +41,10 @@ $theme_files = array(
         array('file' => 'cpt_.php',                 'dir' => 'ia'),
         array('file' => 'cpt_tax_.php',             'dir' => 'ia'),
         array('file' => 'tax_.php',                 'dir' => 'ia'),
-        // array('file' => 'tax_meta_.php',            'dir' => 'ia'),
-        array('file' => 'fields.php',               'dir' => 'ia'),
         array('file' => 'hero.php',                 'dir' => 'ia'),
         array('file' => 'panels.php',               'dir' => 'ia'),
         array('file' => 'search.php',               'dir' => 'ia'),
+        array('file' => 'blocks.php',                  'dir' => 'ia'),
 
         // Custom Gravity Forms pieces
         array('file' => 'australian-states.php',    'dir' => 'gf'), // Adds Australia address type
@@ -85,3 +84,6 @@ function spark_add_best_before_post_types(array $post_types) {
     $post_types[] = 'panel';
     return $post_types;
 }
+
+// Hide ACF field group menu item
+add_filter('acf/settings/show_admin', '__return_false');
