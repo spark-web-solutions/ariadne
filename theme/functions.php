@@ -374,10 +374,17 @@ class Spark_Theme {
         $t_suffix = '';
         if (is_archive()) {
             $current_page = get_query_var('paged') ?: 1;
-            $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
-            if (is_tax() && $term instanceof WP_Term) {
+            $term = $taxonomy = null;
+            if (is_category()) {
+                $term = get_category(get_query_var('cat'));
+                $taxonomy = 'category';
+            } elseif (is_tag() || is_tax()) {
+                $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+                $taxonomy = get_query_var('taxonomy');
+            }
+            if ($term instanceof WP_Term) {
                 $current_id = 'term_'.$term->term_id;
-                $t_suffix .= '_'.get_query_var('taxonomy').'_'.$current_id.'_'.$current_page;
+                $t_suffix .= '_'.$taxonomy.'_'.$current_id.'_'.$current_page;
             } else {
                 $archive_page = get_page_by_path(get_query_var('post_type'));
                 $current_id = $archive_page->ID;
