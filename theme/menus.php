@@ -5,11 +5,15 @@ register_nav_menus(array(
 ));
 
 function spark_menu($args, $echo = true) {
-    is_array($args) ? extract($args) : parse_str($args);
+    if (is_string($args) && strpos($args, '=') === false) {
+        $menu = $args;
+    }
+    if (!is_array($args)) {
+        parse_str($args, $args);
+    }
+    extract($args);
 
     //set defaults
-    if (!isset($menu) && strpos($args, '=') == false)
-        $menu = $args;
     if (!isset($menu))
         return;
     if (!isset($modal))

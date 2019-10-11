@@ -6,7 +6,10 @@
  */
 
 function get_card($args){
-    is_array($args) ? extract($args) : parse_str($args);
+    if (!is_array($args)) {
+        parse_str($args, $args);
+    }
+    extract($args);
 
     // set defaults
     if(is_int($args)) $ID = $args;

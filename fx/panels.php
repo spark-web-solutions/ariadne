@@ -20,8 +20,11 @@ function spark_get_panels() {
             if ($post->post_type == 'page' || is_post_type_archive() || (is_home() && !is_front_page())) {
                 $post_id = $post->ID;
                 if (is_post_type_archive()) {
+                    $post_id = null;
                     $page = get_page_by_path(get_post_type($post));
-                    $post_id = $page->ID;
+                    if ($page instanceof WP_Post) {
+                        $post_id = $page->ID;
+                    }
                 }
                 $args['tax_query'] = array(
                         array(

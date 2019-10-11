@@ -147,7 +147,7 @@ if (false === ($ob = get_transient($transient))) {
 </div>
 <div class="hero-content">
 <?php
-    if (!$meta['hide_title']) {
+    if (empty($meta['hide_title'])) {
         echo '<h1>'.$title.'</h1>'."\n";
     }
     if (!empty($meta['hero_tagline_desc'])) {

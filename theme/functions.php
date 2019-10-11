@@ -35,7 +35,10 @@ class Spark_Theme {
     static $lazy_load_sections = array();
 
     static function section($args) {
-        is_array($args) ? extract($args) : parse_str($args);
+        if (!is_array($args)) {
+            parse_str($args, $args);
+        }
+        extract($args);
 
         // check for required variables
         if (!isset($name) || (!isset($file) && !isset($content))) {
@@ -152,7 +155,10 @@ class Spark_Theme {
      * @todo rebuild using cards framework
      */
     static function list_posts($args) {
-        is_array($args) ? extract($args) : parse_str($args);
+        if (!is_array($args)) {
+            parse_str($args, $args);
+        }
+        extract($args);
 
 //         if (!isset($layout)) {
             $layout = 'default';
@@ -265,7 +271,10 @@ class Spark_Theme {
      * @return void|string
      */
     static function interchange($args, $echo = true) {
-        is_array($args) ? extract($args) : parse_str($args);
+        if (!is_array($args)) {
+            parse_str($args, $args);
+        }
+        extract($args);
         if (!$small || !$medium || !$large ) {
             return;
         }
@@ -386,8 +395,11 @@ class Spark_Theme {
                 $current_id = 'term_'.$term->term_id;
                 $t_suffix .= '_'.$taxonomy.'_'.$current_id.'_'.$current_page;
             } else {
+                $current_id = null;
                 $archive_page = get_page_by_path(get_query_var('post_type'));
-                $current_id = $archive_page->ID;
+                if ($archive_page instanceof WP_Post) {
+                    $current_id = $archive_page->ID;
+                }
                 $t_suffix .= '_'.get_query_var('post_type').'_'.$current_page;
             }
         } elseif (is_home() && !is_front_page()) {
@@ -436,7 +448,7 @@ class Spark_Theme {
                 if (is_tax() && $term instanceof WP_Term) {
                     $var['term'] = $term;
                     $var['meta'] = spark_get_term_meta($var['term']->term_id);
-                } else {
+                } elseif ($var['archive_page'] instanceof WP_Post) {
                     $var['meta'] = spark_get_post_meta($var['archive_page']->ID);
                 }
             } elseif (is_home() && !is_front_page()) {

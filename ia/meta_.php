@@ -51,7 +51,10 @@ class metaClass {
     }
 
     function spark_new_field($args) {
-        is_array($args) ? extract($args) : parse_str($args);
+        if (!is_array($args)) {
+            parse_str($args, $args);
+        }
+        extract($args);
 
         //set defaults
         if (!$title && !$field_name)

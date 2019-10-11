@@ -58,7 +58,10 @@ foreach ($theme_files as $theme_file) {
 
 class spark_init {
     static function include_file($args) {
-        is_array($args) ? extract($args) : parse_str($args);
+        if (!is_array($args)) {
+            parse_str($args, $args);
+        }
+        extract($args);
 
         // check for required variables
         if (!$dir && !$file) {

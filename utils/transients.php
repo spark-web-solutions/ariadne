@@ -52,7 +52,10 @@ class Spark_Transients {
      * @return array The matching transients.
      */
     public static function get($args = '') {
-        is_array($args) ? extract($args) : parse_str($args);
+        if (!is_array($args)) {
+            parse_str($args, $args);
+        }
+        extract($args);
         if (!isset($string)) {
             $string = (is_string($args)) ? $args : "";
         }
@@ -91,14 +94,17 @@ class Spark_Transients {
      * @return array List of deleted transients
      */
     public static function delete($args = '') {
-        is_array($args) ? extract($args) : parse_str($args);
+        if (!is_array($args)) {
+            parse_str($args, $args);
+        }
+        extract($args);
         $matching = array();
 
         // Test for required variables and set defaults
         if (!isset($string)) {
             $string = (is_string($args)) ? $args : "";
         }
-        if (!is_array($transients)) {
+        if (!isset($transients) || !is_array($transients)) {
             $transients = self::get($args);
         }
 
@@ -128,7 +134,10 @@ class Spark_Transients {
      * @return array List of cleaned transient values
      */
     public static function clean($args = '') {
-        is_array($args) ? extract($args) : parse_str($args);
+        if (!is_array($args)) {
+            parse_str($args, $args);
+        }
+        extract($args);
 
         // Test for required variables and set defaults
         if (!isset($string)) {

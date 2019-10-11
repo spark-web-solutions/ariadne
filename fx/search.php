@@ -2,7 +2,10 @@
 // version 0.1
 register_nav_menus(array('search'=>'Search'));
 function spark_search_menu($args = '') {
-    is_array($args) ? extract($args) : parse_str($args);
+    if (!is_array($args)) {
+        parse_str($args, $args);
+    }
+    extract($args);
 
     // $args = array( 'output' => 'return');
     // 'output=retrun';
