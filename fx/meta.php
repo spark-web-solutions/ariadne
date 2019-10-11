@@ -9,7 +9,7 @@ function spark_get_post_meta($post = null, $key = '') {
     $post = get_post($post);
     $meta = false;
     if ($post instanceof WP_Post) {
-        $transients = defined(SPARK_ENV) && SPARK_ENV == 'PRODUCTION'; // Set this to false to force all transients to refresh
+        $transients = Spark_Transients::use_transients(); // Set this to false to force all transients to refresh
         $transient = ns_.'meta_'.$post->ID.'_';
         if (false === $transients) {
             delete_transient($transient);
