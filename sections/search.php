@@ -158,7 +158,8 @@ if (false === ($markup = get_transient($markup_transient))) {
         $args = array(
                 's' => $search_string,
                 'posts_per_page' => -1,
-                'post_type' => $search_args['post_type']
+                'post_type' => $search_args['post_type'],
+        		'orderby' => 'relevance',
         );
         $results['wp'] = new WP_Query( $args );
         set_transient( $transient, $results['wp'], $t_period);
