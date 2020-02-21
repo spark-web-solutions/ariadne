@@ -8,6 +8,11 @@ $favicon = spark_get_theme_mod(ns_.'favicon');
 if ($favicon) {
     echo '        <link rel="icon" href="'.$favicon.'" type="image/png">'."\n";
 }
+if (!empty(spark_get_theme_mod('gf'))) { // Add preconnect for Google Fonts to improve performance
+?>
+        <link href="//fonts.gstatic.com" rel="preconnect" crossorigin>
+<?php
+}
 wp_head();
 ?>
 <script>
@@ -20,13 +25,13 @@ wp_head();
     ga('send', 'pageview');
 </script>
 <style>
-/* START: <?php echo $t_args['file'].' - '.date("Y-m-d H:i:s"); ?> */
+/* START: <?php echo basename(__FILE__).' - '.date("Y-m-d H:i:s"); ?> */
 @media only screen {}
 @media only screen and (min-width: 40em) { /* <-- min-width 640px - medium screens and up */}
 @media only screen and (min-width: 64em) { /* <-- min-width 1024px - large screens and up */ }
 @media only screen and (min-width: <?php echo ROW_MAX_WIDTH; ?> ) {}
 @media only screen and (min-width: <?php echo SITE_MAX_WIDTH; ?> ) {}
-/* END: <?php echo $section_args['filename']; ?> */
+/* END: <?php echo basename(__FILE__); ?> */
 </style>
     </head>
     <body <?php body_class(Spark_Theme::classes()); ?>>
