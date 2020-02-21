@@ -18,15 +18,15 @@ function spark_get_post_meta($post = null, $key = '') {
             $meta = get_post_meta($post->ID);
             if (is_array($meta)) {
                 $meta = spark_rationalise_meta($meta);
-            }
-            if (true === $transients) {
-                set_transient($transient, $meta, LONG_TERM);
+                if (true === $transients) {
+                    set_transient($transient, $meta, LONG_TERM);
+                }
             }
         }
         unset($transient);
 
         if (!empty($key)) {
-            return $meta[$key];
+            return is_array($meta) && array_key_exists($key, $meta) ? $meta[$key] : false;
         }
     }
 
@@ -57,15 +57,15 @@ function spark_get_user_meta($user = null, $key = '') {
             $meta = get_user_meta($user->ID);
             if (is_array($meta)) {
                 $meta = spark_rationalise_meta($meta);
-            }
-            if (true === $transients) {
-                set_transient($transient, $meta, LONG_TERM);
+                if (true === $transients) {
+                    set_transient($transient, $meta, LONG_TERM);
+                }
             }
         }
         unset($transient);
 
         if (!empty($key)) {
-            return $meta[$key];
+            return is_array($meta) && array_key_exists($key, $meta) ? $meta[$key] : false;
         }
     }
 
@@ -100,15 +100,15 @@ function spark_get_term_meta($term = null, $taxonomy = null, $key = '') {
             $meta = get_term_meta($term->term_id);
             if (is_array($meta)) {
                 $meta = spark_rationalise_meta($meta);
-            }
-            if (true === $transients) {
-                set_transient($transient, $meta, LONG_TERM);
+                if (true === $transients) {
+                    set_transient($transient, $meta, LONG_TERM);
+                }
             }
         }
         unset($transient);
 
         if (!empty($key)) {
-            return $meta[$key];
+            return is_array($meta) && array_key_exists($key, $meta) ? $meta[$key] : false;
         }
     }
 
