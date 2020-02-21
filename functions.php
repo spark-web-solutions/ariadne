@@ -90,3 +90,6 @@ function spark_add_best_before_post_types(array $post_types) {
 
 // Hide ACF field group menu item
 add_filter('acf/settings/show_admin', '__return_false');
+
+// Scroll to form on page load after submission
+add_filter('gform_confirmation_anchor', '__return_true');
