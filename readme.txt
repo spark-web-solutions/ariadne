@@ -1,6 +1,14 @@
 Release Notes
 =============
 
+1.2.1
+Added helper functions to get single-ised user and term meta
+Removed Browser Update script
+Added auto-scroll to form on page load after submission
+Updated map script based on latest example from Google
+Various bug fixes
+Performance improvements
+
 1.2.0
 Removed bundled version of ACF - install it as a plugin instead (Pro recommended)
 Added custom Gutenberg block to insert panels into a page (requires ACF Pro 5.8+) 
