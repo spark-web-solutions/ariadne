@@ -14,6 +14,7 @@ class Spark_Transients {
         add_action('delete_post', array($this, 'delete_post'), 10, 1);
         add_action('updated_post_meta', array($this, 'updated_post_meta'), 10, 4);
         add_action('wp_update_nav_menu', array($this, 'wp_update_nav_menu'), 10, 2);
+        add_action('comment_post', array($this, 'comment_post'), 10, 3);
     }
 
     public static function use_transients() {
@@ -208,6 +209,18 @@ class Spark_Transients {
      */
     public function wp_update_nav_menu($menu_id, array $menu_data = array()) {
         self::delete('nav');
+    }
+
+    /**
+     * Fires when a comment is added
+     * @param integer $comment_ID The comment ID
+     * @param integer|string $comment_approved 1 if the comment is approved, 0 if not, 'spam' if spam
+     * @param array $commentdata Comment data
+     */
+    public function comment_post($comment_ID, $comment_approved, $commentdata) {
+        if ($comment_approved == 1) {
+            $this->clear_post_transients($commentdata['comment_post_ID']);
+        }
     }
 
     /**
