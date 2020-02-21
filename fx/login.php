@@ -25,7 +25,7 @@ function spark_login_logo_url() {
     return site_url('/');
 }
 
-add_filter('login_headertitle', 'spark_login_logo_url_title');
+add_filter('login_headertext', 'spark_login_logo_url_title');
 function spark_login_logo_url_title() {
     return '';
 }
