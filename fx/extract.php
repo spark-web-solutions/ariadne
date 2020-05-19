@@ -7,12 +7,12 @@
  * @return string
  */
 function spark_extract($content, $max_chars = 200, $suffix = '...') {
-    $content = str_replace("\n", ' ', strip_shortcodes($content));
-    if (strlen(strip_tags($content)) > $max_chars) {
-        return substr(strip_tags($content), 0, strrpos(substr(strip_tags($content), 0, $max_chars), ' ')+1).$suffix."\n";
-    } else {
-        return $content;
-    }
+	$content = str_replace("\n", ' ', strip_shortcodes($content));
+	if (strlen(strip_tags($content)) > $max_chars) {
+		return substr(strip_tags($content), 0, strrpos(substr(strip_tags($content), 0, $max_chars), ' ')+1).$suffix."\n";
+	} else {
+		return $content;
+	}
 }
 
 /**
@@ -23,19 +23,19 @@ function spark_extract($content, $max_chars = 200, $suffix = '...') {
  * @return string
  */
 function spark_post_extract($post = null, $max_chars = 200, $suffix = '...') {
-    $post = get_post($post);
-    if (!empty($post->post_excerpt)) { // Custom Excerpt
-        $output = get_the_excerpt($post);
-    } elseif (preg_match('/<!--more(.*?)?-->/', $post->post_content)) { // More
-        setup_postdata($post);
-        global $more;
-        $tmp_more = $more;
-        $more = false;
-        $output = get_the_content('').$suffix;
-        $more = $tmp_more;
-    } else {
-        $output = spark_extract($post->post_content, $max_chars, $suffix);
-    }
+	$post = get_post($post);
+	if (!empty($post->post_excerpt)) { // Custom Excerpt
+		$output = get_the_excerpt($post);
+	} elseif (preg_match('/<!--more(.*?)?-->/', $post->post_content)) { // More
+		setup_postdata($post);
+		global $more;
+		$tmp_more = $more;
+		$more = false;
+		$output = get_the_content('').$suffix;
+		$more = $tmp_more;
+	} else {
+		$output = spark_extract($post->post_content, $max_chars, $suffix);
+	}
 
-    return $output;
+	return $output;
 }
