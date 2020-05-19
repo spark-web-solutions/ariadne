@@ -38,8 +38,14 @@ function spark_login_footer() {
         jQuery("p#backtoblog a").attr("href", '<?php echo esc_js(site_url('/')); ?>').html('← Back to Home');
     });
 </script>
+<?php
+$logo_src = spark_get_theme_mod(ns_.'logo_large');
+$size = getimagesize($logo_src);
+$width = min(320, $size[0]);
+$height = round($size[1]*$width/$size[0]);
+?>
 <style>
-body.login div#login h1 a {background-image: url(<?php echo spark_get_theme_mod(ns_.'logo_large')?>) !important; margin: 0 auto; background-size: contain; width: 220px; height: 109px;}
+body.login div#login h1 a {background-image: url(<?php echo $logo_src; ?>) !important; margin: 0 auto; background-size: contain; width: <?php echo $width; ?>px; height: <?php echo $height; ?>px; max-width: 100%;}
 </style>
 <?php
 }
