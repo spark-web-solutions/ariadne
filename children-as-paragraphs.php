@@ -3,5 +3,5 @@
  * Template Name: Children as Paragraphs
  */
 get_header();
-Spark_Theme::section('name=content&file=children-as-paragraphs.php');
+get_template_part('templates/sections/children-as-paragraphs');
 get_footer();

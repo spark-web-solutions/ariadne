@@ -3,5 +3,5 @@
  * Template Name: Children as Tiles
  */
 get_header();
-Spark_Theme::section('name=content&file=children-as-tiles.php');
+get_template_part('templates/sections/children-as-tiles');
 get_footer();

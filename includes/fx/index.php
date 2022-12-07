@@ -1,0 +1,2 @@
+<?php
+// Miscellanous helper functions

@@ -1,5 +1,4 @@
-<style>
-/* START: <?php echo $section_args['filename'].' - '.date("Y-m-d H:i:s"); ?> */
+<!--style>
 @media only screen {
     aside {margin-top: -1.5rem;}
     aside .row.sticky-container {margin-bottom: 1rem;}
@@ -17,11 +16,7 @@
     aside .menu > li > a {color: <?php echo spark_get_theme_mod('colour5'); ?>;}
     aside .menu > li > a:hover {color: <?php echo spark_get_theme_mod('colour6'); ?>;}
 }
-@media only screen and (min-width: 64em) { /* <-- min-width 1024px - large screens and up */ }
-@media only screen and (min-width: <?php echo ROW_MAX_WIDTH; ?> ) {}
-@media only screen and (min-width: <?php echo SITE_MAX_WIDTH; ?> ) {}
-/* END: <?php echo $section_args['filename']; ?> */
-</style>
+</style-->
 <?php
 /**
  * Children as paragraph sidebar

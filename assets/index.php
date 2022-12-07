@@ -1,0 +1,2 @@
+<?php
+// Front-end assets

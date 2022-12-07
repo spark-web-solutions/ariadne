@@ -3,5 +3,5 @@
  * Template Name: No Sidebar
  */
 get_header();
-Spark_Theme::section('name=content&file=content-full.php');
+get_template_part('templates/sections/content', 'full');
 get_footer();

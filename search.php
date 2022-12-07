@@ -1,4 +1,4 @@
 <?php
 get_header();
-Spark_Theme::section('name=search&file=search.php');
+get_template_part('templates/sections/archive');
 get_footer();

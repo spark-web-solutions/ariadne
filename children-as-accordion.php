@@ -3,5 +3,5 @@
  * Template Name: Children as Accordion
  */
 get_header();
-Spark_Theme::section('name=content&file=children-as-accordion.php');
+get_template_part('templates/sections/children-as-accordion');
 get_footer();

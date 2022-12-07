@@ -1,0 +1,10 @@
+body {background-color: white !important; position: relative; padding: 50px 0;}
+p, kbd, code, li {font-size: initial;}
+dl, ul, ol {padding-left: 1rem;}
+li:not(.accordion-item) {list-style: initial;}
+.mce-toolbar .mce-btn button, .mce-toolbar .mce-btn button:hover, .acf-field .acf-input button, .acf-field .acf-input button:hover {padding: revert; color: revert; background-color: revert; border-color: revert;}
+.block-editor__typewriter, .block-editor-block-list__layout.is-root-container {padding-left: var(--gutter); padding-right: var(--gutter);}
+.block-editor-default-block-appender textarea.block-editor-default-block-appender__content {background-color: transparent; cursor: text;}
+.wp-block {max-width: var(--row-max-width);}
+.wp-block[data-align="full"] {max-width: none;}
+.panel-slider > *:not(:first-child) {display: none;}

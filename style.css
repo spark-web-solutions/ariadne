@@ -3,9 +3,351 @@ Theme Name: Ariadne
 Theme URI: https://sparkweb.com.au
 Author: Spark Web Solutions
 Author URI: https://sparkweb.com.au
-Description: Wordpress theme boilerplate based on Zurb Foundation 6. Image: Ariadne in Naxos, by Evelyn De Morgan, 1877. <a href="https://en.wikipedia.org/wiki/Ariadne">Wikipedia</a>
-Version: 1.2.1
+Description: Wordpress theme boilerplate built on Zurb Foundation 6. Image: Ariadne in Naxos, by Evelyn De Morgan, 1877. <a href="https://en.wikipedia.org/wiki/Ariadne">Wikipedia</a>
+Version: 2.0.0a
+Tested up to: 6.1
+Requires PHP: 7.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: spark_theme
 */
+
+/**
+ * Global Variables 
+ * Note: User-configured variables are defined via Customizer and output in the page head
+ */
+:root {
+    --gutter: 0.9375rem;
+    --box-shadow: 0px 3px 20px #0000000D;
+    --border-radius: 0;
+}
+
+/*
+ * Override some silly Foundation styles
+ */
+.menu > a:hover, .menu .is-active > a {background:transparent;}
+@media print {
+    a[href]:after {content:""}
+}
+
+/**
+ * Set some defaults
+ */
+html {scroll-behavior: smooth;}
+body {position: static !important; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);}
+body h1, .h1 {font-size: 2.986rem;}
+body h2, .h2 {font-size: 2.488rem;}
+body h3, .h3 {font-size: 2.074rem;}
+body h4, .h4 {font-size: 1.728rem;}
+body h5, .h5 {font-size: 1.44rem;}
+body h6, .h6 {font-size: 1.2rem;}
+
+body, *, .font1, .font1 * {font-family: var(--font1);}
+body :is(.editor-post-title__input, h1, .h1, .h1 *, h2, .h2, .h2 *, h3, .h3, .h3 *, h4, .h4, .h4 *, h5, .h5, .h5 *, h6, .h6, .h6 *), .font2, .font2 * {font-family: var(--font2);}
+
+a:link {text-decoration: underline; text-underline-offset: 3px;}
+button, .button, .wp-block-button__link, body .gform_wrapper body .gform_footer input.button, body .gform_wrapper .gform_footer input[type="submit"], body .gform_wrapper .gform_page_footer input.button, body .gform_wrapper .gform_page_footer input[type="submit"] {border-radius: var(--border-radius); font-size: 1.5rem; font-weight: bold; padding: var(--gutter) calc(var(--gutter) * 2); line-height: 1;}
+
+#everything {max-width: var(--site-max-width); margin-left: auto; margin-right: auto;}
+.grid-container, .grid-container.full > .grid-x, .grid-container.full > .grid-y {max-width: var(--row-max-width); margin-left: auto; margin-right: auto;}
+
+article {padding-bottom: var(--gutter);}
+
+.accordion-title .h2 {font-size: 1rem;}
+.accordion-title::before {font-size: 1.5rem; font-weight: 700; top:35%;}
+.accordion-title, .accordion-content {border-bottom: 1px solid #e6e6e6;}
+
+.tabs {border: none;}
+.tabs-panel {padding: 0;}
+.tabs-content.vertical {border: none;}
+
+/**
+ * Colour scheme
+ */
+main {background-color: var(--colour1);}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {color: var(--colour2);}
+body, * {color: var(--colour2);}
+a:link, a:link:hover, a:visited, a:link:focus {color: var(--colour3);}
+nav.title-bar, nav.top-bar, nav.top-bar ul {background-color: var(--colour0);}
+nav.title-bar .fa-bars, nav .menu > li > a, nav .menu > li > a:hover {color: var(--colour2);}
+#row-hero {background-color: var(--colour2);}
+#row-hero * {color: var(--colour1);}
+footer {background-color: var(--colour4);}
+#row-footer, #row-footer * {color: var(--colour1);}
+body, #row-copyright {background-color: var(--colour4);}
+#row-copyright, #row-copyright * {color: var(--colour1);}
+
+button:not(.close-button), .button, .wp-block-button__link, a.button:is(:link, :visited), a.wp-block-button__link:is(:link, :visited), input[type=submit] {background-color: var(--colour5); color: var(--colour1); border-color: var(--colour5);}
+.button * {color: var(--colour1);}
+button:not(.close-button):is(:hover, :focus), .button:is(:hover, :focus), a.button:is(:link, :visited):is(:hover, :focus), a.wp-block-button__link:is(:link, :visited):is(:hover, :focus), input[type=submit]:is(:hover, :focus), .button.disabled:is(:hover, :focus), .button[disabled]:is(:hover, :focus) {background-color: var(--colour6); color: var(--colour1); border-color: var(--colour6);}
+.button:focus *, .button:hover * {color: var(--colour1);}
+.cta, button.cta, .button.cta, a.button.cta, a.button.cta::after, .panel-wrapper .action-button a.button {background-color: var(--colour7); color: var(--colour1); border-color: var(--colour7);}
+.cta, button.cta:is(:hover, :focus), .button.cta:is(:hover, :focus), a.button.cta:is(:hover, :focus), a.button.cta:is(:hover, :focus)::after, .panel-wrapper .action-button a.button:is(:hover, :focus) {background-color: var(--colour8); color: var(--colour1); border-color: var(--colour8);}
+
+body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper {background-color: var(--colour5); color: var(--colour1); border-color: var(--colour5);}
+body .gform_wrapper .gform_bb.gfield_click_array div.s-html-wrapper * {color: var(--colour1);}
+body .gform_wrapper .gform_bb.gfield_click_array :is(div.s-html-wrapper.s-passive:hover, div.s-html-wrapper.s-active) {background-color: var(--colour6); color: var(--colour1); border-color: var(--colour6);}
+body .gform_wrapper .gform_bb.gfield_click_array :is(div.s-html-wrapper.s-passive:hover, div.s-html-wrapper.s-active) * {color: var(--colour1);}
+
+/** 
+ * Helper classes
+ */
+.uppercase {text-transform: uppercase;}
+.lowercase {text-transform: lowercase;}
+.title {display: block; width: 100%;}
+.sticky {position: inherit; transform: none; z-index: auto;}
+.gallery-caption {}
+.bypostauthor {}
+
+.no-padding {padding: 0px;}
+.no-padding-top {padding-top: 0px;}
+.no-padding-right {padding-right: 0px;}
+.no-padding-bottom {padding-bottom: 0px;}
+.no-padding-left {padding-left: 0px;}
+
+.text-white {color:#fff;}
+.text-black {color:#000;} 
+.htext-white:hover {color:#fff;} 
+.htext-black:hover {color:#000;}
+.bg-white {background-color:#fff;} 
+.bg-black {background-color:#000;} 
+.hbg-white:hover {background-color:#fff;} 
+.hbg-black:hover {background-color:#000;}
+
+.absolute {position: absolute;}
+.relative {position: relative;}
+.background-contain, .background-contain .row-bg-wrapper {background-size: contain;}
+.background-cover, .background-cover .row-bg-wrapper {background-size: cover;}
+
+.notouch {background:transparent; position:relative; z-index: 10;}
+
+.hero-height {min-height: var(--hero-height); overflow: hidden;}
+
+/* Text meant only for screen readers */
+.screen-reader-text {clip: rect(1px, 1px, 1px, 1px); position: absolute !important; height: 1px; width: 1px; overflow: hidden;}
+.screen-reader-text:focus {background-color: #f1f1f1; border-radius: var(--border-radius); box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6); clip: auto !important; color: #21759b; display: block; font-size: 14px; font-size: 0.875rem; font-weight: bold; height: auto; left: 0.25rem; line-height: normal; padding: 10.25rem 1.5rem 0.875rem; text-decoration: none; top: 0.25rem; width: auto; z-index: 100000; /* Above WP toolbar. */}
+
+/** 
+ * Default WP styles
+ */
+img.alignnone {margin: 0.25rem 1.25rem 1.25rem 0;}
+img.alignright {float: right; margin: 0.25rem 0 1.25rem 1.25rem;}
+img.alignleft {float: left; margin: 0.25rem 1.25rem 1.25rem 0;}
+img.aligncenter {display: block; margin: 0.25rem auto 0;}
+.alignnone {margin: 0.25rem 1.25rem 1.25rem 0;}
+.alignright {float: right; margin: 0.25rem 0 1.25rem 1.25rem;}
+.alignleft {float: left; margin: 0.25rem 1.25rem 1.25rem 0;}
+.aligncenter, div.aligncenter {display: block; margin: 0.25rem auto;}
+
+.wp-caption {background: #fff; border: 1px solid #f0f0f0; max-width: 96%; padding: 0.25rem 0.125rem 0.625rem; text-align: center;}
+.wp-caption.alignnone {margin: 0.25rem 1.25rem 1.25rem 0;}
+.wp-caption.alignleft {margin: 0.25rem 1.25rem 1.25rem 0;}
+.wp-caption.alignright {margin: 0.25rem 0 1.25rem 1.25rem;}
+.wp-caption img {border: 0 none; height: auto; margin: 0; max-width: 98.5%; padding: 0; width: auto;}
+.wp-caption p.wp-caption-text {font-size: 11px; line-height: 17px; margin: 0; padding: 0 0.25rem 0.25rem;}
+
+.wp-block-columns {margin-top: var(--gutter); margin-bottom: var(--gutter);}
+.wp-block-columns + .wp-block-columns {margin-top: 0;}
+.wp-block-column {margin-bottom: var(--gutter);}
+.wp-block-columns .wp-block-column :is(.block-post-preview, .block-latest-post, .block-custom-link-tile, .card):only-child {height: 100%;}
+
+.has-small-font-size {font-size: 0.833rem;}
+.has-normal-font-size {font-size: 1rem;}
+.has-large-font-size {font-size: 1.728rem;}
+.has-huge-font-size {font-size: 2.488rem;}
+
+/** 
+ * Helpers for administrators
+ */
+#wpadminbar #wp-admin-bar-root-default .spark .ab-item, #wpadminbar #wp-admin-bar-root-default .spark .ab-item:hover {color: white;}
+#wpadminbar #wp-admin-bar-root-default .spark.dev .ab-item, #wpadminbar #wp-admin-bar-root-default .spark.dev .ab-item:hover {background-color: red;}
+#wpadminbar #wp-admin-bar-root-default .spark.stage .ab-item, #wpadminbar #wp-admin-bar-root-default .spark.stage .ab-item:hover {background-color: darkorange;}
+#wpadminbar #wp-admin-bar-root-default .spark.prod .ab-item, #wpadminbar #wp-admin-bar-root-default .spark.prod .ab-item:hover {background-color: green;}
+#wpadminbar #wp-admin-bar-root-default .spark.refresh .ab-item::before {content: ""; top: 2px;}
+
+.edit-panel a {background-color: black; color: #fff !important; display: table-caption; margin-top: -3rem; opacity: 0.2; padding: 0.5rem 1rem; white-space: nowrap; position: relative; z-index: 1000;}
+.edit-panel a * {color:#fff;}
+
+/**
+ * Offcanvas Menu 
+ */
+.off-canvas button.close-button {z-index: 20;}
+body.admin-bar .off-canvas {margin-top: var(--wp-admin--admin-bar--height);}
+
+/**
+ * Main Nav 
+ */
+#logo {max-height: 5rem;}
+#small-logo {max-height: 4rem; padding: 0.5rem 0;}
+nav.top-bar {position: relative;}
+nav.top-bar .top-bar-right {top: 0.5rem; position: absolute; right: 0.5rem;}
+nav.top-bar .top-bar-left {top: 0.5rem; position: absolute; left: 0.5rem;}
+nav.top-bar .menu > li > a {margin-left: 0.25rem; border-radius: 0rem; padding:0.5rem 0.75rem;}
+nav.top-bar, nav.top-bar ul {background-color: transparent;}
+
+/**
+ * Hero 
+ */
+#row-hero {position: relative;}
+#row-hero:before {content: ' '; display: block; background-size: cover; background-position: center center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;}
+#row-hero .hero-video {position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 5;}
+#row-hero .hero-video video {width: 100%; height: 100%; object-fit: cover;}
+
+/**
+ * Cards 
+ */
+.card {border: none; border-radius: 0;}
+.card .featured-image {position: relative; min-height: 200px; background-position: center center; background-size: cover;}
+.card .subheader {position: absolute; bottom: var(--gutter); left: var(--gutter); color: white; font-weight: bold;}
+
+.card.post-preview .article-excerpt {margin: 0 var(--gutter); width: calc(100% - (2 * var(--gutter)));}
+.card.post-preview .button {margin: 0 var(--gutter) var(--gutter); max-width: calc(100% - (2 * var(--gutter)));}
+
+/**
+ * Children as Paragraphs 
+ */
+#row-children-as-paragraphs article {max-width: 45rem;}
+hr.pre-paragraph {border-bottom: 1px solid #f2f2f2; margin: 0.25rem;}
+aside .menu.vertical > li > a {padding-left: 0; padding-right: 0;}
+aside .sticky {background-color: white;}
+
+/**
+ * Children as Tabs 
+ */
+#row-children-as-tabs .tabs-content {max-width: 45rem;}
+
+/**
+ * Children as Tiles 
+ */
+.child-tiles .cell {display: inline-block; height: 250px; overflow: hidden; position: relative; padding-bottom: 0;}
+.child-tiles:not(.small-up-2) .cell:not(:nth-child(+n+6)) {margin-bottom: 2rem;}
+.child-tiles .image {display: table; height: 100%; width: 100%; background-position: center center; background-size: cover; background-repeat: no-repeat;}
+.child-tiles .image::before {content: ''; height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: rgba(56,56,56,0.6);}
+.child-tiles .link {display: table-row; height: 100%; width: 100%; -moz-transform: translateY(-0%); -ms-transform: translateY(-0%); transform: translateY(-0%);}
+.child-tiles span {display: table-cell; vertical-align: middle; font-weight: 600; color: white; font-size: 1.8rem; padding: 1rem; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);}
+
+/**
+ * Some tweaks to help GF and Zurb play nicely together 
+ */
+span>[type=text], span>[type=password], span>[type=date], span>[type=datetime], span>[type=datetime-local], span>[type=month], span>[type=week], span>[type=email], span>[type=tel], span>[type=time], span>[type=url], span>[type=color], span>[type=number], span>[type=search], span>textarea {margin-bottom: 0.25rem;}
+label.gfield_label {font-size: 1rem;}
+body .gform_wrapper .gfield_date_day label, body .gform_wrapper .gfield_date_month label, body .gform_wrapper .gfield_date_year label, body .gform_wrapper .gfield_time_ampm label, body .gform_wrapper .gfield_time_hour label, body .gform_wrapper .gfield_time_minute label, body .gform_wrapper .ginput_complex label, body .gform_wrapper .instruction {margin-bottom: 1.5rem;}
+.gform_wrapper.gf_browser_gecko select {padding: 2px 24px 2px 2px!important;}
+.gform_wrapper .gfield_checkbox li input, .gform_wrapper .gfield_checkbox li input[type="checkbox"], .gform_wrapper .gfield_radio li input[type="radio"] {vertical-align: inherit!important;}
+
+/**
+ * Gravity Forms validation errors 
+ */
+body .gform_wrapper div.validation_error, body .gform_wrapper li.gfield.gfield_creditcard_warning div.gfield_creditcard_warning_message {border: 2px solid #E02E48; background-color: #FED7DA; color: inherit; width: auto; display: inline-block; padding: 0.8rem 0.5rem;}
+body .gform_wrapper li.gfield.gfield_creditcard_warning div.gfield_creditcard_warning_message span {display: inline-block; margin: 0; padding: 0 0 0 1.25rem; min-height: 1rem; border: none; -webkit-filter: grayscale(100%); filter: grayscale(100%);}
+body .gform_wrapper li.gfield.gfield_error, body .gform_wrapper li.gfield.gfield_creditcard_warning, body .gform_wrapper li.gfield.gfield_error.gfield_creditcard_warning, body .gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning {background-color: transparent; border: none; padding: 0;}
+body .gform_wrapper li.gfield.gfield_error.gfield_contains_required div.ginput_container, body .gform_wrapper li.gfield.gfield_error.gfield_contains_required label.gfield_label {margin-top: 0;}
+body .gform_wrapper .validation_message, body .gform_wrapper .gfield_error .gfield_label, body .gform_wrapper li.gfield_error div.ginput_complex.ginput_container label, body .gform_wrapper li.gfield_error ul.gfield_checkbox, body .gform_wrapper li.gfield_error ul.gfield_radio {color: inherit;}
+body .gform_wrapper li.gfield_error input:not([type=radio]):not([type=checkbox]):not([type=submit]):not([type=button]):not([type=image]):not([type=file]), body .gform_wrapper li.gfield_error select, body .gform_wrapper li.gfield_error textarea {border-color: #E02E48; border-width: 1px 1px 1px 5px;}
+body .gform_wrapper .gfield_description.validation_message {padding: 0 0 0.6rem;}
+
+/**
+ * Add support for multi-column Gravity Forms 
+ */
+.gform_wrapper .two-column .gsection:not(.empty), .gform_wrapper .three-column .gsection:not(.empty) {display: none;}
+
+/**
+ * Panels 
+ */
+.panel-wrapper a:hover {opacity: 1;}
+.panel-wrapper, .panel-bg-wrapper, .panel-inner-wrapper {background-position: center center; background-repeat: no-repeat; background-size: cover; position: relative;}
+.panel-bg-wrapper {width: 100%; height: 100%; position: absolute; top: 0; left: 0;}
+.panel-inner-wrapper {width: 100%; height: 100%; z-index: 3;}
+.panel-inner-wrapper > .cell {padding-top: 2rem; padding-bottom: 2rem; z-index: 5;}
+.panel-inner-wrapper > .cell > a {display: block; width: 100%; height: 100%; min-height: inherit; position: absolute; top: 0; left: 0;}
+.panel-inner-wrapper.no-image {text-align: inherit; color: inherit;}
+.panel-inner-wrapper p.action-button {text-align: center;}
+
+/* Children as Slider */
+.panel-slider.slick-slider {padding: 0;}
+.panel-slider .panel-inner-wrapper {padding-left: 4rem; padding-right: 4rem;}
+
+/* Children as Tiles */
+.panel-tiles .tile {display: inline-block; padding: 0; min-height: 300px; overflow: hidden; position: relative; border: 4px solid transparent;}
+.panel-tiles .tile .panel-wrapper, .panel-tiles .tile .panel-inner-wrapper {height: inherit; min-height: inherit;}
+.panel-tiles .panel-wrapper.video {height: 100%; padding: 0;}
+
+/* Default recipe */
+.default .link {display: block;}
+
+/* Custom styles for specific recipes */
+.panel-wrapper.half_image {position: relative; overflow: hidden;}
+.panel-wrapper.half_image .panel-inner-wrapper > .cell {padding-top: 0; padding-bottom: 0;}
+.panel-wrapper.half_image .image {background-position: center center; background-repeat: no-repeat; background-size: cover; height: 200px; width: 110%; margin-left: -1rem;}
+.panel-wrapper.half_image .content {padding-top: 0.975rem; padding-bottom: 0.975rem;}
+
+.panel-wrapper.recent_posts .image {display: table; height: 250px; width: 100%; background-position: center center; background-size: cover; background-repeat: no-repeat; text-align: center;}
+.panel-wrapper.recent_posts .subheader {position: absolute; bottom: 0.9375rem; left: 0.9375rem; color: white; font-weight: 600; margin-bottom: 0;}
+.panel-wrapper.recent_posts .article-excerpt {margin: 1rem 0.9375rem; width: calc(100% - 1.875rem);}
+.panel-wrapper.recent_posts .button {margin: 0 0.9375rem 0.9375rem; max-width: calc(100% - 1.875rem); font-weight: 600;}
+
+.panel-wrapper.tile_menu .panel-inner-wrapper > .cell {padding-top: 8px;}
+.panel-wrapper.tile_menu .cell.menu-item {display: inline-block; padding: 0; height: 250px; overflow: hidden; position: relative; border: 4px solid transparent;}
+.panel-wrapper.tile_menu .image {display: table; height: 100%; width: 100%; background-position: center center; background-size: cover; background-repeat: no-repeat;}
+.panel-wrapper.tile_menu .image::before {content: ''; height: 100%; width: 100%; position: absolute; top: 0; left: 0; background-color: rgba(56,56,56,0.6);}
+.panel-wrapper.tile_menu .link {display: table-row;height: 100%;-moz-transform: translateY(-0%); -ms-transform: translateY(-0%); transform: translateY(-0%)}
+.panel-wrapper.tile_menu span {display: table-cell; vertical-align: middle; font-weight: 600; color: white; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);}
+
+.panel-wrapper.video {height: 300px;}
+.panel-wrapper.video .cell {display: inline-block; padding: 0; height: 100%; overflow: hidden; position: relative; text-align: center;}
+.panel-wrapper.video .wrapper {display: block; position: absolute; width: 100%; height: 100%;}
+.panel-wrapper.video .link {display: block; position: absolute; width: 100%; height: 100%;}
+.panel-wrapper.video .link .las {color: #E62117; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+
+/**
+ * Medium and up 
+ */
+@media only screen and (min-width: 40em) {
+    nav.top-bar {min-height: 6rem;}
+
+    .wp-block-column {margin-bottom: 0;}
+    .wp-block-column:not(:first-child) {margin-left: var(--gutter);}
+
+	/**
+	 * Add support for multi-column Gravity Forms 
+	 */
+    .gform_wrapper ul.gform_column {float:left; display:inline-block; padding: 0.5rem 1.5rem; min-height: 100%;}
+    .gform_wrapper .two-column .gform_column {width: 49.5%;}
+    .gform_wrapper .three-column .gform_column {width: 33%;}
+    .gform_wrapper .gsection {margin: 0;}
+    .gform_wrapper .two-column .gform_column:nth-of-type(3), .gform_wrapper .three-column .gform_column:nth-of-type(4) {float: right;} /* Extra 1 because there's an empty one at the start */
+    
+	/**
+	 * Panels 
+	 */
+    .panel-wrapper.half_image .image {background-position-x: left; height: 100%; position: absolute; width: calc(50% + 0.46875rem); top: 0; left: 0;}
+    .panel-wrapper.half_image .image-right > .image {background-position-x: right; left: auto; right: 0;}
+    .panel-wrapper.half_image .content {float: right; padding: 0.975rem; width: 50%;}
+    .panel-wrapper.half_image .image-right .content {float: left;}
+    .panel-wrapper.tile_menu .cell {border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: none; border-bottom: none;}
+    .panel-wrapper.video {height: 500px;}
+}
+
+/**
+ * Large and up 
+ */
+@media only screen and (min-width: 64em) {
+	/**
+	 * Add support for align-wide blocks
+	 */
+    .no-sidebar .alignwide, .no-sidebar .alignfull {width: 100vw; max-width: var(--site-max-width); margin-left: calc(50% - min(50vw, calc(var(--site-max-width) / 2))); /* to "break free" of container */}
+    .no-sidebar :is(.alignwide, .alignfull) > *:not(.alignwide):not(.alignfull):not(.full):not(.slick-slider):not(.slick-list):not(.panel-slider-wrapper) {max-width: var(--row-max-width); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter);}
+    
+	/**
+	 * Panels 
+	 */
+    .panel-wrapper.video {padding-top: 2rem; padding-bottom: 2rem;}
+    .panel-wrapper.video {height: 600px;}
+}
+
+/**
+ * Additional media queries 
+ */
+@media screen and (prefers-reduced-motion: reduce) {
+    #row-hero .hero-video {display: none;}
+}

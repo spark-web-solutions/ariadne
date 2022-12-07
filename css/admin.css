@@ -1,8 +1,0 @@
-#wpadminbar #wp-admin-bar-root-default .spark .ab-item, #wpadminbar #wp-admin-bar-root-default .spark .ab-item:hover {color: white;}
-#wpadminbar #wp-admin-bar-root-default .spark.dev .ab-item, #wpadminbar #wp-admin-bar-root-default .spark.dev .ab-item:hover,
-#wpadminbar #wp-admin-bar-root-default .spark.broken .ab-item, #wpadminbar #wp-admin-bar-root-default .spark.broken .ab-item:hover {background-color: red;}
-#wpadminbar #wp-admin-bar-root-default .spark.stage .ab-item, #wpadminbar #wp-admin-bar-root-default .spark.stage .ab-item:hover,
-#wpadminbar #wp-admin-bar-root-default .spark.wip .ab-item, #wpadminbar #wp-admin-bar-root-default .spark.wip .ab-item:hover {background-color: darkorange;}
-#wpadminbar #wp-admin-bar-root-default .spark.prod .ab-item, #wpadminbar #wp-admin-bar-root-default .spark.prod .ab-item:hover,
-#wpadminbar #wp-admin-bar-root-default .spark.stable .ab-item, #wpadminbar #wp-admin-bar-root-default .spark.stable .ab-item:hover {background-color: green;}
-.spark.css a::before {content: ""; top: 2px;}

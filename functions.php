@@ -1,95 +1,145 @@
 <?php
-define('ns_', 'spark_');
-define('THEME_TEXTDOMAIN', ns_.'theme');
-
-define('SHORT_TERM', 0.25 * HOUR_IN_SECONDS);
-define('MEDIUM_TERM', defined('SPARK_ENV') && SPARK_ENV == 'PRODUCTION' ? 4 * HOUR_IN_SECONDS : SHORT_TERM);
-define('LONG_TERM', defined('SPARK_ENV') && SPARK_ENV == 'PRODUCTION' ? 24 * HOUR_IN_SECONDS : SHORT_TERM);
-
-$theme_files = array(
-        // Theme elements
-        array('file' => 'customizer.php',           'dir' => 'theme'), // Our customizer fields & settings
-        array('file' => 'functions.php',            'dir' => 'theme'), // Our core theme functions
-        array('file' => 'menus.php',                'dir' => 'theme'), // Registers and displays our menus
-        array('file' => 'scripts.php',              'dir' => 'theme'), // Enqueues our styles and scripts
-
-        // Helper functions
-        array('file' => 'cards.php',                'dir' => 'fx'),
-        array('file' => 'children.php',             'dir' => 'fx'),
-        array('file' => 'columns.php',              'dir' => 'fx'),
-        array('file' => 'convert-colour.php',       'dir' => 'fx'),
-        array('file' => 'extract.php',              'dir' => 'fx'),
-        array('file' => 'featured-image.php',       'dir' => 'fx'),
-        array('file' => 'hero.php',                 'dir' => 'fx'),
-        array('file' => 'hierarchy-walker.php',     'dir' => 'fx'),
-        array('file' => 'login.php',                'dir' => 'fx'),
-        // array('file' => 'map.php',                  'dir' => 'fx'),
-        array('file' => 'meta.php',                 'dir' => 'fx'),
-        array('file' => 'pagination.php',           'dir' => 'fx'),
-        array('file' => 'panels.php',               'dir' => 'fx'),
-        array('file' => 'search.php',               'dir' => 'fx'),
-        array('file' => 'slug.php',                 'dir' => 'fx'),
-        array('file' => 'time.php',                 'dir' => 'fx'),
-        // array('file' => 'tracking-widget.php',      'dir' => 'fx'),
-
-        // Miscellaneous utilities
-        array('file' => 'cookies.php',              'dir' => 'utils'), // Spark_Cookie()       - handy cookie management
-        array('file' => 'random.php',               'dir' => 'utils'), // Spark_Random()       - funky logic for displaying random items, with caching if desired
-        array('file' => 'transients.php',           'dir' => 'utils'), // Spark_Transients()   - transient management
-
-        // Information architecture
-        array('file' => 'cpt_.php',                 'dir' => 'ia'),
-        array('file' => 'cpt_tax_.php',             'dir' => 'ia'),
-        array('file' => 'tax_.php',                 'dir' => 'ia'),
-        array('file' => 'hero.php',                 'dir' => 'ia'),
-        array('file' => 'panels.php',               'dir' => 'ia'),
-        array('file' => 'search.php',               'dir' => 'ia'),
-        array('file' => 'blocks.php',                  'dir' => 'ia'),
-
-        // Custom Gravity Forms pieces
-        array('file' => 'australian-states.php',    'dir' => 'gf'), // Adds Australia address type
-        array('file' => 'columns.php',              'dir' => 'gf'), // Adds support for multi-column Gravity Forms
-        array('file' => 'enable-fields.php',        'dir' => 'gf'), // Enables Credit Card and Password field types
-);
-
-foreach ($theme_files as $theme_file) {
-    spark_init::include_file($theme_file);
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
 }
 
-class spark_init {
-    static function include_file($args) {
-        if (!is_array($args)) {
-            parse_str($args, $args);
-        }
-        extract($args);
+require_once(get_template_directory().'/includes/core.php');
 
-        // check for required variables
-        if (!$dir && !$file) {
-            return;
-        }
+/** Core Theme Setup **/
+add_action('after_setup_theme', 'spark_theme_setup');
+function spark_theme_setup() {
+	// Register theme support
+	add_theme_support('post-thumbnails'); // Featured images
+	add_theme_support('automatic-feed-links'); // RSS support
+	add_theme_support('title-tag');
+	add_theme_support('html5', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script'));
+	add_theme_support('align-wide');
+	add_theme_support('editor-styles');
+	add_theme_support('editor-color-palette', spark_get_theme_palette());
+	add_theme_support('disable-custom-font-sizes');
+	add_theme_support('disable-custom-colors');
+	add_theme_support('disable-custom-gradients');
+	add_theme_support('responsive-embeds');
+	add_theme_support('editor-font-sizes', array(
+			array(
+					'name' => esc_attr__('Small', SPARK_THEME_TEXTDOMAIN),
+					'size' => '0.833rem',
+					'slug' => 'small',
+			),
+			array(
+					'name' => esc_attr__('Normal', SPARK_THEME_TEXTDOMAIN),
+					'size' => '1rem',
+					'slug' => 'normal',
+			),
+			array(
+					'name' => esc_attr__('Large', SPARK_THEME_TEXTDOMAIN),
+					'size' => '1.728rem',
+					'slug' => 'large',
+			),
+			array(
+					'name' => esc_attr__('Huge', SPARK_THEME_TEXTDOMAIN),
+					'size' => '2.488rem',
+					'slug' => 'huge',
+			),
+	));
 
-        // include required theme part
-        $dir == '' ? locate_template(array($file), true) : locate_template(array($dir. '/' . $file), true);
-    }
+	// @todo review and activate/remove these
+	// add_theme_support('customize-selective-refresh-widgets');
+
+	add_filter('should_load_separate_core_block_assets', '__return_true');
+
+	// Enable custom logo support
+	// @todo configure settings
+	$logo_config = array(
+			'height'      => 100,
+			'width'       => 300,
+			'flex-height' => true,
+			'flex-width'  => true,
+			'header-text' => array('site-title', 'site-description'),
+	);
+	add_theme_support('custom-logo', $logo_config);
+
+	// Register menus
+	register_nav_menus(array(
+			'main' => 'Main',
+			'footer' => 'Footer',
+	));
+
+	// Trigger refresh process if needed
+	add_action('init', function () {
+		if ((current_user_can('manage_options') && isset($_GET['spark']) && $_GET['spark'] == 'refresh')) {
+			$transients = new Spark_Transients();
+			$transients->delete();
+			wp_redirect(remove_query_arg('spark'));
+			exit;
+		}
+	});
+
+	// Show template name in admin bar
+	add_filter('template_include', function ($t) {
+		if (current_user_can('manage_options')) {
+			$template_name = get_page_template_slug(get_queried_object_id());
+			if (empty($template_name)) {
+				$template_name = '(default)';
+			}
+			$template_name = basename($t).' > '.$template_name;
+			add_action('admin_bar_menu', function ($wp_admin_bar) use ($template_name) {
+				$args = array(
+						'id' => 'spark-template',
+						'title' => $template_name,
+						'meta' => array(
+								'class' => 'spark temp',
+						),
+				);
+				$wp_admin_bar->add_node($args);
+			}, PHP_INT_MAX);
+		}
+		return $t;
+	}, PHP_INT_MAX);
+
+	// Add our custom admin bar nodes
+	add_action('admin_bar_menu', function ($wp_admin_bar) {
+		// Environment indicator
+		switch (wp_get_environment_type()) {
+			case 'development':
+			case 'local':
+				$class = 'dev';
+				break;
+			case 'staging':
+				$class = 'stage';
+				break;
+			case 'production':
+			default:
+				$class = 'prod';
+				break;
+		}
+
+		$args = array(
+				'id' => 'spark-env',
+				'title' => strtoupper(wp_get_environment_type()),
+				'meta' => array(
+						'class' => 'spark '.$class,
+				),
+		);
+		$wp_admin_bar->add_node($args);
+
+		$refresh_link = is_admin() ? '/?spark=refresh' : '?spark=refresh';
+		$args = array(
+				'id' => 'spark-refresh',
+				'title' => 'Refresh',
+				'href' => $refresh_link,
+				'meta' => array(
+						'class' => 'spark refresh',
+				),
+		);
+		$wp_admin_bar->add_node($args);
+	}, PHP_INT_MAX);
 }
 
-define('ROW_MAX_WIDTH', spark_get_theme_mod(ns_.'row_max_width'));
-define('SITE_MAX_WIDTH', spark_get_theme_mod(ns_.'site_max_width'));
+/** Third Party Integrations **/
 
-add_action('customize_register', 'spark_load_customize_controls', 0);
-function spark_load_customize_controls() {
-    require_once(trailingslashit(get_template_directory()).'theme/customizer/checkbox-multiple.php');
-    require_once(trailingslashit(get_template_directory()).'theme/customizer/wp-editor.php');
-}
-
-add_filter('bbx_best_before_post_types_covered', 'spark_add_best_before_post_types');
-function spark_add_best_before_post_types(array $post_types) {
-    $post_types[] = 'panel';
-    return $post_types;
-}
-
-// Hide ACF field group menu item
-add_filter('acf/settings/show_admin', '__return_false');
+// Hide ACF field group menu item except on dev
+add_filter('acf/settings/show_admin', function() {return 'development' == wp_get_environment_type();});
 
 // Scroll to form on page load after submission
 add_filter('gform_confirmation_anchor', '__return_true');

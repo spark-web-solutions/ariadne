@@ -1,0 +1,2 @@
+<?php
+// Third-party assets
