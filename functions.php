@@ -136,6 +136,10 @@ function spark_theme_setup() {
 	}, PHP_INT_MAX);
 }
 
+add_action('admin_init', function() {
+	new Spark_Theme_Updates('spark-web-solutions', 'ariadne');
+});
+
 /** Third Party Integrations **/
 
 // Hide ACF field group menu item except on dev

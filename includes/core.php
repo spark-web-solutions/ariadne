@@ -6,6 +6,7 @@ define('SPARK_THEME_TEXTDOMAIN', ns_.'theme');
 require_once(trailingslashit(get_template_directory()).'includes/customizer.php'); // Our customizer fields & settings
 require_once(trailingslashit(get_template_directory()).'includes/scripts.php'); // Enqueues our styles and scripts
 require_once(trailingslashit(get_template_directory()).'includes/widgets.php'); // Registers our widget areas
+require_once(trailingslashit(get_template_directory()).'includes/updates.php'); // Allows updating of the theme from GitHub
 
 // Helper classes
 require_once(trailingslashit(get_template_directory()).'includes/classes/cookies.php'); // Spark_Cookie() - handy cookie management
