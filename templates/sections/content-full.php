@@ -24,7 +24,7 @@ if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transi
 	echo '<!-- START: '.$file.' -->'."\n";
 
 	// section content
-	$class = 'small-24 cell';
+	$class = 'small-24 cell no-sidebar';
 ?>
 <div id="row-content" class="grid-container">
 	<div id="row-inner-content" class="grid-x grid-margin-x">

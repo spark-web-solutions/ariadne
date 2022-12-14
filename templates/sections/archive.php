@@ -27,7 +27,7 @@ if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transi
 ?>
 <div id="row-content" class="grid-container">
 	<div id="row-inner-content" class="grid-x grid-margin-x">
-		<div class="small-24 cell">
+		<div class="small-24 cell no-sidebar">
 <?php
     if ($archive_page) {
         echo '    <h1>'.$archive_page->post_title.'</h1>'."\n";
