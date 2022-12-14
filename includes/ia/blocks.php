@@ -49,13 +49,13 @@ if (function_exists('acf_register_block_type')) {
 		));
 
 		acf_register_block_type(array(
-				'name'			    => 'latest-post',
-				'title'			    => __('Latest Post', SPARK_THEME_TEXTDOMAIN),
-				'description'	    => __('Insert a tile preview of your most recent post', SPARK_THEME_TEXTDOMAIN),
-				'render_template'   => trailingslashit(get_template_directory()).'templates/blocks/latest-post.php',
+				'name'			    => 'recent-posts',
+				'title'			    => __('Recent Posts', SPARK_THEME_TEXTDOMAIN),
+				'description'	    => __('Insert a tile preview of your most recent posts', SPARK_THEME_TEXTDOMAIN),
+				'render_template'   => trailingslashit(get_template_directory()).'templates/blocks/recent-posts.php',
 				'category'		    => 'theme',
 				'icon'			    => 'format-aside',
-				'keywords'		    => array('page', 'post', 'tile', 'card', 'latest'),
+				'keywords'		    => array('page', 'post', 'tile', 'card', 'latest','recent'),
 				'mode'			    => 'auto',
 				'align'			    => 'full',
 				'supports'		    => array(
@@ -248,21 +248,53 @@ if (function_exists('acf_register_block_type')) {
 			));
 
 			register_field_group(array(
-					'id' => 'acf_block_latest_post_settings',
-					'title' => __('Block: Latest Post', SPARK_THEME_TEXTDOMAIN),
+					'id' => 'acf_block_recent_posts_settings',
+					'title' => __('Block: Recent Posts', SPARK_THEME_TEXTDOMAIN),
 					'fields' => array(
 							array(
-									'key' => 'spark_block_latest_post_field_post_type',
+									'key' => 'spark_block_recent_posts_field_post_type',
 									'label' => __('Post Type', SPARK_THEME_TEXTDOMAIN),
 									'name' => 'post_type',
 									'type' => 'select',
 									'choices' => spark_blocks_get_post_types(),
 							),
 							array(
-									'key' => 'spark_block_latest_post_field_hide_excerpt',
+									'key' => 'spark_block_recent_posts_field_hide_excerpt',
 									'label' => __('Hide Text Excerpt?', SPARK_THEME_TEXTDOMAIN),
 									'name' => 'hide_excerpt',
 									'type' => 'true_false',
+							),
+							array(
+									'key' => 'spark_block_recent_posts_field_num_posts',
+									'label' => 'Number of Posts',
+									'name' => 'num_posts',
+									'type' => 'number',
+									'default_value' => 3,
+									'required' => true,
+							),
+							array(
+									'key' => 'spark_block_recent_posts_field_per_row_large',
+									'label' => 'Posts Per Row (Large Screens)',
+									'name' => 'per_row_large',
+									'type' => 'number',
+									'default_value' => 3,
+									'required' => true,
+							),
+							array(
+									'key' => 'spark_block_recent_posts_field_per_row_medium',
+									'label' => 'Posts Per Row (Medium Screens)',
+									'name' => 'per_row_medium',
+									'type' => 'number',
+									'default_value' => 2,
+									'required' => true,
+							),
+							array(
+									'key' => 'spark_block_recent_posts_field_per_row_small',
+									'label' => 'Posts Per Row (Small Screens)',
+									'name' => 'per_row_small',
+									'type' => 'number',
+									'default_value' => 1,
+									'required' => true,
 							),
 					),
 					'location' => array(
@@ -270,7 +302,7 @@ if (function_exists('acf_register_block_type')) {
 									array(
 											'param' => 'block',
 											'operator' => '==',
-											'value' => 'acf/latest-post',
+											'value' => 'acf/recent-posts',
 											'order_no' => 0,
 											'group_no' => 0,
 									),
