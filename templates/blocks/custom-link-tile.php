@@ -1,21 +1,21 @@
 <?php
 /**
- * Post Preview Block Template
+ * Custom Link Tile Block Template
  *
- * @param $block array The block settings and attributes.
- * @param $content string The block inner HTML (empty).
- * @param $is_preview bool True during AJAX preview.
- * @param $post_id (int|string) The post ID this block is saved to.
+ * @var $block array The block settings and attributes.
+ * @var $content string The block inner HTML (empty).
+ * @var $is_preview bool True during AJAX preview.
+ * @var $post_id (int|string) The post ID this block is saved to.
  */
 
 // Create id attribute allowing for custom "anchor" value.
-$id = 'post-preview-'.$block['id'];
+$id = 'custom-link-tile-'.$block['id'];
 if (!empty($block['anchor'])) {
     $id = $block['anchor'];
 }
 
 // Create class attribute allowing for custom "className" values.
-$class = 'block-post-preview';
+$class = 'block-custom-link-tile';
 if (!empty($block['className'])) {
     $class .= ' '.$block['className'];
 }
@@ -29,5 +29,5 @@ $link = get_field('link');
 $title = get_field('title');
 $blurb = get_field('blurb');
 echo '<div id="'.$id.'" class="'.$class.'">'."\n";
-echo get_card(array('card' => 'tile', 'image' => $image, 'link' => $link, 'title' => $title, 'blurb' => $blurb));
+echo spark_get_card(array('card' => 'tile', 'image' => $image, 'link' => $link, 'title' => $title, 'blurb' => $blurb));
 echo '</div>'."\n";
