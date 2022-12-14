@@ -30,7 +30,7 @@ if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transi
 	$phone = spark_get_theme_mod(ns_.'contact_phone');
 	$address = spark_get_theme_mod(ns_.'contact_address');
 ?>
-<footer id="row-footer" class="grid-container">
+<footer id="row-footer" class="grid-container full">
 	<div id="row-inner-footer" class="grid-x grid-margin-x">
 		<div class="small-24 medium-8 cell">
 <?php

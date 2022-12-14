@@ -24,7 +24,7 @@ if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transi
 	echo '<!-- START: '.$file.' -->'."\n";
 	// section content
 ?>
-<div id="row-top" class="grid-container">
+<div id="row-top" class="grid-container full">
 	<div id="row-inner-top" class="grid-x grid-margin-x">
 		<div class="cell">
 			<nav class="top-bar">

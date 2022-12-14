@@ -24,7 +24,7 @@ if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transi
 	echo '<!-- START: '.$file.' -->'."\n";
 	// section content
 ?>
-<footer id="row-copyright" class="grid-container">
+<footer id="row-copyright" class="grid-container full">
 	<div id="row-inner-copyright" class="grid-x grid-margin-x">
 		<div class="small-24 text-center medium-text-left cell hide-for-print">
 			<?php echo spark_get_theme_mod('copyright').date(' Y'); ?> | <a href="/privacy-policy/">Privacy Policy</a> <p class="float-right"><a href="https://sparkweb.com.au/" target="_blank">Website design and development by Spark Web Solutions</a></p>
