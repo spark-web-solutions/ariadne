@@ -23,7 +23,7 @@ function spark_frontend_scripts() {
 	$theme = wp_get_theme();
 
 	// Theme styles
-	wp_enqueue_style('spark-style', get_template_directory_uri().'/style.css', array(), $theme->get('Version'));
+	wp_enqueue_style('spark-style', get_template_directory_uri().'/style.css', array('foundation'), $theme->get('Version'));
 	wp_add_inline_style('spark-style', spark_generate_dynamic_styles());
 	wp_enqueue_style('line-awesome', get_template_directory_uri().'/assets/vendor/line-awesome/css/line-awesome.min.css', array(), '1.3.0');
 
