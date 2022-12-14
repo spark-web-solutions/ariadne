@@ -76,11 +76,11 @@ class Spark_Theme_Updates {
 				// Use only the latest release
 				if (is_array($result)) {
 					foreach ($result as $release) {
-						if (!$release->prerelease) {
+// 						if (!$release->prerelease) {
 							$this->github_api_result = $release;
 							set_transient($transient_name, $this->github_api_result, 15*MINUTE_IN_SECONDS);
 							return true;
-						}
+// 						}
 					}
 				}
 			}
