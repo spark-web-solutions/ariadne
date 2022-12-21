@@ -55,7 +55,22 @@ if (function_exists('acf_register_block_type')) {
 				'render_template'   => locate_template('templates/blocks/recent-posts.php'),
 				'category'		    => 'theme',
 				'icon'			    => 'format-aside',
-				'keywords'		    => array('page', 'post', 'tile', 'card', 'latest','recent'),
+				'keywords'		    => array('page', 'post', 'tile', 'card', 'latest', 'recent'),
+				'mode'			    => 'auto',
+				'align'			    => 'full',
+				'supports'		    => array(
+						'align' => false,
+				),
+		));
+
+		acf_register_block_type(array(
+				'name'			    => 'random-posts',
+				'title'			    => __('Random Posts', SPARK_THEME_TEXTDOMAIN),
+				'description'	    => __('Insert a tile preview of random posts', SPARK_THEME_TEXTDOMAIN),
+				'render_template'   => locate_template('templates/blocks/random-posts.php'),
+				'category'		    => 'theme',
+				'icon'			    => 'format-aside',
+				'keywords'		    => array('page', 'post', 'tile', 'card', 'random'),
 				'mode'			    => 'auto',
 				'align'			    => 'full',
 				'supports'		    => array(
@@ -303,6 +318,15 @@ if (function_exists('acf_register_block_type')) {
 											'param' => 'block',
 											'operator' => '==',
 											'value' => 'acf/recent-posts',
+											'order_no' => 0,
+											'group_no' => 0,
+									),
+							),
+							array(
+									array(
+											'param' => 'block',
+											'operator' => '==',
+											'value' => 'acf/random-posts',
 											'order_no' => 0,
 											'group_no' => 0,
 									),
