@@ -32,7 +32,7 @@ function spark_nav_menu(array $args = array(), $type = '') {
 
 add_filter('nav_menu_css_class', 'spark_nav_menu_css_class', 10, 4);
 function spark_nav_menu_css_class($classes, $item, $args, $depth) {
-	if ($item->current || $item->current_item_ancestor) {
+	if ($item->current || $item->current_item_ancestor || in_array('current-page', $classes) || in_array('current-page-ancestor', $classes) || ($item->type == 'post_type_archive') && $item->object == get_post_type()) {
 		$classes[] = 'is-active';
 	}
 	if (empty($item->url) || '#' == $item->url) {
