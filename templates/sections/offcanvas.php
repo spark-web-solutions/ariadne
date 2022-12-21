@@ -31,11 +31,11 @@ if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transi
 	</button>
 <?php
 	$args = array(
+			'container' => 'nav',
 			'theme_location' => 'main',
-			'container' => 'ul',
-			'container_class' => 'vertical menu',
+			'menu_class' => 'vertical',
 	);
-	wp_nav_menu($args);
+	spark_nav_menu($args, 'accordion');
 ?>
 </div>
 <?php
