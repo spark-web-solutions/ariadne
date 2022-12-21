@@ -77,9 +77,12 @@ footer {background-color: var(--colour4);}
 body, #row-copyright {background-color: var(--colour4);}
 #row-copyright, #row-copyright * {color: var(--colour1);}
 
-button:not(.close-button), .button, .wp-block-button__link, a.button:is(:link, :visited), a.wp-block-button__link:is(:link, :visited), input[type=submit] {background-color: var(--colour5); color: var(--colour1); border-color: var(--colour5);}
+.off-canvas {background-color: var(--colour4); color: var(--colour1);}
+.submenu-toggle::after {border-color: var(--colour2) transparent transparent}
+
+button:not(.close-button, .submenu-toggle), .button, .wp-block-button__link, a.button:is(:link, :visited), a.wp-block-button__link:is(:link, :visited), input[type=submit] {background-color: var(--colour5); color: var(--colour1); border-color: var(--colour5);}
 .button * {color: var(--colour1);}
-button:not(.close-button):is(:hover, :focus), .button:is(:hover, :focus), a.button:is(:link, :visited):is(:hover, :focus), a.wp-block-button__link:is(:link, :visited):is(:hover, :focus), input[type=submit]:is(:hover, :focus), .button.disabled:is(:hover, :focus), .button[disabled]:is(:hover, :focus) {background-color: var(--colour6); color: var(--colour1); border-color: var(--colour6);}
+button:not(.close-button, .submenu-toggle):is(:hover, :focus), .button:is(:hover, :focus), a.button:is(:link, :visited):is(:hover, :focus), a.wp-block-button__link:is(:link, :visited):is(:hover, :focus), input[type=submit]:is(:hover, :focus), .button.disabled:is(:hover, :focus), .button[disabled]:is(:hover, :focus) {background-color: var(--colour6); color: var(--colour1); border-color: var(--colour6);}
 .button:focus *, .button:hover * {color: var(--colour1);}
 .cta, button.cta, .button.cta, a.button.cta, a.button.cta::after, .panel-wrapper .action-button a.button {background-color: var(--colour7); color: var(--colour1); border-color: var(--colour7);}
 .cta, button.cta:is(:hover, :focus), .button.cta:is(:hover, :focus), a.button.cta:is(:hover, :focus), a.button.cta:is(:hover, :focus)::after, .panel-wrapper .action-button a.button:is(:hover, :focus) {background-color: var(--colour8); color: var(--colour1); border-color: var(--colour8);}
@@ -171,7 +174,7 @@ img.aligncenter {display: block; margin: 0.25rem auto 0;}
 /**
  * Offcanvas Menu 
  */
-.off-canvas button.close-button {z-index: 20;}
+.off-canvas button.close-button {z-index: 20; padding: 0;}
 body.admin-bar .off-canvas {margin-top: var(--wp-admin--admin-bar--height);}
 
 /**
