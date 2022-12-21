@@ -1,6 +1,6 @@
 <?php
 /**
- * Latest Post Block Template
+ * Recent Posts Block Template
  *
  * @var $block array The block settings and attributes.
  * @var $content string The block inner HTML (empty).
