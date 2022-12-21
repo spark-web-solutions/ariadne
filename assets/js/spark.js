@@ -1,16 +1,4 @@
 jQuery(function() {
-    /* Panels */
-    jQuery('.panel-slider').slick({
-        dots: false,
-        infinite: true,
-        speed: 1500,
-        slidesToShow: 1,
-        adaptiveHeight: true,
-        autoplay: true,
-        autoplaySpeed: 8000,
-        arrows: true
-    });
-    
     /* Close sticky menu when menu item clicked */
     jQuery('.sticky .menu[data-accordion-menu] ul.nested a').click(function() {
         jQuery(this).closest('.menu[data-accordion-menu]').foundation('hideAll');
@@ -32,24 +20,4 @@ jQuery(function() {
             }
         }
     });
-    
-    /* Initialise slider block */
-    var initializeBlock = function(block) {
-        block.find('.slides').slick({
-            arrows: false,
-            dots: true,
-            infinite: false,
-            easing: 'swing'
-        });     
-    }
-
-    // Initialize each block on page load (front end).
-    jQuery('.slider-block').each(function(){
-        initializeBlock(jQuery(this));
-    });
-
-    // Initialize dynamic block preview (editor).
-    if (window.acf) {
-        window.acf.addAction('render_block_preview/type=slider', initializeBlock);
-    }
 });
