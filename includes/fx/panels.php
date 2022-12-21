@@ -90,14 +90,16 @@ if (!function_exists('spark_panels_get_recipes')) {
 	    	$recipe_dirs[] = get_stylesheet_directory().'/templates/panels/recipes/';
 	    }
 	    foreach ($recipe_dirs as $recipe_dir) {
-	    	$dir = opendir($recipe_dir);
-		    if ($dir) {
-			    while (false !== ($filename = readdir($dir))) {
-			        if (strpos($filename, '.php') !== false && 'index.php' !== $filename) {
-			            $recipes[] = str_replace('.php', '', $filename);
-			        }
+	    	if (is_dir($recipe_dir)) {
+		    	$dir = opendir($recipe_dir);
+			    if ($dir) {
+				    while (false !== ($filename = readdir($dir))) {
+				        if (strpos($filename, '.php') !== false && 'index.php' !== $filename) {
+				            $recipes[] = str_replace('.php', '', $filename);
+				        }
+				    }
 			    }
-		    }
+	    	}
 	    }
 	    $recipes = array_unique($recipes);
 	    sort($recipes);
