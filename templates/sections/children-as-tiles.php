@@ -47,7 +47,7 @@ foreach ($children as $post) {
 				'card'  => 'tile',
 				'image' => $image,
 		);
-		echo get_card($args);
+		echo spark_get_card($args);
 	}
 }
 $post = $tmp_post;

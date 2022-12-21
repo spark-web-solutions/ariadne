@@ -40,7 +40,7 @@ if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transi
 	$children = spark_get_children($post);
 	foreach ($children as $child) {
 		echo '<hr class="pre-paragraph">';
-		echo get_card(array('card' => 'paragraph', 'ID' => $child->ID));
+		echo spark_get_card(array('card' => 'paragraph', 'ID' => $child->ID));
 	}
 ?>
 		</div>

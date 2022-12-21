@@ -36,7 +36,7 @@ if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transi
     echo '<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-3">'."\n";
     while (have_posts()) {
         the_post();
-        echo get_card('card=post-preview&ID='.get_the_id());
+        echo spark_get_card('card=post-preview&ID='.get_the_id());
     }
     echo '</div>'."\n";
     echo spark_foundation_pagination();
