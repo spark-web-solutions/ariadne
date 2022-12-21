@@ -79,7 +79,7 @@ if (!function_exists('spark_setup_data')) {
 			$t_suffix .= '_post_'.$current_page;
 		}
 
-		$filename = str_replace(get_stylesheet_directory(), '', $file);
+		$filename = str_replace(array(get_template_directory(), get_stylesheet_directory()), '', $file);
 		$t_args = array('name' => 'var_'.$current_id.$t_suffix, 'file' => $filename);
 		$transient_name = Spark_Transients::name($t_args);
 		if (false === ($var = get_transient($transient_name)) || !Spark_Transients::use_transients()) {
