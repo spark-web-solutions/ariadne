@@ -34,26 +34,21 @@ if (!function_exists('spark_get_card')) {
 			$card .= '.'.$type;
 		}
 
-		$transient = ns_.'card_'.$ID.'_'.$card;
-		if (!empty($string)) {
-			$transient .= '_'.$string;
+		ob_start();
+
+		/* translators: %s: ID of the card being displayed. */
+		echo '<!-- '.sprintf(__('START Card %s'), $ID).' -->'."\n";
+
+		// Need to grab the template file and include it ourselves so that our variables get passed through
+		$card_template = locate_template('templates/cards/'.$card.'.php', false, false);
+		if ($card_template) {
+			include($card_template);
 		}
-		if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transients()) {
-			ob_start();
 
-			/* translators: %s: ID of the card being displayed. */
-			echo '<!-- '.sprintf(__('START Card %s'), $ID).' -->'."\n";
+		/* translators: %s: ID of the card being displayed. */
+		echo '<!-- '.sprintf(__('END Card %s'), $ID).' -->'."\n";
 
-			locate_template('templates/cards/'.$card.'.php', true, false);
-
-			/* translators: %s: ID of the card being displayed. */
-			echo '<!-- '.sprintf(__('END Card %s'), $ID).' -->'."\n";
-
-			$ob = ob_get_clean();
-			if (Spark_Transients::use_transients($ob)) {
-				Spark_Transients::set($transient, $ob);
-			}
-		}
+		$ob = ob_get_clean();
 
 		if ($echo) {
 			echo $ob;
