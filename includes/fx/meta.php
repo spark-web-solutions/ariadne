@@ -118,10 +118,10 @@ if (!function_exists('spark_rationalise_meta')) {
 	function spark_rationalise_meta(array $meta) {
 	    $clean_meta = array();
 	    foreach ($meta as $k => $v) {
-	        if (is_array($v) && count($v) == 1) {
-	            $clean_meta[$k] = $v[0];
-	        } else {
-	            $clean_meta[$k] = $v;
+	    	if (is_array($v) && count($v) == 1) {
+	    		$clean_meta[$k] = maybe_unserialize($v[0]);
+	    	} else {
+	    		$clean_meta[$k] = maybe_unserialize($v);
 	        }
 	    }
 	    return $clean_meta;
