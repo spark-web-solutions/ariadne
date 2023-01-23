@@ -29,7 +29,7 @@ To make the best use of this boilerplate, pair it with Gravity Forms and Advance
 
 * Major rebuild including more logical directory structure
 * Added support for automatic updates
-* Added support for child themes
+* Added support for child themes including various filters and provision for overriding custom functions
 * Added proper localisation support
 * Added support for multi-level menus (dropdown, drilldown and accordion)
 * Added support for full-width blocks
@@ -40,6 +40,7 @@ To make the best use of this boilerplate, pair it with Gravity Forms and Advance
 * Reworked panels to drop "CPT as Category" architecture and extended to allow adding panels to individual CPT posts 
 * Replaced Slick slider (abandoned) with Orbit (built into Foundation)
 * Replaced FontAwesome with LineAwesome
+* Dropped custom transient caching; we recommend using a caching plugin (such as W3 Total Cache) instead
 * ...and much more!
 
 = 1.2.1 =
