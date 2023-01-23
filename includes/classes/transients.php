@@ -189,7 +189,7 @@ class Spark_Transients {
 			$transients = self::get($string);
 		}
 		/* translators: %d: Number of transients cleaned. */
-		echo '<!-- '.sprintf(_n('%d transient cleaned', '%d transients cleaned', count($transients), SPARK_THEME_TEXTDOMAIN), count($transients)).' -->'."\n";
+		echo '<!-- '.sprintf(_n('%d transient cleaned', '%d transients cleaned', count($transients), 'spark_theme'), count($transients)).' -->'."\n";
 
 		if (!isset($clean)) {
 			return $transients;

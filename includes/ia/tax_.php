@@ -51,27 +51,27 @@ class taxClass {
 
 	function register_taxonomy() {
 		$labels = array(
-				'name' => _x(ucfirst($this->singular), 'Taxonomy general name', SPARK_THEME_TEXTDOMAIN),
-				'singular_name' => _x(ucfirst($this->singular), 'Taxonomy singular name', SPARK_THEME_TEXTDOMAIN),
-				'search_items' => __('Search '.ucfirst($this->plural), SPARK_THEME_TEXTDOMAIN),
-				'popular_items' => __('Popular '.ucfirst($this->plural), SPARK_THEME_TEXTDOMAIN),
-				'all_items' => __('All '.ucfirst($this->plural), SPARK_THEME_TEXTDOMAIN),
-				'parent_item' => __('Parent '.ucfirst($this->singular), SPARK_THEME_TEXTDOMAIN),
-				'parent_item_colon' => __('Parent '.ucfirst($this->singular).':', SPARK_THEME_TEXTDOMAIN),
-				'edit_item' => __('Edit '.ucfirst($this->singular), SPARK_THEME_TEXTDOMAIN),
-				'view_item' => __('View '.ucfirst($this->singular), SPARK_THEME_TEXTDOMAIN),
-				'update_item' => __('Update '.ucfirst($this->singular), SPARK_THEME_TEXTDOMAIN),
-				'add_new_item' => __('Add New '.ucfirst($this->singular), SPARK_THEME_TEXTDOMAIN),
-				'new_item_name' => __('New '.ucfirst($this->singular), SPARK_THEME_TEXTDOMAIN),
-				'separate_items_with_commas' => __('Separate '.ucfirst($this->plural).' with commas', SPARK_THEME_TEXTDOMAIN),
-				'add_or_remove_items' => __('Add or remove '.ucfirst($this->plural), SPARK_THEME_TEXTDOMAIN),
-				'choose_from_most_used' => __('Choose from the most used '.ucfirst($this->plural), SPARK_THEME_TEXTDOMAIN),
-				'not_found' => __('No '.ucfirst($this->plural).' found', SPARK_THEME_TEXTDOMAIN),
-				'no_terms' => __('No '.ucfirst($this->plural), SPARK_THEME_TEXTDOMAIN),
-				'items_list_navigation' => __(ucfirst($this->plural).' list navigation', SPARK_THEME_TEXTDOMAIN),
-				'items_list' => __(ucfirst($this->plural).' list', SPARK_THEME_TEXTDOMAIN),
-				'most_used' => _x('Most Used', ucfirst($this->singular), SPARK_THEME_TEXTDOMAIN),
-				'back_to_items' => __('&larr; Go to '.ucfirst($this->plural), SPARK_THEME_TEXTDOMAIN),
+				'name' => _x(ucfirst($this->singular), 'Taxonomy general name', 'spark_theme'),
+				'singular_name' => _x(ucfirst($this->singular), 'Taxonomy singular name', 'spark_theme'),
+				'search_items' => __('Search '.ucfirst($this->plural), 'spark_theme'),
+				'popular_items' => __('Popular '.ucfirst($this->plural), 'spark_theme'),
+				'all_items' => __('All '.ucfirst($this->plural), 'spark_theme'),
+				'parent_item' => __('Parent '.ucfirst($this->singular), 'spark_theme'),
+				'parent_item_colon' => __('Parent '.ucfirst($this->singular).':', 'spark_theme'),
+				'edit_item' => __('Edit '.ucfirst($this->singular), 'spark_theme'),
+				'view_item' => __('View '.ucfirst($this->singular), 'spark_theme'),
+				'update_item' => __('Update '.ucfirst($this->singular), 'spark_theme'),
+				'add_new_item' => __('Add New '.ucfirst($this->singular), 'spark_theme'),
+				'new_item_name' => __('New '.ucfirst($this->singular), 'spark_theme'),
+				'separate_items_with_commas' => __('Separate '.ucfirst($this->plural).' with commas', 'spark_theme'),
+				'add_or_remove_items' => __('Add or remove '.ucfirst($this->plural), 'spark_theme'),
+				'choose_from_most_used' => __('Choose from the most used '.ucfirst($this->plural), 'spark_theme'),
+				'not_found' => __('No '.ucfirst($this->plural).' found', 'spark_theme'),
+				'no_terms' => __('No '.ucfirst($this->plural), 'spark_theme'),
+				'items_list_navigation' => __(ucfirst($this->plural).' list navigation', 'spark_theme'),
+				'items_list' => __(ucfirst($this->plural).' list', 'spark_theme'),
+				'most_used' => _x('Most Used', ucfirst($this->singular), 'spark_theme'),
+				'back_to_items' => __('&larr; Go to '.ucfirst($this->plural), 'spark_theme'),
 		);
 		$default_args = array(
 				'labels' => $labels,
@@ -131,7 +131,7 @@ class taxClass {
 <?php
             }
         } else { /* If there are no terms, display a message. */
-        	_e('There are no '.ucfirst($this->plural).' available.', SPARK_THEME_TEXTDOMAIN);
+        	_e('There are no '.ucfirst($this->plural).' available.', 'spark_theme');
         }
 ?></td>
     </tr>

@@ -1,6 +1,5 @@
 <?php
 define('ns_', 'spark_');
-define('SPARK_THEME_TEXTDOMAIN', ns_.'theme');
 
 // Core WP integrations
 require_once(trailingslashit(get_template_directory()).'includes/customizer.php'); // Our customizer fields & settings

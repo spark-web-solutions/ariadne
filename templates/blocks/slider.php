@@ -75,7 +75,7 @@ if ($is_preview) {
 	}
 } elseif (current_user_can('edit_post', $post_id)) {
 ?>
-	<p><?php _e('Please add some slides.', SPARK_THEME_TEXTDOMAIN); ?></p>
+	<p><?php _e('Please add some slides.', 'spark_theme'); ?></p>
 <?php
 }
 ?>

@@ -17,7 +17,7 @@ if (have_comments()) {
 	<h2 class="comments-title">
 <?php
 		/* translators: %s: Comment count number. */
-	printf(esc_html(_nx('%s comment', '%s comments', $comment_count, 'Comments title', SPARK_THEME_TEXTDOMAIN)), esc_html(number_format_i18n($comment_count)));
+	printf(esc_html(_nx('%s comment', '%s comments', $comment_count, 'Comments title', 'spark_theme')), esc_html(number_format_i18n($comment_count)));
 ?>
 	</h2>
 	<ol class="comment-list">
@@ -33,14 +33,14 @@ if (have_comments()) {
 	echo spark_foundation_comments_pagination($comment_count);
 	if (!comments_open()) {
 ?>
-	<p class="no-comments"><?php esc_html_e('Comments are closed.', SPARK_THEME_TEXTDOMAIN); ?></p>
+	<p class="no-comments"><?php esc_html_e('Comments are closed.', 'spark_theme'); ?></p>
 <?php
 	}
 }
 
 comment_form(array(
 		'logged_in_as' => null,
-		'title_reply' => esc_html__('Leave a comment', SPARK_THEME_TEXTDOMAIN),
+		'title_reply' => esc_html__('Leave a comment', 'spark_theme'),
 		'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
 		'title_reply_after' => '</h2>'
 ));

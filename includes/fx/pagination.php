@@ -38,7 +38,7 @@ if (!function_exists('spark_foundation_comments_pagination')) {
 			$output .= '<li>'.$link.'</li>';
 		}
 		if (!empty($output)) {
-			$output = sprintf('<ul class="pagination" role="navigation" aria-label="%s">'.$output.'</ul>', _x('Pagination', 'ARIA label for comments pagination wrapper', SPARK_THEME_TEXTDOMAIN));
+			$output = sprintf('<ul class="pagination" role="navigation" aria-label="%s">'.$output.'</ul>', _x('Pagination', 'ARIA label for comments pagination wrapper', 'spark_theme'));
 		}
 		if ($return) {
 			return $output;
@@ -95,7 +95,7 @@ if (!function_exists('spark_generate_pagination_links')) {
 	        $output .= spark_p_link($paged + 1, $querystring, 'next');
 	    }
 	    if (!empty($output)) {
-	        $output = sprintf('<ul class="pagination" role="navigation" aria-label="%s">'.$output.'</ul>', _x('Pagination', 'ARIA label for pagination wrapper', SPARK_THEME_TEXTDOMAIN));
+	        $output = sprintf('<ul class="pagination" role="navigation" aria-label="%s">'.$output.'</ul>', _x('Pagination', 'ARIA label for pagination wrapper', 'spark_theme'));
 	    }
 	    return $output;
 	}
@@ -122,21 +122,22 @@ if (!function_exists('spark_p_link')) {
 	    $linktext = $i;
 	    switch ($link_type) {
 	        case 'first':
-	            $readabletitle = _x('First', 'Pagination first page', SPARK_THEME_TEXTDOMAIN);
+	            $readabletitle = __('First', 'spark_theme');
 	            break;
 	        case 'last':
-	        	$readabletitle = _x('Last', 'Pagination last page', SPARK_THEME_TEXTDOMAIN);
+	        	$readabletitle = __('Last', 'spark_theme');
 	            break;
 	        case 'previous':
-	        	$readabletitle = $linktext = _x('‹ Previous', 'Pagination previous page', SPARK_THEME_TEXTDOMAIN);
+	        	$readabletitle = $linktext = __('‹ Previous', 'spark_theme');
 	            $rel = 'rel="prev"';
 	            break;
 	        case 'next':
-	        	$readabletitle = $linktext = _x('Next ›', 'Pagination next page', SPARK_THEME_TEXTDOMAIN);
+	        	$readabletitle = $linktext = __('Next ›', 'spark_theme');
 	            $rel = 'rel="next"';
 	            break;
 	        default:
-	        	$readabletitle = sprintf(_x("Page %d", 'Pagination page number', SPARK_THEME_TEXTDOMAIN), $i);
+	        	/* translators: %d: the page number (e.g. 2) */
+	        	$readabletitle = sprintf(__("Page %d", 'spark_theme'), $i);
 	    }
 	    if ($querystring) {
 	        $link = add_query_arg('n', $i);

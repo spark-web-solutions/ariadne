@@ -6,7 +6,7 @@ if (!function_exists('spark_theme_customizer')) {
 	function spark_theme_customizer(WP_Customize_Manager $wp_customize) {
 		// Key Images
 		$wp_customize->add_section(ns_.'theme_images_section', array(
-				'title' => __('Additional Images', SPARK_THEME_TEXTDOMAIN),
+				'title' => __('Additional Images', 'spark_theme'),
 				'priority' => 30,
 		));
 		// footer logo
@@ -16,7 +16,7 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, ns_.'logo_footer', array(
-				'label' => __('Footer Logo', SPARK_THEME_TEXTDOMAIN),
+				'label' => __('Footer Logo', 'spark_theme'),
 				'section' => ns_.'theme_images_section',
 				'priority' => 35,
 		)));
@@ -27,14 +27,14 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, ns_.'default_featured_image', array(
-				'label' => __('Default Featured Image', SPARK_THEME_TEXTDOMAIN),
+				'label' => __('Default Featured Image', 'spark_theme'),
 				'section' => ns_.'theme_images_section',
 				'priority' => 50,
 		)));
 
 		// Fonts
 		$wp_customize->add_section(ns_.'fonts', array(
-				'title' => __('Fonts', SPARK_THEME_TEXTDOMAIN),
+				'title' => __('Fonts', 'spark_theme'),
 				'priority' => 45,
 		));
 		$wp_customize->add_setting(ns_.'font', array(
@@ -43,7 +43,7 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(ns_.'font', array(
-				'label' => __('Fonts', SPARK_THEME_TEXTDOMAIN),
+				'label' => __('Fonts', 'spark_theme'),
 				'section' => ns_.'fonts',
 				'type' => 'text',
 				'priority' => 5,
@@ -54,7 +54,7 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(ns_.'fonts_url', array(
-				'label' => __('External Fonts URL (e.g. Google Fonts)', SPARK_THEME_TEXTDOMAIN),
+				'label' => __('External Fonts URL (e.g. Google Fonts)', 'spark_theme'),
 				'section' => ns_.'fonts',
 				'type' => 'textarea',
 				'priority' => 10,
@@ -62,8 +62,8 @@ if (!function_exists('spark_theme_customizer')) {
 
 		// Palette
 		$wp_customize->add_section(ns_.'palette', array(
-				'title' => __('Theme Palette', SPARK_THEME_TEXTDOMAIN),
-				'description' => __('Enter number of colours. Click save and reload the page.', SPARK_THEME_TEXTDOMAIN),
+				'title' => __('Theme Palette', 'spark_theme'),
+				'description' => __('Enter number of colours. Click save and reload the page.', 'spark_theme'),
 				'priority' => 50,
 		));
 		$wp_customize->add_setting(ns_.'colours', array(
@@ -72,7 +72,7 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(ns_.'colours', array(
-				'label' => __('Number of colours in the palette', SPARK_THEME_TEXTDOMAIN),
+				'label' => __('Number of colours in the palette', 'spark_theme'),
 				'section' => ns_.'palette',
 				'type' => 'text',
 				'priority' => 10,
@@ -86,7 +86,7 @@ if (!function_exists('spark_theme_customizer')) {
 			));
 			$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, ns_.'colour'.$i, array(
 					/* translators: %d: numeric index of the colour. */
-					'label' => sprintf(__('Colour %d', SPARK_THEME_TEXTDOMAIN), $i),
+					'label' => sprintf(__('Colour %d', 'spark_theme'), $i),
 					'description' => 'var(--colour'.$i.'), .bg'.$i.', .hbg'.$i.', .text'.$i.', .htext'.$i.', .border'.$i.', .hborder'.$i,
 					'section' => ns_.'palette',
 					'priority' => 10 + $i,
@@ -95,7 +95,7 @@ if (!function_exists('spark_theme_customizer')) {
 
 		// Key Dimensions
 		$wp_customize->add_section(ns_.'key_dimensions', array(
-				'title' => __('Key Dimensions', SPARK_THEME_TEXTDOMAIN),
+				'title' => __('Key Dimensions', 'spark_theme'),
 				'priority' => 52,
 		));
 		$wp_customize->add_setting(ns_.'border_radius', array(
@@ -104,8 +104,8 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(ns_.'border_radius', array(
-				'description' => __('Default border radius for use across the site. Must include units (px, rem or % recommended) unless zero.', SPARK_THEME_TEXTDOMAIN),
-				'label' => __('Global Border Radius', SPARK_THEME_TEXTDOMAIN),
+				'description' => __('Default border radius for use across the site. Must include units (px, rem or % recommended) unless zero.', 'spark_theme'),
+				'label' => __('Global Border Radius', 'spark_theme'),
 				'section' => ns_.'key_dimensions',
 				'type' => 'text',
 				'priority' => 5,
@@ -116,8 +116,8 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(ns_.'site_max_width', array(
-				'description' => __('Maximum width for the entire site. Highly recommended to be entered in rem.', SPARK_THEME_TEXTDOMAIN),
-				'label' => __('Max Site Width', SPARK_THEME_TEXTDOMAIN),
+				'description' => __('Maximum width for the entire site. Highly recommended to be entered in rem.', 'spark_theme'),
+				'label' => __('Max Site Width', 'spark_theme'),
 				'section' => ns_.'key_dimensions',
 				'type' => 'text',
 				'priority' => 10,
@@ -128,21 +128,21 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(ns_.'row_max_width', array(
-				'description' => __('Maximum width for content rows. Highly recommended to be entered in rem.', SPARK_THEME_TEXTDOMAIN),
-				'label' => __('Max Row Width', SPARK_THEME_TEXTDOMAIN),
+				'description' => __('Maximum width for content rows. Highly recommended to be entered in rem.', 'spark_theme'),
+				'label' => __('Max Row Width', 'spark_theme'),
 				'section' => ns_.'key_dimensions',
 				'type' => 'text',
 				'priority' => 15,
 		));
 
 		$pages = array(
-				'home' => __('Home', SPARK_THEME_TEXTDOMAIN),
-				'other' => __('Other', SPARK_THEME_TEXTDOMAIN),
+				'home' => __('Home', 'spark_theme'),
+				'other' => __('Other', 'spark_theme'),
 		);
 		$sizes = array(
-				'small' => __('Small', SPARK_THEME_TEXTDOMAIN),
-				'medium' => __('Medium', SPARK_THEME_TEXTDOMAIN),
-				'large' => __('Large', SPARK_THEME_TEXTDOMAIN),
+				'small' => __('Small', 'spark_theme'),
+				'medium' => __('Medium', 'spark_theme'),
+				'large' => __('Large', 'spark_theme'),
 		);
 		$p = 20;
 		foreach ($pages as $page => $page_label) {
@@ -155,7 +155,7 @@ if (!function_exists('spark_theme_customizer')) {
 				));
 				$wp_customize->add_control(ns_.$setting_name, array(
 						/* translators: %1$s: page type; %2$s: screen size. */
-						'label' => sprintf(__('Hero Height - %1$s (%2$s)', SPARK_THEME_TEXTDOMAIN), $page_label, $size_label),
+						'label' => sprintf(__('Hero Height - %1$s (%2$s)', 'spark_theme'), $page_label, $size_label),
 						'section' => ns_.'key_dimensions',
 						'type' => 'text',
 						'priority' => $p++,
@@ -165,7 +165,7 @@ if (!function_exists('spark_theme_customizer')) {
 
 		// Contact Details
 		$wp_customize->add_section(ns_.'contacts_section', array(
-				'title' => __('Footer and Contact Details', SPARK_THEME_TEXTDOMAIN),
+				'title' => __('Footer and Contact Details', 'spark_theme'),
 				'priority' => 60,
 		));
 		$wp_customize->add_setting(ns_.'contact_email', array(
@@ -173,7 +173,7 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(ns_.'contact_email', array(
-				'label' => __('Email', SPARK_THEME_TEXTDOMAIN),
+				'label' => __('Email', 'spark_theme'),
 				'section' => ns_.'contacts_section',
 				'type' => 'text',
 				'priority' => 10,
@@ -183,7 +183,7 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(ns_.'contact_phone', array(
-				'label' => __('Phone Number', SPARK_THEME_TEXTDOMAIN),
+				'label' => __('Phone Number', 'spark_theme'),
 				'section' => ns_.'contacts_section',
 				'type' => 'text',
 				'priority' => 20,
@@ -193,7 +193,7 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(ns_.'contact_address', array(
-				'label' => __('Address', SPARK_THEME_TEXTDOMAIN),
+				'label' => __('Address', 'spark_theme'),
 				'section' => ns_.'contacts_section',
 				'type' => 'textarea',
 				'priority' => 30,
@@ -203,7 +203,7 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(ns_.'footer_text', array(
-				'label' => __('Footer Text', SPARK_THEME_TEXTDOMAIN),
+				'label' => __('Footer Text', 'spark_theme'),
 				'section' => ns_.'contacts_section',
 				'type' => 'textarea',
 				'priority' => 30,
@@ -214,7 +214,7 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(ns_.'copyright', array(
-				'label' => __('Copyright Text', SPARK_THEME_TEXTDOMAIN),
+				'label' => __('Copyright Text', 'spark_theme'),
 				'section' => ns_.'contacts_section',
 				'type' => 'text',
 				'priority' => 80,
@@ -222,7 +222,7 @@ if (!function_exists('spark_theme_customizer')) {
 
 		// External APIs
 		$wp_customize->add_section(ns_.'external_apis_section', array(
-				'title' => __('External APIs', SPARK_THEME_TEXTDOMAIN),
+				'title' => __('External APIs', 'spark_theme'),
 				'priority' => 80,
 		));
 		$wp_customize->add_setting(ns_.'google_maps_api', array(
@@ -231,7 +231,7 @@ if (!function_exists('spark_theme_customizer')) {
 				'type' => 'option',
 		));
 		$wp_customize->add_control(ns_.'google_maps_api', array(
-				'label' => __('Google Maps API Key', SPARK_THEME_TEXTDOMAIN),
+				'label' => __('Google Maps API Key', 'spark_theme'),
 				'section' => ns_.'external_apis_section',
 				'type' => 'text',
 				'priority' => 10,

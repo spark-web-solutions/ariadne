@@ -31,6 +31,6 @@ if (!isset($hide_excerpt) || !$hide_excerpt) {
 }
 ?>
         </div>
-        <p class="text-right read-more"><?php _e('Read More', SPARK_THEME_TEXTDOMAIN); ?></p>
+        <p class="text-right read-more"><?php _e('Read More', 'spark_theme'); ?></p>
     </a>
 </article>

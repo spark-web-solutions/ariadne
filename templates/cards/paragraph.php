@@ -9,7 +9,7 @@ if (!empty($child->post_excerpt)) {
 } else {
 	$content = apply_filters('the_content', $child->post_content);
 }
-$read_more_link = !empty($child->post_excerpt) || spark_has_children($child->ID) ? '<p class="text-right read-more"><a class="button" href="'.get_the_slug($child->ID).'">'._('Read More', SPARK_THEME_TEXTDOMAIN).'</a></p>' : '';
+$read_more_link = !empty($child->post_excerpt) || spark_has_children($child->ID) ? '<p class="text-right read-more"><a class="button" href="'.get_the_slug($child->ID).'">'._('Read More', 'spark_theme').'</a></p>' : '';
 ?>
 <div id="<?php echo $child->post_name; ?>" class="paragraph-card grid-x grid-margin-x">
 	<p class="small-24 cell h2 show-for-medium"><?php echo $child->post_title; ?></p>

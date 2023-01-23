@@ -22,22 +22,22 @@ function spark_theme_setup() {
 	add_theme_support('responsive-embeds');
 	add_theme_support('editor-font-sizes', array(
 			array(
-					'name' => esc_attr__('Small', SPARK_THEME_TEXTDOMAIN),
+					'name' => esc_attr__('Small', 'spark_theme'),
 					'size' => '0.833rem',
 					'slug' => 'small',
 			),
 			array(
-					'name' => esc_attr__('Normal', SPARK_THEME_TEXTDOMAIN),
+					'name' => esc_attr__('Normal', 'spark_theme'),
 					'size' => '1rem',
 					'slug' => 'normal',
 			),
 			array(
-					'name' => esc_attr__('Large', SPARK_THEME_TEXTDOMAIN),
+					'name' => esc_attr__('Large', 'spark_theme'),
 					'size' => '1.728rem',
 					'slug' => 'large',
 			),
 			array(
-					'name' => esc_attr__('Huge', SPARK_THEME_TEXTDOMAIN),
+					'name' => esc_attr__('Huge', 'spark_theme'),
 					'size' => '2.488rem',
 					'slug' => 'huge',
 			),

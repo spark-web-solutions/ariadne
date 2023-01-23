@@ -5,8 +5,8 @@ if (function_exists('acf_register_block_type')) {
 	function spark_register_block_types() {
 		acf_register_block_type(array(
 				'name'              => 'panel',
-				'title'             => __('Panel', SPARK_THEME_TEXTDOMAIN),
-				'description'       => __('Insert a panel', SPARK_THEME_TEXTDOMAIN),
+				'title'             => __('Panel', 'spark_theme'),
+				'description'       => __('Insert a panel', 'spark_theme'),
 				'render_template'   => locate_template('templates/blocks/panel.php'),
 				'category'          => 'formatting',
 				'icon'              => 'layout',
@@ -20,8 +20,8 @@ if (function_exists('acf_register_block_type')) {
 
 		acf_register_block_type(array(
 				'name'              => 'slider',
-				'title'             => __('Slider', SPARK_THEME_TEXTDOMAIN),
-				'description'       => __('Create a slider', SPARK_THEME_TEXTDOMAIN),
+				'title'             => __('Slider', 'spark_theme'),
+				'description'       => __('Create a slider', 'spark_theme'),
 				'render_template'   => locate_template('templates/blocks/slider.php'),
 				'category'          => 'formatting',
 				'icon'              => 'align-wide',
@@ -35,8 +35,8 @@ if (function_exists('acf_register_block_type')) {
 
 		acf_register_block_type(array(
 				'name'			    => 'post-preview',
-				'title'			    => __('Page/Post Preview', SPARK_THEME_TEXTDOMAIN),
-				'description'	    => __('Insert a tile preview of a page or post', SPARK_THEME_TEXTDOMAIN),
+				'title'			    => __('Page/Post Preview', 'spark_theme'),
+				'description'	    => __('Insert a tile preview of a page or post', 'spark_theme'),
 				'render_template'   => locate_template('templates/blocks/post-preview.php'),
 				'category'		    => 'theme',
 				'icon'			    => 'format-aside',
@@ -50,8 +50,8 @@ if (function_exists('acf_register_block_type')) {
 
 		acf_register_block_type(array(
 				'name'			    => 'recent-posts',
-				'title'			    => __('Recent Posts', SPARK_THEME_TEXTDOMAIN),
-				'description'	    => __('Insert a tile preview of your most recent posts', SPARK_THEME_TEXTDOMAIN),
+				'title'			    => __('Recent Posts', 'spark_theme'),
+				'description'	    => __('Insert a tile preview of your most recent posts', 'spark_theme'),
 				'render_template'   => locate_template('templates/blocks/recent-posts.php'),
 				'category'		    => 'theme',
 				'icon'			    => 'format-aside',
@@ -65,8 +65,8 @@ if (function_exists('acf_register_block_type')) {
 
 		acf_register_block_type(array(
 				'name'			    => 'random-posts',
-				'title'			    => __('Random Posts', SPARK_THEME_TEXTDOMAIN),
-				'description'	    => __('Insert a tile preview of random posts', SPARK_THEME_TEXTDOMAIN),
+				'title'			    => __('Random Posts', 'spark_theme'),
+				'description'	    => __('Insert a tile preview of random posts', 'spark_theme'),
 				'render_template'   => locate_template('templates/blocks/random-posts.php'),
 				'category'		    => 'theme',
 				'icon'			    => 'format-aside',
@@ -80,8 +80,8 @@ if (function_exists('acf_register_block_type')) {
 
 		acf_register_block_type(array(
 				'name'			    => 'custom-link-tile',
-				'title'			    => __('Custom Link Tile', SPARK_THEME_TEXTDOMAIN),
-				'description'	    => __('Insert a tile linking to a custom URL', SPARK_THEME_TEXTDOMAIN),
+				'title'			    => __('Custom Link Tile', 'spark_theme'),
+				'description'	    => __('Insert a tile linking to a custom URL', 'spark_theme'),
 				'render_template'   => locate_template('templates/blocks/custom-link-tile.php'),
 				'category'		    => 'theme',
 				'icon'			    => 'admin-links',
@@ -99,11 +99,11 @@ if (function_exists('acf_register_block_type')) {
 		if (function_exists("register_field_group")) {
 			register_field_group(array(
 					'id' => 'acf_block_panel_settings',
-					'title' => __('Block: Panel', SPARK_THEME_TEXTDOMAIN),
+					'title' => __('Block: Panel', 'spark_theme'),
 					'fields' => array(
 							array(
 									'key' => 'spark_block_panel_field_panel',
-									'label' => __('Panel', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Panel', 'spark_theme'),
 									'name' => 'panel',
 									'type' => 'post_object',
 									'post_type' => array('panel'),
@@ -125,7 +125,7 @@ if (function_exists('acf_register_block_type')) {
 
 			register_field_group(array(
 					'id' => 'acf_block_slider_settings',
-					'title' => __('Block: Slider', SPARK_THEME_TEXTDOMAIN),
+					'title' => __('Block: Slider', 'spark_theme'),
 					'fields' => array(
 							array(
 									'key' => 'spark_block_slider_field_slider_height',
@@ -138,16 +138,16 @@ if (function_exists('acf_register_block_type')) {
 							),
 							array(
 									'key' => 'spark_block_slider_field_slides',
-									'label' => __('Slides', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Slides', 'spark_theme'),
 									'name' => 'slides',
 									'type' => 'repeater',
 									'layout' => 'row',
-									'button_label' => __('Add Slide', SPARK_THEME_TEXTDOMAIN),
+									'button_label' => __('Add Slide', 'spark_theme'),
 									'collapsed' => 'spark_block_slider_field_image',
 									'sub_fields' => array(
 											array(
 													'key' => 'spark_block_slider_field_image',
-													'label' => __('Image', SPARK_THEME_TEXTDOMAIN),
+													'label' => __('Image', 'spark_theme'),
 													'name' => 'image',
 													'type' => 'image',
 													'save_format' => 'array',
@@ -156,25 +156,25 @@ if (function_exists('acf_register_block_type')) {
 											),
 											array(
 													'key' => 'spark_block_slider_field_heading',
-													'label' => __('Heading', SPARK_THEME_TEXTDOMAIN),
+													'label' => __('Heading', 'spark_theme'),
 													'name' => 'heading',
 													'type' => 'text',
 											),
 											array(
 													'key' => 'spark_block_slider_field_text',
-													'label' => __('Text', SPARK_THEME_TEXTDOMAIN),
+													'label' => __('Text', 'spark_theme'),
 													'name' => 'text',
 													'type' => 'textarea',
 											),
 											array(
 													'key' => 'spark_block_slider_field_button_url',
-													'label' => __('Button Link', SPARK_THEME_TEXTDOMAIN),
+													'label' => __('Button Link', 'spark_theme'),
 													'name' => 'button_url',
 													'type' => 'url',
 											),
 											array(
 													'key' => 'spark_block_slider_field_button_label',
-													'label' => __('Button Label', SPARK_THEME_TEXTDOMAIN),
+													'label' => __('Button Label', 'spark_theme'),
 													'name' => 'button_label',
 													'type' => 'text',
 											),
@@ -196,11 +196,11 @@ if (function_exists('acf_register_block_type')) {
 
 			register_field_group(array(
 					'id' => 'acf_block_post_preview_settings',
-					'title' => __('Block: Page/Post Preview', SPARK_THEME_TEXTDOMAIN),
+					'title' => __('Block: Page/Post Preview', 'spark_theme'),
 					'fields' => array(
 							array(
 									'key' => 'spark_block_post_preview_field_post',
-									'label' => __('Page/Post', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Page/Post', 'spark_theme'),
 									'name' => 'post',
 									'type' => 'post_object',
 									'post_type' => array('page', 'post'),
@@ -208,8 +208,8 @@ if (function_exists('acf_register_block_type')) {
 							),
 							array(
 									'key' => 'spark_block_post_preview_field_image',
-									'label' => __('Custom Image', SPARK_THEME_TEXTDOMAIN),
-									'instructions' => __('If no image selected the selected page/post featured image will be used', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Custom Image', 'spark_theme'),
+									'instructions' => __('If no image selected the selected page/post featured image will be used', 'spark_theme'),
 									'name' => 'image',
 									'type' => 'image',
 									'return_format' => 'url',
@@ -217,22 +217,22 @@ if (function_exists('acf_register_block_type')) {
 							),
 							array(
 									'key' => 'spark_block_post_preview_field_title',
-									'label' => __('Custom Title', SPARK_THEME_TEXTDOMAIN),
-											'instructions' => __('If left blank the selected page/post title will be used', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Custom Title', 'spark_theme'),
+											'instructions' => __('If left blank the selected page/post title will be used', 'spark_theme'),
 									'name' => 'title',
 									'type' => 'text',
 									'required' => false,
 							),
 							array(
 									'key' => 'spark_block_post_preview_field_hide_excerpt',
-									'label' => __('Hide Text Excerpt?', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Hide Text Excerpt?', 'spark_theme'),
 									'name' => 'hide_excerpt',
 									'type' => 'true_false',
 							),
 							array(
 									'key' => 'spark_block_post_preview_field_blurb',
-									'label' => __('Custom Blurb', SPARK_THEME_TEXTDOMAIN),
-									'instructions' => __('If left blank the selected page/post excerpt will be used', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Custom Blurb', 'spark_theme'),
+									'instructions' => __('If left blank the selected page/post excerpt will be used', 'spark_theme'),
 									'name' => 'blurb',
 									'type' => 'textarea',
 									'required' => false,
@@ -264,18 +264,18 @@ if (function_exists('acf_register_block_type')) {
 
 			register_field_group(array(
 					'id' => 'acf_block_recent_posts_settings',
-					'title' => __('Block: Recent Posts', SPARK_THEME_TEXTDOMAIN),
+					'title' => __('Block: Recent Posts', 'spark_theme'),
 					'fields' => array(
 							array(
 									'key' => 'spark_block_recent_posts_field_post_type',
-									'label' => __('Post Type', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Post Type', 'spark_theme'),
 									'name' => 'post_type',
 									'type' => 'select',
 									'choices' => spark_blocks_get_post_types(),
 							),
 							array(
 									'key' => 'spark_block_recent_posts_field_hide_excerpt',
-									'label' => __('Hide Text Excerpt?', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Hide Text Excerpt?', 'spark_theme'),
 									'name' => 'hide_excerpt',
 									'type' => 'true_false',
 							),
@@ -336,11 +336,11 @@ if (function_exists('acf_register_block_type')) {
 
 			register_field_group(array(
 					'id' => 'acf_block_custom_link_tile_settings',
-					'title' => __('Block: Custom Link Tile', SPARK_THEME_TEXTDOMAIN),
+					'title' => __('Block: Custom Link Tile', 'spark_theme'),
 					'fields' => array(
 							array(
 									'key' => 'spark_block_custom_link_tile_field_image',
-									'label' => __('Image', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Image', 'spark_theme'),
 									'name' => 'image',
 									'type' => 'image',
 									'return_format' => 'url',
@@ -348,21 +348,21 @@ if (function_exists('acf_register_block_type')) {
 							),
 							array(
 									'key' => 'spark_block_custom_link_tile_field_link',
-									'label' => __('Link', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Link', 'spark_theme'),
 									'name' => 'link',
 									'type' => 'url',
 									'required' => true,
 							),
 							array(
 									'key' => 'spark_block_custom_link_tile_field_title',
-									'label' => __('Title', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Title', 'spark_theme'),
 									'name' => 'title',
 									'type' => 'text',
 									'required' => true,
 							),
 							array(
 									'key' => 'spark_block_custom_link_tile_field_blurb',
-									'label' => __('Blurb', SPARK_THEME_TEXTDOMAIN),
+									'label' => __('Blurb', 'spark_theme'),
 									'name' => 'blurb',
 									'type' => 'textarea',
 							),
@@ -391,7 +391,7 @@ function spark_blocks_get_post_types() {
 	);
 	$post_types = get_post_types($args, 'objects');
 	$choices = array(
-			'post' => _x('Posts', 'Default post type label (plural)', SPARK_THEME_TEXTDOMAIN),
+			'post' => _x('Posts', 'Default post type label (plural)', 'spark_theme'),
 	);
 	foreach ($post_types as $post_type) {
 		$choices[$post_type->name] = $post_type->label;

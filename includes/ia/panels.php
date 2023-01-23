@@ -15,25 +15,25 @@ function spark_panel_meta() {
 	if (function_exists("register_field_group")) {
 		register_field_group(array(
 				'id' => 'acf_panel-settings',
-				'title' => __('Panel Settings', SPARK_THEME_TEXTDOMAIN),
+				'title' => __('Panel Settings', 'spark_theme'),
 				'fields' => array(
 						array(
 								'key' => 'spark_panels_field_panel_name',
-								'label' => __('Panel Name', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Panel Name', 'spark_theme'),
 								'name' => 'panel_name',
 								'type' => 'text',
-								'instructions' => __('Class name (used for styling). Multiple classes can be separated with spaces.', SPARK_THEME_TEXTDOMAIN),
+								'instructions' => __('Class name (used for styling). Multiple classes can be separated with spaces.', 'spark_theme'),
 								'formatting' => 'text',
 						),
 						array(
 								'key' => 'spark_panels_field_children',
-								'label' => __('Display Children As', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Display Children As', 'spark_theme'),
 								'name' => 'children',
 								'type' => 'radio',
-								'instructions' => __('If this panel has child panels, they can either be displayed as a slider or a series of tiles. Note that if this panel has children most of the following options are ignored.', SPARK_THEME_TEXTDOMAIN),
+								'instructions' => __('If this panel has child panels, they can either be displayed as a slider or a series of tiles. Note that if this panel has children most of the following options are ignored.', 'spark_theme'),
 								'choices' => array(
-										'slider' => __('Slider', SPARK_THEME_TEXTDOMAIN),
-										'tiles' => __('Tiles', SPARK_THEME_TEXTDOMAIN),
+										'slider' => __('Slider', 'spark_theme'),
+										'tiles' => __('Tiles', 'spark_theme'),
 								),
 								'other_choice' => 0,
 								'save_other_choice' => 0,
@@ -42,7 +42,7 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_recipe',
-								'label' => __('Recipe', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Recipe', 'spark_theme'),
 								'name' => 'recipe',
 								'type' => 'select',
 								'required' => 1,
@@ -53,25 +53,25 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_hide_title',
-								'label' => __('Hide Panel Title?', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Hide Panel Title?', 'spark_theme'),
 								'name' => 'hide_title',
 								'type' => 'checkbox',
 								'choices' => array(
-										'true' => __('Hide Title', SPARK_THEME_TEXTDOMAIN),
+										'true' => __('Hide Title', 'spark_theme'),
 								),
 								'default_value' => '',
 								'layout' => 'horizontal',
 						),
 						array(
 								'key' => 'spark_panels_field_flavour',
-								'label' => __('Display Style', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Display Style', 'spark_theme'),
 								'name' => 'flavour',
 								'type' => 'radio',
-								'instructions' => __('How do you want this panel displayed?', SPARK_THEME_TEXTDOMAIN),
+								'instructions' => __('How do you want this panel displayed?', 'spark_theme'),
 								'choices' => array(
-										'full_bleed' => __('Full width', SPARK_THEME_TEXTDOMAIN),
-										'partial_bleed' => __('Full width background image, contained content', SPARK_THEME_TEXTDOMAIN),
-										'fully_contained' => __('Contained background image and content', SPARK_THEME_TEXTDOMAIN),
+										'full_bleed' => __('Full width', 'spark_theme'),
+										'partial_bleed' => __('Full width background image, contained content', 'spark_theme'),
+										'fully_contained' => __('Contained background image and content', 'spark_theme'),
 								),
 								'other_choice' => 0,
 								'save_other_choice' => 0,
@@ -80,8 +80,8 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_bg_opacity',
-								'label' => __('Background Image Opacity', SPARK_THEME_TEXTDOMAIN),
-								'instructions' => __('Enter a number between 0 (completely transparent) and 1 (completely opaque).', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Background Image Opacity', 'spark_theme'),
+								'instructions' => __('Enter a number between 0 (completely transparent) and 1 (completely opaque).', 'spark_theme'),
 								'name' => 'bg_opacity',
 								'type' => 'number',
 								'default_value' => '1',
@@ -92,7 +92,7 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_bg_colour',
-								'label' => __('Background Colour', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Background Colour', 'spark_theme'),
 								'name' => 'bg_colour',
 								'type' => 'select',
 								'choices' => spark_panels_get_theme_palette(),
@@ -101,15 +101,15 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_bg_pos_x',
-								'label' => __('Background Image Anchor (Horizontal)', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Background Image Anchor (Horizontal)', 'spark_theme'),
 								'name' => 'bg_pos_x',
 								'type' => 'radio',
 								'choices' => array(
-										'left' => __('Left', SPARK_THEME_TEXTDOMAIN),
-										'25%' => __('25%', SPARK_THEME_TEXTDOMAIN),
-										'center' => __('Centre', SPARK_THEME_TEXTDOMAIN),
-										'75%' => __('75%', SPARK_THEME_TEXTDOMAIN),
-										'right' => __('Right', SPARK_THEME_TEXTDOMAIN),
+										'left' => __('Left', 'spark_theme'),
+										'25%' => __('25%', 'spark_theme'),
+										'center' => __('Centre', 'spark_theme'),
+										'75%' => __('75%', 'spark_theme'),
+										'right' => __('Right', 'spark_theme'),
 								),
 								'other_choice' => 0,
 								'save_other_choice' => 0,
@@ -139,15 +139,15 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_bg_pos_y',
-								'label' => __('Background Image Anchor (Vertical)', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Background Image Anchor (Vertical)', 'spark_theme'),
 								'name' => 'bg_pos_y',
 								'type' => 'radio',
 								'choices' => array(
-										'top' => __('Top', SPARK_THEME_TEXTDOMAIN),
-										'25%' => __('25%', SPARK_THEME_TEXTDOMAIN),
-										'center' => __('Centre', SPARK_THEME_TEXTDOMAIN),
-										'75%' => __('75%', SPARK_THEME_TEXTDOMAIN),
-										'bottom' => __('Bottom', SPARK_THEME_TEXTDOMAIN),
+										'top' => __('Top', 'spark_theme'),
+										'25%' => __('25%', 'spark_theme'),
+										'center' => __('Centre', 'spark_theme'),
+										'75%' => __('75%', 'spark_theme'),
+										'bottom' => __('Bottom', 'spark_theme'),
 								),
 								'other_choice' => 0,
 								'save_other_choice' => 0,
@@ -183,10 +183,10 @@ function spark_panel_meta() {
 						// Recipe-specific options
 						array(
 								'key' => 'spark_panels_field_image',
-								'label' => __('Additional Image', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Additional Image', 'spark_theme'),
 								'name' => 'image',
 								'type' => 'image',
-								'instructions' => __('Some recipes will display an additional image alongside the content', SPARK_THEME_TEXTDOMAIN),
+								'instructions' => __('Some recipes will display an additional image alongside the content', 'spark_theme'),
 								'save_format' => 'url',
 								'preview_size' => 'thumbnail',
 								'library' => 'all',
@@ -209,13 +209,13 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_image_pos',
-								'label' => __('Image Position', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Image Position', 'spark_theme'),
 								'name' => 'image_pos',
 								'type' => 'radio',
-								'instructions' => __('Position of the additional image', SPARK_THEME_TEXTDOMAIN),
+								'instructions' => __('Position of the additional image', 'spark_theme'),
 								'choices' => array(
-										'left' => __('Left', SPARK_THEME_TEXTDOMAIN),
-										'right' => __('Right', SPARK_THEME_TEXTDOMAIN),
+										'left' => __('Left', 'spark_theme'),
+										'right' => __('Right', 'spark_theme'),
 								),
 								'other_choice' => 0,
 								'save_other_choice' => 0,
@@ -240,10 +240,10 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_menu',
-								'label' => __('Menu', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Menu', 'spark_theme'),
 								'name' => 'menu',
 								'type' => 'select',
-								'instructions' => __('Each menu item in the selected menu will become a tile, with the description being used as the URL for the background image.', SPARK_THEME_TEXTDOMAIN),
+								'instructions' => __('Each menu item in the selected menu will become a tile, with the description being used as the URL for the background image.', 'spark_theme'),
 								'choices' => spark_panels_get_menus(),
 								'other_choice' => 0,
 								'save_other_choice' => 0,
@@ -261,7 +261,7 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_post_type',
-								'label' => __('Post Type', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Post Type', 'spark_theme'),
 								'name' => 'post_type',
 								'type' => 'select',
 								'choices' => spark_panels_get_post_types(),
@@ -286,7 +286,7 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_post_category',
-								'label' => __('Category', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Category', 'spark_theme'),
 								'name' => 'post_category',
 								'type' => 'select',
 								'choices' => spark_panels_get_post_categories(),
@@ -321,7 +321,7 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_num_items',
-								'label' => __('Maximum Number of Items', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Maximum Number of Items', 'spark_theme'),
 								'name' => 'num_items',
 								'type' => 'number',
 								'default_value' => '6',
@@ -345,7 +345,7 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_num_per_row_large',
-								'label' => __('Items Per Row (Large Screen)', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Items Per Row (Large Screen)', 'spark_theme'),
 								'name' => 'num_per_row_large',
 								'type' => 'number',
 								'default_value' => '3',
@@ -374,7 +374,7 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_num_per_row_medium',
-								'label' => __('Items Per Row (Medium Screen)', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Items Per Row (Medium Screen)', 'spark_theme'),
 								'name' => 'num_per_row_medium',
 								'type' => 'number',
 								'default_value' => '3',
@@ -403,7 +403,7 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_num_per_row_small',
-								'label' => __('Items Per Row (Small Screen)', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Items Per Row (Small Screen)', 'spark_theme'),
 								'name' => 'num_per_row_small',
 								'type' => 'number',
 								'default_value' => '1',
@@ -432,7 +432,7 @@ function spark_panel_meta() {
 						),
 						array(
 								'key' => 'spark_panels_field_video',
-								'label' => __('Video URL', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Video URL', 'spark_theme'),
 								'name' => 'video',
 								'type' => 'text',
 								'placeholder' => 'https://',
@@ -479,18 +479,18 @@ function spark_panel_meta() {
 
 		register_field_group(array(
 				'id' => 'acf_call-to-action',
-				'title' => __('Call to Action', SPARK_THEME_TEXTDOMAIN),
+				'title' => __('Call to Action', 'spark_theme'),
 				'fields' => array(
 						array(
 								'key' => 'spark_panels_cta_field_action_text',
-								'label' => __('Action Text', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Action Text', 'spark_theme'),
 								'name' => 'action_text',
 								'type' => 'text',
 								'formatting' => 'html',
 						),
 						array(
 								'key' => 'spark_panels_cta_field_destination',
-								'label' => __('Destination URL', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Destination URL', 'spark_theme'),
 								'name' => 'destination',
 								'type' => 'text',
 								'placeholder' => 'https://',
@@ -518,12 +518,12 @@ function spark_panel_meta() {
 
 		register_field_group(array(
 				'id' => 'acf_panel_post_types',
-				'title' => __('Post Types', SPARK_THEME_TEXTDOMAIN),
+				'title' => __('Post Types', 'spark_theme'),
 				'fields' => array(
 						array(
 								'key' => 'spark_panels_post_types',
-								'label' => __('Post Types', SPARK_THEME_TEXTDOMAIN),
-								'description' => __('This panel will be displayed on all posts of the selected types', SPARK_THEME_TEXTDOMAIN),
+								'label' => __('Post Types', 'spark_theme'),
+								'description' => __('This panel will be displayed on all posts of the selected types', 'spark_theme'),
 								'name' => 'post_types',
 								'type' => 'checkbox',
 								'choices' => spark_panels_get_post_types(),
