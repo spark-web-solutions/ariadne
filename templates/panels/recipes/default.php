@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var WP_Post $panel
+ */
+?>
 <div class="cell">
     <div class="wrapper">
 <?php

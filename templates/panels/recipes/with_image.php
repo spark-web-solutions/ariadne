@@ -1,4 +1,7 @@
 <?php
+/**
+ * @var WP_Post $panel
+ */
 $meta = get_post_meta($panel->ID);
 $img_block = '';
 if (!empty($meta["image"][0])) {

@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var WP_Post $panel
+ */
+?>
 <div class="cell">
     <div class="wrapper">
         <a class="link" data-open="video-modal-<?php echo $panel->ID; ?>"><i class="las la-play-circle la-5x" aria-hidden="true"></i></a>

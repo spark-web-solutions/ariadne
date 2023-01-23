@@ -1,7 +1,4 @@
 <?php
-// ------------------
-// 1. Setup the data
-// ------------------
 /**
  * @var string $file Current file
  * @var array $meta Meta data for current post
@@ -44,92 +41,59 @@ if (!empty($meta['hero_video'])) {
 	$video = $meta['hero_video'];
 }
 
-// -------------------------------------------
-// 2. setup local css transient for this post
-// -------------------------------------------
-$t_args = array('name' => 'css'.$transient_suffix, 'file' => $file);
-$transient = Spark_Transients::name($t_args);
-if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transients($ob)) {
-	ob_start();
-	if (!empty($images['large'])) {
-		$bgpos_x_large = $meta['hero_bgpos_x'];
-		$bgpos_y_large = $meta['hero_bgpos_y'];
-		$bgpos_x_medium = !empty($meta['hero_bgpos_x_medium']) ? $meta['hero_bgpos_x_medium'] : $bgpos_x_large;
-		$bgpos_y_medium = !empty($meta['hero_bgpos_y_medium']) ? $meta['hero_bgpos_y_medium'] : $bgpos_y_large;
-		$bgpos_x_small = !empty($meta['hero_bgpos_x_small']) ? $meta['hero_bgpos_x_small'] : $bgpos_x_large;
-		$bgpos_y_small = !empty($meta['hero_bgpos_y_small']) ? $meta['hero_bgpos_y_small'] : $bgpos_y_large;
-		?>
+// Hero background
+if (!empty($images['large'])) {
+	$bgpos_x_large = $meta['hero_bgpos_x'];
+	$bgpos_y_large = $meta['hero_bgpos_y'];
+	$bgpos_x_medium = !empty($meta['hero_bgpos_x_medium']) ? $meta['hero_bgpos_x_medium'] : $bgpos_x_large;
+	$bgpos_y_medium = !empty($meta['hero_bgpos_y_medium']) ? $meta['hero_bgpos_y_medium'] : $bgpos_y_large;
+	$bgpos_x_small = !empty($meta['hero_bgpos_x_small']) ? $meta['hero_bgpos_x_small'] : $bgpos_x_large;
+	$bgpos_y_small = !empty($meta['hero_bgpos_y_small']) ? $meta['hero_bgpos_y_small'] : $bgpos_y_large;
+?>
 <style>
 /* START: <?php echo $file.' - '.date("Y-m-d H:i:s"); ?> */
 @media only screen {
-    #row-hero {background-color: <?php echo spark_get_theme_mod('colour'.$meta['hero_bgcolour']); ?>;}
-    #row-hero:before {background-image: url(<?php echo $images['small']; ?>); background-position: <?php echo $bgpos_x_small.' '.$bgpos_y_small; ?>; opacity: <?php echo $meta['bg_opacity']; ?>;}
+	#row-hero {background-color: var(--colour<?php echo $meta['hero_bgcolour']; ?>);}
+	#row-hero:before {background-image: url(<?php echo $images['small']; ?>); background-position: <?php echo $bgpos_x_small.' '.$bgpos_y_small; ?>; opacity: <?php echo $meta['bg_opacity']; ?>;}
 }
 @media only screen and (min-width: 40em) { /* <-- min-width 640px - medium screens and up */
-    #row-hero:before {background-image: url(<?php echo $images['medium']; ?>); background-position: <?php echo $bgpos_x_medium.' '.$bgpos_y_medium; ?>;}
+	#row-hero:before {background-image: url(<?php echo $images['medium']; ?>); background-position: <?php echo $bgpos_x_medium.' '.$bgpos_y_medium; ?>;}
 }
 @media only screen and (min-width: 64em) { /* <-- min-width 1024px - large screens and up */
-    #row-hero:before {background-image: url(<?php echo $images['large']; ?>); background-position: <?php echo $bgpos_x_large.' '.$bgpos_y_large; ?>;}
+	#row-hero:before {background-image: url(<?php echo $images['large']; ?>); background-position: <?php echo $bgpos_x_large.' '.$bgpos_y_large; ?>;}
 }
 /* END: <?php echo $file; ?> */
 </style>
 <?php
-    }
-    $ob = ob_get_clean();
-    if (Spark_Transients::use_transients($ob)) {
-    	Spark_Transients::set($transient, $ob);
-    }
 }
-echo $ob;
-unset($ob, $t_args, $transient);
 
-// -------------------
-// 3. Generate output
-// -------------------
-$t_args = array('name' => 'markup'.$transient_suffix, 'file' => $file);
-$transient = Spark_Transients::name($t_args);
-if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transients($ob)) {
-	ob_start();
-
-	// section content - start
-	echo '<!-- START: '.$file.' -->'."\n";
-
-	// section content
+echo '<!-- START: '.$file.' -->'."\n";
 ?>
 <div id="row-hero" class="grid-container full">
-    <div id="row-inner-hero" class="relative hero-height">
+	<div id="row-inner-hero" class="relative hero-height">
 <?php
 	if (!empty($video)) {
 ?>
 		<div class="hero-video">
-		    <video loop autoplay muted playsinline preload="auto"><source src="<?php echo $video; ?>" type="video/mp4"></video>
+			<video loop autoplay muted playsinline preload="auto"><source src="<?php echo $video; ?>" type="video/mp4"></video>
 		</div>
 <?php
-    }
+	}
 ?>
 		<div class="hero-content">
 <?php
-    if (empty($meta['hide_title'])) {
-        echo '<h1>'.$title.'</h1>'."\n";
-    }
-    if (!empty($meta['hero_tagline_desc'])) {
-        echo '<p class="tagline">'.$meta['hero_tagline_desc'].'</p>'."\n";
-    }
-    if (!empty($meta['hero_destination']) && !empty($meta['hero_action_text'])) {
-        echo '<a class="button cta" href="'.$meta['hero_destination'].'">'.$meta['hero_action_text'].'</a>'."\n";
-    }
+	if (empty($meta['hide_title'])) {
+		echo '<h1>'.$title.'</h1>'."\n";
+	}
+	if (!empty($meta['hero_tagline_desc'])) {
+		echo '<p class="tagline">'.$meta['hero_tagline_desc'].'</p>'."\n";
+	}
+	if (!empty($meta['hero_destination']) && !empty($meta['hero_action_text'])) {
+		echo '<a class="button cta" href="'.$meta['hero_destination'].'">'.$meta['hero_action_text'].'</a>'."\n";
+	}
 ?>
 		</div>
 	</div>
 </div>
 <?php
-    // section content - end
-    echo '<!-- END:'.$file.' -->'."\n";
-
-	$ob = ob_get_clean();
-	if (Spark_Transients::use_transients($ob)) {
-		Spark_Transients::set($transient, $ob);
-	}
-}
-echo $ob;
-unset($ob, $t_args, $transient);
+echo '<!-- END:'.$file.' -->'."\n";

@@ -1,7 +1,4 @@
 <?php
-// ------------------
-// 1. Setup the data
-// ------------------
 /**
  * @var string $file Current file
  * @var array $meta Meta data for current post
@@ -12,40 +9,20 @@
  **/
 extract(spark_setup_data(__FILE__));
 
-// -------------------
-// 2. Generate output
-// -------------------
-$t_args = array('name' => 'markup'.$transient_suffix, 'file' => $file);
-$transient = Spark_Transients::name($t_args);
-if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transients($ob)) {
-	ob_start();
-
-	// section content - start
-	echo '<!-- START: '.$file.' -->'."\n";
-
-	// section content
+echo '<!-- START: '.$file.' -->'."\n";
 ?>
 <div class="off-canvas position-right" id="offCanvas" data-off-canvas>
 	<button class="close-button" aria-label="Close menu" type="button" data-close>
 		<i class="la la-times" aria-hidden="true"></i>
 	</button>
 <?php
-	$args = array(
-			'container' => 'nav',
-			'theme_location' => 'main',
-			'menu_class' => 'vertical',
-	);
-	spark_nav_menu($args, 'accordion');
+$args = array(
+		'container' => 'nav',
+		'theme_location' => 'main',
+		'menu_class' => 'vertical',
+);
+spark_nav_menu($args, 'accordion');
 ?>
 </div>
 <?php
-	// section content - end
-	echo '<!-- END:'.$file.' -->'."\n";
-
-	$ob = ob_get_clean();
-	if (Spark_Transients::use_transients($ob)) {
-		Spark_Transients::set($transient, $ob);
-	}
-}
-echo $ob;
-unset($ob, $t_args, $transient);
+echo '<!-- END: '.$file.' -->'."\n";

@@ -1,7 +1,4 @@
 <?php
-// ------------------
-// 1. Setup the data
-// ------------------
 /**
  * @var string $file Current file
  * @var array $meta Meta data for current post
@@ -12,19 +9,8 @@
  **/
 extract(spark_setup_data(__FILE__));
 
-// -------------------
-// 2. Generate output
-// -------------------
 global $post;
-$t_args = array('name' => 'markup'.$transient_suffix, 'file' => $file);
-$transient = Spark_Transients::name($t_args);
-if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transients($ob)) {
-	ob_start();
-
-	// section content - start
-	echo '<!-- START: '.$file.' -->'."\n";
-
-	// section content
+echo '<!-- START: '.$file.' -->'."\n";
 ?>
 <div id="row-children-as-tiles" class="grid-container">
 	<div id="row-inner-children-as-tiles" class="grid-x grid-margin-x">
@@ -35,22 +21,18 @@ if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transi
 			</article>
 			<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-3 child-tiles text-center">
 <?php
-$children = spark_get_children($post);
-$tmp_post = $post;
-foreach ($children as $post) {
-	setup_postdata($post);
-
-	$image = get_value_from_hierarchy('featured_image', $post->ID);
+$children = spark_get_children();
+foreach ($children as $child) {
+	$image = get_value_from_hierarchy('featured_image', $child->ID);
 	if (!empty($image)) {
 		$args = array(
-				'ID'	=> $post->ID,
+				'ID'	=> $child->ID,
 				'card'  => 'tile',
 				'image' => $image,
 		);
 		echo spark_get_card($args);
 	}
 }
-$post = $tmp_post;
 ?>
 			</div>
 		</div>
@@ -60,13 +42,4 @@ $post = $tmp_post;
 	</div>
 </div>
 <?php
-	// section content - end
-	echo '<!-- END:'.$file.' -->'."\n";
-
-	$ob = ob_get_clean();
-	if (Spark_Transients::use_transients($ob)) {
-		Spark_Transients::set($transient, $ob);
-	}
-}
-echo $ob;
-unset($ob, $t_args, $transient);
+echo '<!-- END:'.$file.' -->'."\n";

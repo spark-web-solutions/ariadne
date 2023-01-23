@@ -1,7 +1,4 @@
 <?php
-// ------------------
-// 1. Setup the data
-// ------------------
 /**
  * @var string $file Current file
  * @var array $meta Meta data for current post
@@ -12,58 +9,39 @@
  **/
 extract(spark_setup_data(__FILE__));
 
-// -------------------
-// 2. Generate output
-// -------------------
-$t_args = array('name' => 'markup'.$transient_suffix, 'file' => $file);
-$transient = Spark_Transients::name($t_args);
-if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transients($ob)) {
-	ob_start();
+echo '<!-- START: '.$file.' -->'."\n";
 
-	// section content - start
-	echo '<!-- START: '.$file.' -->'."\n";
-
-	// section content
-	$class = 'small-24 cell no-sidebar';
+$class = 'small-24 cell no-sidebar';
 ?>
 <div id="row-content" class="grid-container">
 	<div id="row-inner-content" class="grid-x grid-margin-x">
 <?php
-    if (!is_singular()) {
+if (!is_singular()) {
 ?>
 		<div class="<?php echo $class; ?>">
 <?php
-        $class = '';
-    }
-    while (have_posts()) {
-        the_post();
+	$class = '';
+}
+while (have_posts()) {
+	the_post();
 ?>
-		    <article <?php post_class($class); ?>>
+			<article <?php post_class($class); ?>>
 <?php
-		the_content();
-		if (is_singular() && (comments_open() || get_comments_number())) {
-     		comments_template();
-		}
+	the_content();
+	if (is_singular() && (comments_open() || get_comments_number())) {
+ 		comments_template();
+	}
 ?>
-		    </article>
+			</article>
 <?php
-    }
-    if (!is_singular()) {
+}
+if (!is_singular()) {
 ?>
 		</div>
 <?php
-    }
+}
 ?>
 	</div>
 </div>
 <?php
-    // section content - end
-    echo '<!-- END:'.$file.' -->'."\n";
-
-	$ob = ob_get_clean();
-	if (Spark_Transients::use_transients($ob)) {
-		Spark_Transients::set($transient, $ob);
-	}
-}
-echo $ob;
-unset($ob, $t_args, $transient);
+echo '<!-- END:'.$file.' -->'."\n";

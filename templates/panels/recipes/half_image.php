@@ -1,4 +1,7 @@
 <?php
+/**
+ * @var WP_Post $panel
+ */
 $meta = spark_get_post_meta($panel->ID);
 if (!empty($meta["image"])) {
     $image = wp_get_attachment_image_src($meta["image"], 'full');

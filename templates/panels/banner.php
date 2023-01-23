@@ -1,4 +1,7 @@
 <?php
+/**
+ * @var WP_Post $panel
+ */
 $panel_name = spark_get_post_meta($panel->ID, 'panel_name');
 $flavour = spark_get_post_meta($panel->ID, 'flavour');
 $bg_opacity = spark_get_post_meta($panel->ID, 'bg_opacity');

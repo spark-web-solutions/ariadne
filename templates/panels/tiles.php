@@ -1,4 +1,8 @@
 <?php
+/**
+ * @var WP_Post $wrapper
+ * @var WP_Post[] $children
+ */
 $panel_name = spark_get_post_meta($wrapper->ID, 'panel_name');
 $flavour = spark_get_post_meta($wrapper->ID, 'flavour');
 $bg_style = '';

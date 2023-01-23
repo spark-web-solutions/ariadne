@@ -1,7 +1,4 @@
 <?php
-// ------------------
-// 1. Setup the data
-// ------------------
 /**
  * @var string $file Current file
  * @var array $meta Meta data for current post
@@ -12,20 +9,10 @@
  **/
 extract(spark_setup_data(__FILE__));
 
-// -------------------
-// 2. Generate output
-// -------------------
 global $post;
-$t_args = array('name' => 'markup'.$transient_suffix, 'file' => $file);
-$transient = Spark_Transients::name($t_args);
-if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transients($ob)) {
-	ob_start();
+echo '<!-- START: '.$file.' -->'."\n";
 
-	// section content - start
-	echo '<!-- START: '.$file.' -->'."\n";
-
-	// section content
-	$children = spark_get_children($post);
+$children = spark_get_children($post);
 ?>
 <div id="row-children-as-tabs" class="grid-container">
 	<div id="row-inner-children-as-tabs" class="grid-x grid-margin-x">
@@ -38,36 +25,36 @@ if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transi
 					<h1><?php echo $post->post_title; ?></h1>
 					<div class="tabs-content vertical" data-tabs-content="children-as-tabs">
 <?php
-	$is_active = false;
-	if (!empty($post->post_content)) {
-		echo '<div class="tabs-panel is-active" id="'. $post->post_name .'" data-equalizer-watch="tabs">'."\n";
-		echo apply_filters('the_content', $post->post_content);
-		echo '</div>'."\n";
-		$is_active = true;
-	}
+$is_active = false;
+if (!empty($post->post_content)) {
+	echo '<div class="tabs-panel is-active" id="'. $post->post_name .'" data-equalizer-watch="tabs">'."\n";
+	echo apply_filters('the_content', $post->post_content);
+	echo '</div>'."\n";
+	$is_active = true;
+}
 
-	foreach ($children as $child) {
-		if ($is_active == false) {
-			$class = 'is-active';
-			$is_active = true;
-		} else {
-			$class = '';
-		}
-		$slug = get_the_slug($child->ID);
-		echo '<div class="tabs-panel '.$class.'" id="'. $slug .'" data-equalizer-watch="tabs">'."\n";
-		echo '<h2>'.$child->post_title.'</h2>'."\n";
-		echo apply_filters('the_content', $child->post_content);
-		echo '</div>'."\n";
-		if (spark_has_children($child->ID)) { // If child page has children of its own, add them too
-			foreach (spark_get_children($child) as $grandchild) {
-				echo '<div class="tabs-panel" id="'.get_the_slug($grandchild->ID).'" data-equalizer-watch>'."\n";
-				echo '<h2>'.$grandchild->post_title.'</h2>'."\n";
-				echo apply_filters('the_content', $grandchild->post_content);
-				echo '</div>'."\n";
-			}
-		}
-		unset($class);
+foreach ($children as $child) {
+	if ($is_active == false) {
+		$class = 'is-active';
+		$is_active = true;
+	} else {
+		$class = '';
 	}
+	$slug = get_the_slug($child->ID);
+	echo '<div class="tabs-panel '.$class.'" id="'. $slug .'" data-equalizer-watch="tabs">'."\n";
+	echo '<h2>'.$child->post_title.'</h2>'."\n";
+	echo apply_filters('the_content', $child->post_content);
+	echo '</div>'."\n";
+	if (spark_has_children($child->ID)) { // If child page has children of its own, add them too
+		foreach (spark_get_children($child) as $grandchild) {
+			echo '<div class="tabs-panel" id="'.get_the_slug($grandchild->ID).'" data-equalizer-watch>'."\n";
+			echo '<h2>'.$grandchild->post_title.'</h2>'."\n";
+			echo apply_filters('the_content', $grandchild->post_content);
+			echo '</div>'."\n";
+		}
+	}
+	unset($class);
+}
 ?>
 					</div>
 				</div>
@@ -76,13 +63,4 @@ if (false === ($ob = get_transient($transient)) || !Spark_Transients::use_transi
 	</div>
 </div>
 <?php
-	// section content - end
-	echo '<!-- END:'.$file.' -->'."\n";
-
-	$ob = ob_get_clean();
-	if (Spark_Transients::use_transients($ob)) {
-		Spark_Transients::set($transient, $ob);
-	}
-}
-echo $ob;
-unset($ob, $t_args, $transient);
+echo '<!-- END:'.$file.' -->'."\n";
