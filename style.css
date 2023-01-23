@@ -78,7 +78,7 @@ body, #row-copyright {background-color: var(--colour4);}
 #row-copyright, #row-copyright * {color: var(--colour1);}
 
 .off-canvas {background-color: var(--colour4); color: var(--colour1);}
-.submenu-toggle::after {border-color: var(--colour2) transparent transparent}
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after, .submenu-toggle::after {border-color: var(--colour2) transparent transparent;}
 
 button:not(.close-button, .submenu-toggle), .button, .wp-block-button__link, a.button:is(:link, :visited), a.wp-block-button__link:is(:link, :visited), input[type=submit] {background-color: var(--colour5); color: var(--colour1); border-color: var(--colour5);}
 .button * {color: var(--colour1);}
@@ -234,7 +234,8 @@ span>[type=text], span>[type=password], span>[type=date], span>[type=datetime], 
 label.gfield_label {font-size: 1rem;}
 body .gform_wrapper .gfield_date_day label, body .gform_wrapper .gfield_date_month label, body .gform_wrapper .gfield_date_year label, body .gform_wrapper .gfield_time_ampm label, body .gform_wrapper .gfield_time_hour label, body .gform_wrapper .gfield_time_minute label, body .gform_wrapper .ginput_complex label, body .gform_wrapper .instruction {margin-bottom: 1.5rem;}
 .gform_wrapper.gf_browser_gecko select {padding: 2px 24px 2px 2px!important;}
-.gform_wrapper .gfield_checkbox li input, .gform_wrapper .gfield_checkbox li input[type="checkbox"], .gform_wrapper .gfield_radio li input[type="radio"] {vertical-align: inherit!important;}
+.gform_wrapper :is(.gfield_checkbox input[type="checkbox"], .gfield_radio input[type="radio"]) {vertical-align: inherit!important;}
+.gform_wrapper :is([type="checkbox"], [type="radio"]) + label {margin-right: 0;}
 
 /**
  * Gravity Forms validation errors 
@@ -306,7 +307,7 @@ body .gform_wrapper .gfield_description.validation_message {padding: 0 0 0.6rem;
 @media only screen and (min-width: 40em) {
     nav.top-bar {min-height: 6rem;}
 
-    .wp-block-columns {gap: var(--gutter); flex-wrap: unset;}
+    .wp-block-columns {gap: calc(2 * var(--gutter)); flex-wrap: unset;}
     .wp-block-column {margin-bottom: 0;}
 
 	/**
