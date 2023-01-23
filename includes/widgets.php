@@ -10,5 +10,13 @@ if (!function_exists('spark_register_widgets')) {
 				'before_title' => '<p class="h2">',
 				'after_title' => '</p>',
 		));
+		register_sidebar(array(
+				'name' => __('Footer', SPARK_THEME_TEXTDOMAIN),
+				'id' => 'footer',
+				'before_widget' => '',
+				'after_widget' => '',
+				'before_title' => '<p class="h2">',
+				'after_title' => '</p>',
+		));
 	}
 }
