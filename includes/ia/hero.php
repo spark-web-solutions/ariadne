@@ -224,26 +224,38 @@ if (!function_exists('spark_hero_ia')) {
 									'layout' => 'vertical',
 							),
 					),
-					'location' => array(
-							array(
-									array(
-											'param' => 'post_type',
-											'operator' => '==',
-											'value' => 'page',
-									),
-							),
-							array(
-									array(
-											'param' => 'taxonomy',
-											'operator' => '==',
-											'value' => 'category',
-									),
-							),
-					),
+					'location' => spark_hero_ia_locations(),
 					'position' => 'normal',
 					'style' => 'default',
 					'menu_order' => 0,
 			));
 		}
 	}
+}
+
+function spark_hero_ia_locations() {
+	$post_types = array('page');
+	$taxonomies = array('category');
+	$post_types = apply_filters('spark_theme_hero_post_types', $post_types);
+	$taxonomies = apply_filters('spark_theme_hero_taxonomies', $taxonomies);
+	$locations = array();
+	foreach ($post_types as $post_type) {
+		$locations[] = array(
+				array(
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => $post_type,
+				),
+		);
+	}
+	foreach ($taxonomies as $taxonomy) {
+		$locations[] = array(
+				array(
+						'param' => 'taxonomy',
+						'operator' => '==',
+						'value' => $taxonomy,
+				),
+		);
+	}
+	return $locations;
 }
