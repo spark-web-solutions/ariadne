@@ -37,7 +37,7 @@ if ($post_type) {
 	$latest = get_posts($args);
 	if (count($latest) > 0) {
 	    echo '<div id="'.$id.'" class="grid-container '.$class.'">'."\n";
-	    echo '<div class="grid-x grid-margin-x small-up-'.$per_row_small.' medium-up-'.$per_row_medium.' large-up-'.$per_row_large.'" data-equalizer>'."\n";
+	    echo '<div class="grid-x grid-margin-x small-up-'.$per_row_small.' medium-up-'.$per_row_medium.' large-up-'.$per_row_large.'" data-equalizer data-equalize-by-row="true">'."\n";
 		foreach ($latest as $recent_post) {
 			$post_id = $recent_post->ID;
 		    echo spark_get_card(array('card' => 'post-preview', 'ID' => $post_id, 'hide_excerpt' => $hide_excerpt));
