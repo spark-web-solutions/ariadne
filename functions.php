@@ -114,6 +114,18 @@ function spark_theme_setup() {
 				break;
 		}
 
+		if (!is_admin()) {
+			$data = spark_setup_data(__FILE__);
+			if (!empty($data['archive_page']) && $data['archive_page'] instanceof WP_Post && current_user_can('edit_post', $data['archive_page']->ID)) {
+				$args = array(
+						'id' => 'edit',
+						'title' => _('Edit Page'),
+						'href' => get_edit_post_link($data['archive_page']->ID),
+				);
+				$wp_admin_bar->add_node($args);
+			}
+		}
+
 		$args = array(
 				'id' => 'spark-env',
 				'title' => strtoupper(wp_get_environment_type()),
