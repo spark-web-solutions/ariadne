@@ -33,6 +33,7 @@ if ($post_type) {
 			'post_type' => $post_type,
 			'post__not_in' => array($post_id),
 	);
+	$args = apply_filters('spark_recent_posts_block_get_posts_args', $args);
 	$latest = get_posts($args);
 	if (count($latest) > 0) {
 	    echo '<div id="'.$id.'" class="grid-container '.$class.'">'."\n";
