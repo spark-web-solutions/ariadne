@@ -7,9 +7,9 @@
  * @var $blurb string Optional. Card blurb
  * @var $hide_excerpt bool Optional. Whether to hide the blurb
  */
-$image = $image ?: spark_get_featured_image_url('large', $ID);
-$title = $title ?: get_the_title($ID);
-$blurb = $blurb ?: spark_post_extract($ID);
+$image = $image ?? spark_get_featured_image_url('large', $ID);
+$title = $title ?? get_the_title($ID);
+$blurb = $blurb ?? spark_post_extract($ID);
 ?>
 <article id="article-<?php echo $ID; ?>" <?php post_class('card post-preview small-24 cell'); ?> data-equalizer-watch>
     <a href="<?php echo get_permalink($ID); ?>">
