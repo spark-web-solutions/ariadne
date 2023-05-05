@@ -8,6 +8,7 @@ if (!function_exists('spark_extract')) {
 	 * @return string Teaser text
 	 */
 	function spark_extract($content, $max_chars = 200, $suffix = '...') {
+		$content = apply_filters('spark_extract', $content);
 		$content = str_replace("\n", ' ', strip_shortcodes($content));
 		if (strlen(strip_tags($content)) > $max_chars) {
 			return substr(strip_tags($content), 0, strrpos(substr(strip_tags($content), 0, $max_chars), ' ')+1).$suffix."\n";
