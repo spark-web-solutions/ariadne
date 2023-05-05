@@ -159,18 +159,6 @@ img.aligncenter {display: block; margin: 0.25rem auto 0;}
 .has-large-font-size {font-size: 1.728rem;}
 .has-huge-font-size {font-size: 2.488rem;}
 
-/** 
- * Helpers for administrators
- */
-#wpadminbar #wp-admin-bar-root-default .spark .ab-item, #wpadminbar #wp-admin-bar-root-default .spark .ab-item:hover {color: white;}
-#wpadminbar #wp-admin-bar-root-default .spark.dev .ab-item, #wpadminbar #wp-admin-bar-root-default .spark.dev .ab-item:hover {background-color: red;}
-#wpadminbar #wp-admin-bar-root-default .spark.stage .ab-item, #wpadminbar #wp-admin-bar-root-default .spark.stage .ab-item:hover {background-color: darkorange;}
-#wpadminbar #wp-admin-bar-root-default .spark.prod .ab-item, #wpadminbar #wp-admin-bar-root-default .spark.prod .ab-item:hover {background-color: green;}
-#wpadminbar #wp-admin-bar-root-default .spark.refresh .ab-item::before {content: ""; top: 2px;}
-
-.edit-panel a {background-color: black; color: #fff !important; display: table-caption; margin-top: -3rem; opacity: 0.2; padding: 0.5rem 1rem; white-space: nowrap; position: relative; z-index: 1000;}
-.edit-panel a * {color:#fff;}
-
 /**
  * Offcanvas Menu 
  */
