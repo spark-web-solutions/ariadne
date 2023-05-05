@@ -19,7 +19,7 @@ if (!function_exists('spark_hero_ia')) {
 									'name' => 'hero_bgcolour',
 									'type' => 'select',
 									'choices' => spark_panels_get_theme_palette(),
-									'default_value' => 'transparent',
+									'default_value' => apply_filters('spark_default_hero_bg_colour', 'transparent'),
 							),
 							array(
 									'key' => 'spark_hero_hide_title',
@@ -56,7 +56,7 @@ if (!function_exists('spark_hero_ia')) {
 									'instructions' => __('Enter a number between 0 (completely transparent) and 1 (completely opaque).', 'spark_theme'),
 									'name' => 'hero_bg_opacity',
 									'type' => 'number',
-									'default_value' => '1',
+									'default_value' => apply_filters('spark_default_hero_bg_opacity', 1),
 									'formatting' => 'text',
 									'min' => 0,
 									'max' => 1,
@@ -76,7 +76,7 @@ if (!function_exists('spark_hero_ia')) {
 									),
 									'other_choice' => 0,
 									'save_other_choice' => 0,
-									'default_value' => 'center',
+									'default_value' => apply_filters('spark_default_hero_bgpos_y', 'center'),
 									'layout' => 'horizontal',
 							),
 							array(
@@ -93,7 +93,7 @@ if (!function_exists('spark_hero_ia')) {
 									),
 									'other_choice' => 0,
 									'save_other_choice' => 0,
-									'default_value' => 'center',
+									'default_value' => apply_filters('spark_default_hero_bgpos_x', 'center'),
 									'layout' => 'horizontal',
 							),
 							array(
