@@ -54,7 +54,7 @@ if (!function_exists('spark_hero_ia')) {
 									'key' => 'spark_hero_bg_opacity',
 									'label' => __('Background Image Opacity', 'spark_theme'),
 									'instructions' => __('Enter a number between 0 (completely transparent) and 1 (completely opaque).', 'spark_theme'),
-									'name' => 'bg_opacity',
+									'name' => 'hero_bg_opacity',
 									'type' => 'number',
 									'default_value' => '1',
 									'formatting' => 'text',
