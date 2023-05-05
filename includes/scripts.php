@@ -27,6 +27,11 @@ function spark_frontend_scripts() {
 	wp_add_inline_style('spark-style', spark_generate_dynamic_styles());
 	wp_enqueue_style('line-awesome', get_template_directory_uri().'/assets/vendor/line-awesome/css/line-awesome.min.css', array(), '1.3.0');
 
+	// Administrator styles
+	if (is_user_logged_in()) {
+		wp_enqueue_style('spark-admin-style', get_template_directory_uri().'/assets/css/admin.css', array(), $theme->get('Version'));
+	}
+
 	// Header scripts
 
 	// Footer sripts
