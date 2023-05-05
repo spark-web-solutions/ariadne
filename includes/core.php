@@ -65,7 +65,14 @@ if (!function_exists('spark_setup_data')) {
 				$t_suffix .= '_'.$taxonomy.'_'.$current_id.'_'.$current_page;
 			} else {
 				$current_id = null;
-				$archive_page = get_page_by_path(get_query_var('post_type'));
+				$post_type_slug = get_query_var('post_type');
+				$post_type = get_post_type_object($post_type_slug);
+				if (!empty($post_type->has_archive) || is_string($post_type->has_archive)) {
+					$slug = $post_type->has_archive;
+				} else {
+					$slug = $post_type_slug;
+				}
+				$archive_page = get_page_by_path($slug);
 				if ($archive_page instanceof WP_Post) {
 					$current_id = $archive_page->ID;
 				}
