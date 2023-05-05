@@ -27,6 +27,11 @@ while (have_posts()) {
 ?>
 			<article <?php post_class($class); ?>>
 <?php
+	if (!is_front_page() && !empty(spark_get_post_meta($post, 'hide_title'))) {
+?>
+				<h1><?php the_title(); ?></h1>
+<?php
+	}
 	the_content();
 	if (is_singular() && (comments_open() || get_comments_number())) {
  		comments_template();
