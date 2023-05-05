@@ -9,7 +9,7 @@ if (is_admin()) {
 	}
 }
 
-add_action('wp_enqueue_scripts', 'spark_frontend_scripts');
+add_action('wp_enqueue_scripts', 'spark_frontend_scripts', 1);
 function spark_frontend_scripts() {
 	// Core styles
 	wp_enqueue_style('foundation', get_template_directory_uri().'/assets/vendor/foundation/css/foundation.min.css', array(), '6.4.2');
