@@ -53,6 +53,8 @@ body :is(button, .button, .wp-block-button__link, .gform_wrapper .gform_footer i
 
 article {padding-bottom: var(--gutter);}
 
+audio {width: 100%;}
+
 .accordion-title .h2 {font-size: 1rem;}
 .accordion-title::before {font-size: 1.5rem; font-weight: 700; top:35%;}
 .accordion-title, .accordion-content {border-bottom: 1px solid #e6e6e6;}
@@ -64,12 +66,13 @@ article {padding-bottom: var(--gutter);}
 /**
  * Colour scheme
  */
-main {background-color: var(--colour1);}
+#everything, main {background-color: var(--colour1);}
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {color: var(--colour2);}
 body, * {color: var(--colour2);}
 a:link, a:link:hover, a:visited, a:link:focus {color: var(--colour3);}
 nav.title-bar, nav.top-bar, nav.top-bar ul {background-color: var(--colour0);}
 nav.title-bar .la-bars, nav .menu > :is(li, li.is-active) > :is(a, a:hover) {color: var(--colour2);}
+nav.top-bar .menu.sub-menu {background-color: var(--colour1); border: none;}
 #row-hero {background-color: var(--colour2);}
 #row-hero * {color: var(--colour1);}
 footer {background-color: var(--colour4);}
@@ -172,13 +175,13 @@ body.admin-bar .off-canvas {margin-top: var(--wp-admin--admin-bar--height);}
 #small-logo {max-height: 4rem; padding: 0.5rem 0;}
 nav.top-bar {position: relative;}
 nav.top-bar .menu > li > a {margin-left: 0.25rem; border-radius: 0rem; padding:0.5rem 0.75rem;}
-nav.top-bar, nav.top-bar ul {background-color: transparent;}
 
 /**
  * Hero 
  */
 #row-hero {position: relative;}
 #row-hero:before {content: ' '; display: block; background-size: cover; background-position: center center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;}
+#row-inner-hero {position: relative; z-index: 2; display: flex; justify-content: center; align-items: center;}
 #row-hero .hero-video {position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 5;}
 #row-hero .hero-video video {width: 100%; height: 100%; object-fit: cover;}
 
@@ -191,6 +194,11 @@ nav.top-bar, nav.top-bar ul {background-color: transparent;}
 
 .card.post-preview .article-excerpt {margin: 0 var(--gutter); width: calc(100% - (2 * var(--gutter)));}
 .card.post-preview .button {margin: 0 var(--gutter) var(--gutter); max-width: calc(100% - (2 * var(--gutter)));}
+
+/**
+ * Search
+ */
+body.search-results main .search-form {margin: var(--gutter) auto;}
 
 /**
  * Children as Paragraphs 
@@ -254,7 +262,6 @@ body .gform_wrapper .gfield_description.validation_message {padding: 0 0 0.6rem;
 .panel-inner-wrapper p.action-button {text-align: center;}
 
 /* Children as Slider */
-.panel-slider.slick-slider {padding: 0;}
 .panel-slider .panel-inner-wrapper {padding-left: 4rem; padding-right: 4rem;}
 
 /* Children as Tiles */
@@ -288,6 +295,14 @@ body .gform_wrapper .gfield_description.validation_message {padding: 0 0 0.6rem;
 .panel-wrapper.video .wrapper {display: block; position: absolute; width: 100%; height: 100%;}
 .panel-wrapper.video .link {display: block; position: absolute; width: 100%; height: 100%;}
 .panel-wrapper.video .link .las {color: #E62117; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+
+/**
+ * Small screens only
+ */
+@media only screen and (max-width: 39.9375em) {
+    .alignwide, .alignfull {width: 100vw; margin-left: calc(50% - min(50vw, calc(var(--site-max-width) / 2))); /* to "break free" of container */}
+    :is(.alignwide, .alignfull) > *:not(.alignwide, .alignfull, .full, .wp-block-cover__background, .wp-block-cover__image-background, .panel-slider-wrapper) {margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter);}
+}
 
 /**
  * Medium and up 
