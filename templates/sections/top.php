@@ -19,7 +19,7 @@ echo '<!-- START: '.$file.' -->'."\n";
 					<?php the_custom_logo(); ?>
 				</section>
 				<section class="top-bar-right">
-					<a href="#" class="float-right hide-for-medium" type="button" data-open="offCanvas"><i class="la la-bars la-3x bg1 text3 hbg3 htext1" aria-hidden="true"></i></a>
+					<a class="float-right hide-for-medium" type="button" data-open="offCanvas"><i class="la la-bars la-3x bg1 text3 hbg3 htext1" aria-hidden="true"></i></a>
 <?php
 $args = array(
 		'theme_location' => 'main',

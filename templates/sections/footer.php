@@ -25,11 +25,11 @@ if (!empty($logo_footer)) {
 	echo '<img class="logo" src="'.$logo_footer.'" alt="">'."\n";
 }
 if (!empty($footer_text)) {
-	echo '<p class="h3 about">'.$footer_text.'</p>'."\n";
+	echo '<p class="about">'.$footer_text.'</p>'."\n";
 }
 echo '<div class="search_wrapper">'."\n";
 get_search_form();
-echo '	<a href="#" class="button button-search margin-zero radius-zero" onclick="jQuery(this).parent().find(\'form.search-form\').submit();">'."\n";
+echo '	<a class="button button-search margin-zero radius-zero" onclick="jQuery(this).parent().find(\'form.search-form\').submit();">'."\n";
 echo '		<span class="show-for-sr">Search</span>'."\n";
 echo '		<span aria-hidden="true"><i class="la la-search margin-zero" aria-hidden="true"></i></span>'."\n";
 echo '	</a>'."\n";
