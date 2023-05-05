@@ -1,7 +1,7 @@
 === Theme Name ===
 Contributors: markparnell
 Requires at least: 5.0
-Tested up to: 6.1
+Tested up to: 6.2
 Requires PHP: 7.0
 Stable tag: 2.0.0
 License: GPLv2 or later
@@ -25,7 +25,7 @@ To make the best use of this boilerplate, pair it with Gravity Forms and Advance
 == Changelog ==
 
 = 2.0.0 =
-2022
+5th May 2023
 
 * Major rebuild including more logical directory structure
 * Added support for automatic updates
