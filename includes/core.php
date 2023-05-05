@@ -20,7 +20,7 @@ require_once(trailingslashit(get_template_directory()).'includes/fx/colours.php'
 require_once(trailingslashit(get_template_directory()).'includes/fx/columns.php'); // Rearrange arrays into columns
 require_once(trailingslashit(get_template_directory()).'includes/fx/embed.php'); // Wraps oEmbed content in Foundation responsive embed classes
 require_once(trailingslashit(get_template_directory()).'includes/fx/extract.php'); // Generate an extract for your content
-require_once(trailingslashit(get_template_directory()).'includes/fx/featured-image.php'); // Hierarchy-aware featured image logic
+require_once(trailingslashit(get_template_directory()).'includes/fx/media.php'); // Custom media logic including hierarchy-aware featured image retrieval
 require_once(trailingslashit(get_template_directory()).'includes/fx/hero.php'); // Hero image logic
 require_once(trailingslashit(get_template_directory()).'includes/fx/hierarchy.php'); // Functions for working with hierarchical content
 require_once(trailingslashit(get_template_directory()).'includes/fx/login.php'); // Various customisations relating to logging in and the login page
