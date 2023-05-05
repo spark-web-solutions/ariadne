@@ -41,6 +41,9 @@ if (!empty($meta['hero_video'])) {
 	$video = $meta['hero_video'];
 }
 
+$title = apply_filters('spark_hero_title', $title);
+$tagline = apply_filters('spark_hero_tagline', $meta['hero_tagline_desc']);
+
 // Hero background
 if (!empty($images['large'])) {
 	$bgpos_x_large = $meta['hero_bgpos_x'];
@@ -85,8 +88,8 @@ echo '<!-- START: '.$file.' -->'."\n";
 	if (empty($meta['hide_title'])) {
 		echo '<h1>'.$title.'</h1>'."\n";
 	}
-	if (!empty($meta['hero_tagline_desc'])) {
-		echo '<p class="tagline">'.$meta['hero_tagline_desc'].'</p>'."\n";
+	if (!empty($tagline)) {
+		echo '<p class="tagline">'.$tagline.'</p>'."\n";
 	}
 	if (!empty($meta['hero_destination']) && !empty($meta['hero_action_text'])) {
 		echo '<a class="button cta" href="'.$meta['hero_destination'].'">'.$meta['hero_action_text'].'</a>'."\n";
