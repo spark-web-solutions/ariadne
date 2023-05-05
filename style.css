@@ -46,7 +46,7 @@ body, *, .font1, .font1 * {font-family: var(--font1);}
 body :is(.editor-post-title__input, h1, .h1, .h1 *, h2, .h2, .h2 *, h3, .h3, .h3 *, h4, .h4, .h4 *, h5, .h5, .h5 *, h6, .h6, .h6 *), .font2, .font2 * {font-family: var(--font2);}
 
 a:link {text-decoration: underline; text-underline-offset: 3px;}
-button, .button, .wp-block-button__link, body .gform_wrapper body .gform_footer input.button, body .gform_wrapper .gform_footer input[type="submit"], body .gform_wrapper .gform_page_footer input.button, body .gform_wrapper .gform_page_footer input[type="submit"] {border-radius: var(--border-radius); font-size: 1.5rem; font-weight: bold; padding: var(--gutter) calc(var(--gutter) * 2); line-height: 1;}
+body :is(button, .button, .wp-block-button__link, .gform_wrapper .gform_footer input.button, .gform_wrapper .gform_footer input[type="submit"], .gform_wrapper .gform_page_footer input.button, .gform_wrapper .gform_page_footer input[type="submit"]) {text-decoration: none; border-radius: var(--border-radius); font-size: 1.5rem; font-weight: bold; padding: var(--gutter) calc(var(--gutter) * 2); line-height: 1;}
 
 #everything {max-width: var(--site-max-width); margin-left: auto; margin-right: auto;}
 .grid-container, .grid-container.full > .grid-x, .grid-container.full > .grid-y {max-width: var(--row-max-width); margin-left: auto; margin-right: auto;}
@@ -298,18 +298,18 @@ body .gform_wrapper .gfield_description.validation_message {padding: 0 0 0.6rem;
     .wp-block-columns {gap: calc(2 * var(--gutter)); flex-wrap: unset;}
     .wp-block-column {margin-bottom: 0;}
 
-	/**
-	 * Add support for multi-column Gravity Forms 
-	 */
+    /**
+     * Add support for multi-column Gravity Forms 
+     */
     .gform_wrapper ul.gform_column {float:left; display:inline-block; padding: 0.5rem 1.5rem; min-height: 100%;}
     .gform_wrapper .two-column .gform_column {width: 49.5%;}
     .gform_wrapper .three-column .gform_column {width: 33%;}
     .gform_wrapper .gsection {margin: 0;}
     .gform_wrapper .two-column .gform_column:nth-of-type(3), .gform_wrapper .three-column .gform_column:nth-of-type(4) {float: right;} /* Extra 1 because there's an empty one at the start */
     
-	/**
-	 * Panels 
-	 */
+    /**
+     * Panels 
+     */
     .panel-wrapper.half_image .image {background-position-x: left; height: 100%; position: absolute; width: calc(50% + 0.46875rem); top: 0; left: 0;}
     .panel-wrapper.half_image .image-right > .image {background-position-x: right; left: auto; right: 0;}
     .panel-wrapper.half_image .content {float: right; padding: 0.975rem; width: 50%;}
@@ -322,15 +322,15 @@ body .gform_wrapper .gfield_description.validation_message {padding: 0 0 0.6rem;
  * Large and up 
  */
 @media only screen and (min-width: 64em) {
-	/**
-	 * Add support for align-wide blocks
-	 */
+    /**
+     * Add support for align-wide blocks
+     */
     .no-sidebar .alignwide, .no-sidebar .alignfull {width: 100vw; max-width: var(--site-max-width); margin-left: calc(50% - min(50vw, calc(var(--site-max-width) / 2))); /* to "break free" of container */}
-    .no-sidebar :is(.alignwide, .alignfull) > *:not(.alignwide):not(.alignfull):not(.full):not(.slick-slider):not(.slick-list):not(.panel-slider-wrapper) {max-width: var(--row-max-width); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter);}
+    .no-sidebar :is(.alignwide, .alignfull) > *:not(.alignwide, .alignfull, .full, img, .wp-block-cover__background, .wp-block-cover__image-background, .panel-slider-wrapper) {max-width: var(--row-max-width); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter);}
     
-	/**
-	 * Panels 
-	 */
+    /**
+     * Panels 
+     */
     .panel-wrapper.video {padding-top: 2rem; padding-bottom: 2rem;}
     .panel-wrapper.video {height: 600px;}
 }
