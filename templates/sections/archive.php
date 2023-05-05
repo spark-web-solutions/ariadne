@@ -19,7 +19,9 @@ if ($archive_page) {
 	echo '	<h1>'.$archive_page->post_title.'</h1>'."\n";
 	echo apply_filters('the_content', $archive_page->post_content);
 }
-echo '<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-3">'."\n";
+?>
+			<div class="grid-x grid-margin-x small-up-1 medium-up-2 large-up-3" data-equalizer data-equalize-by-row="true">
+<?php
 while (have_posts()) {
 	the_post();
 	echo spark_get_card('card=post-preview&ID='.get_the_id());

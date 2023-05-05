@@ -7,7 +7,7 @@
  * @var $title string Title
  */
 ?>
-<article id="<?php echo $slug; ?>" <?php post_class('child cell', $ID); ?>>
+<article id="<?php echo $slug; ?>" <?php post_class('child cell', $ID); ?> data-equalizer-watch>
     <div class="image" style="background-image:url('<?php echo $image; ?>')">
         <a href="<?php echo get_permalink($ID); ?>"><span class="h2"><?php echo $title; ?></span></a>
     </div>
