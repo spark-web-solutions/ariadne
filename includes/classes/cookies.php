@@ -15,7 +15,7 @@ class Spark_Cookie {
      */
     public static function setCookie($name, $value, $expiry = null) {
         if (is_null($expiry)) {
-        	$expiry = current_time()+self::LIFETIME;
+        	$expiry = current_time('timestamp')+self::LIFETIME;
         }
         if (!is_scalar($value)) {
         	$value = json_encode($value);
