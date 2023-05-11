@@ -20,7 +20,7 @@ function spark_frontend_scripts() {
 		wp_enqueue_style(ns_.'fonts', $external_fonts);
 	}
 
-	$theme = wp_get_theme();
+	$theme = wp_get_theme('ariadne');
 
 	// Theme styles
 	wp_enqueue_style('spark-style', get_template_directory_uri().'/style.css', array('foundation'), $theme->get('Version'));
@@ -53,6 +53,6 @@ function spark_frontend_scripts() {
  */
 add_action('enqueue_block_editor_assets', 'spark_gutenberg_scripts');
 function spark_gutenberg_scripts() {
-	$theme = wp_get_theme();
+	$theme = wp_get_theme('ariadne');
 	wp_enqueue_script('spark-editor', get_template_directory_uri().'/assets/js/editor.js', array('wp-blocks', 'wp-dom'), $theme->get('Version'), true);
 }
