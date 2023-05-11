@@ -3,7 +3,7 @@ Contributors: markparnell
 Requires at least: 5.0
 Tested up to: 6.2
 Requires PHP: 7.0
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,13 @@ to fork the theme and create your own version - as long as you are aware that yo
 To make the best use of this boilerplate, pair it with Gravity Forms and Advanced Custom Fields Pro.
 
 == Changelog ==
+
+= 2.0.1 =
+11th May 2023
+
+* Fixed unnecessary horizontal scroll caused by align wide/full items inside of column block
+* If hero destination is specified but no action text, make the whole hero a link to the specified destination
+* Fixed issue with scripts and styles using version number from child theme
 
 = 2.0.0 =
 5th May 2023
