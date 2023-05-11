@@ -78,30 +78,40 @@ if (!empty($images['large'])) {
 echo '<!-- START: '.$file.' -->'."\n";
 ?>
 <div id="row-hero" class="grid-container full">
+<?php
+if (!empty($meta['hero_destination']) && empty($meta['hero_action_text'])) {
+	echo '<a href="'.$meta['hero_destination'].'">'."\n";
+}
+?>
 	<div id="row-inner-hero" class="relative hero-height">
 <?php
-	if (!empty($video)) {
+if (!empty($video)) {
 ?>
 		<div class="hero-video">
 			<video loop autoplay muted playsinline preload="auto"><source src="<?php echo $video; ?>" type="video/mp4"></video>
 		</div>
 <?php
-	}
+}
 ?>
 		<div class="hero-content">
 <?php
-	if (empty($meta['hide_title'])) {
-		echo '<h1>'.$title.'</h1>'."\n";
-	}
-	if (!empty($tagline)) {
-		echo '<p class="tagline">'.$tagline.'</p>'."\n";
-	}
-	if (!empty($meta['hero_destination']) && !empty($meta['hero_action_text'])) {
-		echo '<a class="button cta" href="'.$meta['hero_destination'].'">'.$meta['hero_action_text'].'</a>'."\n";
-	}
+if (empty($meta['hide_title'])) {
+	echo '<h1>'.$title.'</h1>'."\n";
+}
+if (!empty($tagline)) {
+	echo '<p class="tagline">'.$tagline.'</p>'."\n";
+}
+if (!empty($meta['hero_destination']) && !empty($meta['hero_action_text'])) {
+	echo '<a class="button cta" href="'.$meta['hero_destination'].'">'.$meta['hero_action_text'].'</a>'."\n";
+}
 ?>
 		</div>
 	</div>
+<?php
+if (!empty($meta['hero_destination']) && empty($meta['hero_action_text'])) {
+	echo '</a>'."\n";
+}
+?>
 </div>
 <?php
 echo '<!-- END:'.$file.' -->'."\n";
