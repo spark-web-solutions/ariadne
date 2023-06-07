@@ -386,13 +386,10 @@ if (function_exists('acf_register_block_type')) {
 function spark_blocks_get_post_types() {
 	$args = array(
 			'public' => true,
-			'hierarchical' => false,
 			'show_in_nav_menus' => true,
 	);
 	$post_types = get_post_types($args, 'objects');
-	$choices = array(
-			'post' => _x('Posts', 'Default post type label (plural)', 'spark_theme'),
-	);
+	$choices = array();
 	foreach ($post_types as $post_type) {
 		$choices[$post_type->name] = $post_type->label;
 	}
