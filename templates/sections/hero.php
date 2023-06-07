@@ -40,24 +40,25 @@ if (!empty($meta['hero_title'])) {
 if (!empty($meta['hero_video'])) {
 	$video = $meta['hero_video'];
 }
+$tagline = $meta['hero_tagline_desc'] ?? '';
 
 $title = apply_filters('spark_hero_title', $title);
-$tagline = apply_filters('spark_hero_tagline', $meta['hero_tagline_desc']);
+$tagline = apply_filters('spark_hero_tagline', $tagline);
 
 // Hero background
 if (!empty($images['large'])) {
-	$bg_colour = $meta['hero_bgcolour'] ?: apply_filters('spark_default_hero_bg_colour', 'transparent');
+	$bg_colour = $meta['hero_bgcolour'] ?? apply_filters('spark_default_hero_bg_colour', 'transparent');
 	if (is_numeric($bg_colour)) {
 		$bg_colour = 'var(--colour'.$bg_colour.')';
 	}
-	$bg_opacity = $meta['hero_bg_opacity'] ?: apply_filters('spark_default_hero_bg_opacity', 1);
-	$bgpos_x_large = $meta['hero_bgpos_x'] ?: apply_filters('spark_default_hero_bgpos_x', 'center');
-	$bgpos_y_large = $meta['hero_bgpos_y'] ?: apply_filters('spark_default_hero_bgpos_y', 'center');
-	$bgpos_x_medium = !empty($meta['hero_bgpos_x_medium']) ? $meta['hero_bgpos_x_medium'] : $bgpos_x_large;
-	$bgpos_y_medium = !empty($meta['hero_bgpos_y_medium']) ? $meta['hero_bgpos_y_medium'] : $bgpos_y_large;
-	$bgpos_x_small = !empty($meta['hero_bgpos_x_small']) ? $meta['hero_bgpos_x_small'] : $bgpos_x_large;
-	$bgpos_y_small = !empty($meta['hero_bgpos_y_small']) ? $meta['hero_bgpos_y_small'] : $bgpos_y_large;
-	?>
+	$bg_opacity = $meta['hero_bg_opacity'] ?? apply_filters('spark_default_hero_bg_opacity', 1);
+	$bgpos_x_large = $meta['hero_bgpos_x'] ?? apply_filters('spark_default_hero_bgpos_x', 'center');
+	$bgpos_y_large = $meta['hero_bgpos_y'] ?? apply_filters('spark_default_hero_bgpos_y', 'center');
+	$bgpos_x_medium = $meta['hero_bgpos_x_medium'] ?? $bgpos_x_large;
+	$bgpos_y_medium = $meta['hero_bgpos_y_medium'] ?? $bgpos_y_large;
+	$bgpos_x_small = $meta['hero_bgpos_x_small'] ?? $bgpos_x_large;
+	$bgpos_y_small = $meta['hero_bgpos_y_small'] ?? $bgpos_y_large;
+?>
 <style>
 /* START: <?php echo $file.' - '.date("Y-m-d H:i:s"); ?> */
 @media only screen {

@@ -20,7 +20,7 @@ if (!function_exists('spark_body_classes')) {
 		$class[] = (is_single())        ? '' : 'not-single';
 		$class[] = (is_sticky())        ? 'sticky' : 'not-sticky';
 		$class[] = (is_tax())           ? 'tax' : 'not-tax';
-		if ($post_atts == true) {
+		if ($post_atts == true && $post instanceof WP_Post) {
 			$class[] = $post->post_type.'-'.$post->post_name;
 		}
 
