@@ -48,7 +48,7 @@ require_once(trailingslashit(get_template_directory()).'includes/gf/columns.php'
 if (!function_exists('spark_setup_data')) {
 	function spark_setup_data($file, $transient_term = SPARK_MEDIUM_TERM) {
 		global $post;
-		$current_id = $post->ID;
+		$current_id = $post->ID ?? null;
 		$archive_page = $current_page = null;
 		$t_suffix = '';
 		if (is_archive()) {
@@ -68,7 +68,7 @@ if (!function_exists('spark_setup_data')) {
 				$current_id = null;
 				$post_type_slug = get_query_var('post_type');
 				$post_type = get_post_type_object($post_type_slug);
-				if (!empty($post_type->has_archive) || is_string($post_type->has_archive)) {
+				if (!empty($post_type->has_archive) && is_string($post_type->has_archive)) {
 					$slug = $post_type->has_archive;
 				} else {
 					$slug = $post_type_slug;
