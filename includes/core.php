@@ -30,6 +30,7 @@ require_once(trailingslashit(get_template_directory()).'includes/fx/menus.php');
 require_once(trailingslashit(get_template_directory()).'includes/fx/panels.php'); // Panel functions
 require_once(trailingslashit(get_template_directory()).'includes/fx/pagination.php'); // Generate pagination links using Foundation markup
 require_once(trailingslashit(get_template_directory()).'includes/fx/responsive.php'); // Functions for generating responsive content
+require_once(trailingslashit(get_template_directory()).'includes/fx/search.php'); // Improvements to search functionality
 require_once(trailingslashit(get_template_directory()).'includes/fx/slug.php'); // Utility functions for accessing slug for current post
 
 // Information Architecture
