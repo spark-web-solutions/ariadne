@@ -25,13 +25,7 @@ if (!function_exists('spark_get_card')) {
 			$ID = $card;
 		}
 		if (!isset($card)) {
-			$card = 'search';
-		}
-		if (!isset($max)) {
-			$max = 70;
-		}
-		if (!empty($type)) {
-			$card .= '.'.$type;
+			$card = 'post-preview';
 		}
 
 		ob_start();
@@ -40,7 +34,14 @@ if (!function_exists('spark_get_card')) {
 		echo '<!-- '.sprintf(__('START Card %s'), $ID).' -->'."\n";
 
 		// Need to grab the template file and include it ourselves so that our variables get passed through
-		$card_template = locate_template('templates/cards/'.$card.'.php', false, false);
+		$template_files = array(
+				'templates/cards/'.$card.'.php',
+		);
+		if (is_int($ID)) {
+			$post_type = get_post_type($ID);
+			array_unshift($template_files, 'templates/cards/'.$card.'-'.$post_type.'.php');
+		}
+		$card_template = locate_template($template_files, false, false);
 		if ($card_template) {
 			include($card_template);
 		}
