@@ -319,7 +319,7 @@ body .gform_wrapper .gfield_description.validation_message {padding: 0 0 0.6rem;
      * Add support for align-wide blocks
      */
     .no-sidebar .alignwide, .no-sidebar .alignfull {width: 100vw; max-width: var(--site-max-width); margin-left: calc(50% - min(50vw, calc(var(--site-max-width) / 2))); /* to "break free" of container */}
-    .no-sidebar .wp-block-column :is(.alignwide, .alignfull) {max-width: var(--row-max-width); margin: 0 auto;}
+    .no-sidebar .wp-block-column :is(.alignwide, .alignfull) {width: auto; max-width: var(--row-max-width); margin: 0 auto;}
     .no-sidebar :is(.alignwide, .alignfull) > *:not(.alignwide, .alignfull, .full, .full-width-image, img, .wp-block-cover__background, .wp-block-cover__image-background, .panel-slider-wrapper) {max-width: var(--row-max-width); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter);}
 
     /**
