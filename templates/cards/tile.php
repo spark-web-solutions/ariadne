@@ -6,6 +6,7 @@
  * @var $image string Image URL
  * @var $title string Title
  */
+$image = $image ?? spark_get_featured_image_url('large', $ID, true);
 ?>
 <article id="<?php echo $slug; ?>" <?php post_class('child cell', $ID); ?> data-equalizer-watch>
     <div class="image" style="background-image:url('<?php echo $image; ?>')">

@@ -7,7 +7,7 @@
  * @var $blurb string Optional. Card blurb
  * @var $hide_excerpt bool Optional. Whether to hide the blurb
  */
-$image = $image ?? spark_get_featured_image_url('large', $ID);
+$image = $image ?? spark_get_featured_image_url('large', $ID, true);
 $title = $title ?? get_the_title($ID);
 $blurb = $blurb ?? spark_post_extract($ID);
 ?>
