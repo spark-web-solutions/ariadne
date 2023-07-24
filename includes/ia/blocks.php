@@ -34,6 +34,21 @@ if (function_exists('acf_register_block_type')) {
 		));
 
 		acf_register_block_type(array(
+				'name'              => 'tabs',
+				'title'             => __('Tabs', 'spark_theme'),
+				'description'       => __('Build tabbed content', 'spark_theme'),
+				'render_template'   => locate_template('templates/blocks/tabs.php'),
+				'category'          => 'layout',
+				'icon'              => 'category',
+				'keywords'          => array('tab, tabs, tabbed'),
+				'mode'              => 'auto',
+				'align'             => 'center',
+				'supports'          => array(
+						'align' => array('center', 'full'),
+				),
+		));
+
+		acf_register_block_type(array(
 				'name'              => 'slider',
 				'title'             => __('Slider', 'spark_theme'),
 				'description'       => __('Create a slider', 'spark_theme'),
@@ -176,6 +191,49 @@ if (function_exists('acf_register_block_type')) {
 											'param' => 'block',
 											'operator' => '==',
 											'value' => 'acf/accordion',
+											'order_no' => 0,
+											'group_no' => 0
+									)
+							)
+					)
+			));
+
+			register_field_group(array(
+					'id' => 'acf_block_tabs_settings',
+					'title' => __('Block: Tabs', 'spark_theme'),
+					'fields' => array(
+							array(
+									'key' => 'spark_block_tabs_field_items',
+									'label' => __('Items', 'spark_theme'),
+									'name' => 'items',
+									'type' => 'repeater',
+									'layout' => 'row',
+									'button_label' => __('Add Item', 'spark_theme'),
+									'collapsed' => 'spark_block_tabs_field_title',
+									'sub_fields' => array(
+											array(
+													'key' => 'spark_block_tabs_field_title',
+													'label' => __('Title', 'spark_theme'),
+													'name' => 'title',
+													'type' => 'text',
+													'required' => true,
+											),
+											array(
+													'key' => 'spark_block_tabs_field_content',
+													'label' => __('Text', 'spark_theme'),
+													'name' => 'text',
+													'type' => 'wysiwyg',
+													'required' => true,
+											)
+									)
+							)
+					),
+					'location' => array(
+							array(
+									array(
+											'param' => 'block',
+											'operator' => '==',
+											'value' => 'acf/tabs',
 											'order_no' => 0,
 											'group_no' => 0
 									)
