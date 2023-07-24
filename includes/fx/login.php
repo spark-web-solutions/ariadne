@@ -2,7 +2,7 @@
 add_filter('login_redirect', 'spark_login_redirect', 10, 3);
 if (!function_exists('spark_login_redirect')) {
 	function spark_login_redirect($redirect_to, $request, $user) {
-	    if (!is_wp_error($user) && !user_can($user, 'manage_options')) {
+	    if (!is_wp_error($user) && !user_can($user, 'edit_posts')) {
 	        return home_url('/');
 	    }
 	    return $redirect_to;
@@ -12,7 +12,7 @@ if (!function_exists('spark_login_redirect')) {
 add_filter('admin_init', 'spark_admin_redirect', 10, 3);
 if (!function_exists('spark_admin_redirect')) {
 	function spark_admin_redirect() {
-	    if (!current_user_can('manage_options') && !wp_doing_ajax()) {
+	    if (!current_user_can('edit_posts') && !wp_doing_ajax()) {
 	    	wp_redirect(home_url('/'));
 	        exit;
 	    }
@@ -22,7 +22,7 @@ if (!function_exists('spark_admin_redirect')) {
 add_action('after_setup_theme', 'spark_remove_admin_bar');
 if (!function_exists('spark_remove_admin_bar')) {
 	function spark_remove_admin_bar() {
-		if (!current_user_can('manage_options') && !is_admin()) {
+		if (!current_user_can('edit_posts') && !is_admin()) {
 			show_admin_bar(false);
 		}
 	}
