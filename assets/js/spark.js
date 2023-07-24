@@ -1,6 +1,6 @@
 jQuery(function() {
     /* Close sticky menu when menu item clicked */
-    jQuery('.sticky .menu[data-accordion-menu] ul.nested a').click(function() {
+    jQuery('.sticky .menu[data-accordion-menu] ul.nested a').on('click', function() {
         jQuery(this).closest('.menu[data-accordion-menu]').foundation('hideAll');
     });
     
@@ -10,7 +10,7 @@ jQuery(function() {
     });
     
     /* Smooth scrolling to anchors */
-    jQuery('a[href*="#"]:not([href="#"]):not([role="tab"])').click(function() {
+    jQuery('a[href*="#"]:not([href="#"]):not([role="tab"])').on('click', function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
             var target = jQuery(this.hash);
             target = target.length ? target : jQuery('[name="' + this.hash.slice(1) +'"]');
