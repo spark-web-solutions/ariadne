@@ -122,6 +122,21 @@ if (function_exists('acf_register_block_type')) {
 						'align' => false,
 				),
 		));
+
+		acf_register_block_type(array(
+				'name'			    => 'map',
+				'title'			    => __('Map', 'spark_theme'),
+				'description'	    => __('Insert a Google Map', 'spark_theme'),
+				'render_template'   => locate_template('templates/blocks/map.php'),
+				'category'		    => 'embed',
+				'icon'			    => 'location',
+				'keywords'		    => array('map', 'google', 'location'),
+				'mode'			    => 'auto',
+				'align'			    => 'full',
+				'supports'		    => array(
+						'align' => false,
+				),
+		));
 	}
 
 	// Has to be registered after init so that CPTs are registered
@@ -491,6 +506,60 @@ if (function_exists('acf_register_block_type')) {
 											'param' => 'block',
 											'operator' => '==',
 											'value' => 'acf/custom-link-tile',
+											'order_no' => 0,
+											'group_no' => 0,
+									),
+							),
+					),
+			));
+
+			register_field_group(array(
+					'id' => 'acf_block_map_settings',
+					'title' => __('Block: Map', 'spark_theme'),
+					'fields' => array(
+							array(
+									'key' => 'spark_block_map_field_location',
+									'label' => __('Location', 'spark_theme'),
+									'name' => 'location',
+									'type' => 'google_map',
+									'required' => true,
+							),
+							array(
+									'key' => 'spark_block_map_field_zoom',
+									'label' => __('Zoom Level', 'spark_theme'),
+									'description' => 'Higher zoom levels mean a more detailed map of a smaller area. As a general guide, 10 will show the map of a whole city, 15 a few blocks of streets and 20 individual buildings.',
+									'name' => 'zoom',
+									'type' => 'number',
+									'default_value' => 14,
+									'min' => 0,
+									'max' => 20,
+									'required' => true,
+							),
+							array(
+									'key' => 'spark_block_map_field_width',
+									'label' => __('Maximum Width', 'spark_theme'),
+									'name' => 'width',
+									'type' => 'number',
+									'default_value' => 500,
+									'append' => 'px',
+									'required' => true,
+							),
+							array(
+									'key' => 'spark_block_map_field_height',
+									'label' => __('Maximum Height', 'spark_theme'),
+									'name' => 'height',
+									'type' => 'number',
+									'default_value' => 500,
+									'append' => 'px',
+									'required' => true,
+							),
+					),
+					'location' => array(
+							array(
+									array(
+											'param' => 'block',
+											'operator' => '==',
+											'value' => 'acf/map',
 											'order_no' => 0,
 											'group_no' => 0,
 									),

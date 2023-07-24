@@ -21,7 +21,6 @@ if (!function_exists('spark_map')) {
 					)
 			);
 		}
-		$api = spark_google_map_api();
 
 		$map  = '';
 		$map .= '<style>'."\n";
@@ -31,26 +30,27 @@ if (!function_exists('spark_map')) {
 		$map .= '}'."\n";
 		$map .= '</style>'."\n";
 		$map .= '<div id="'.$id.'" class="'.$class.'"></div>'."\n";
-		$map .= '<script type="text/javascript">'."\n";
-		$map .= 'function spark_map_'.$id.'() {'."\n";
-		$map .= "	var map_canvas = document.getElementById('$id');"."\n";
-		$map .= '	var map_options = {'."\n";
+		$map .= '<script>'."\n";
+		$map .= 'async function spark_map_'.$id.'() {'."\n";
+		$map .= '	const { Map } = await google.maps.importLibrary("maps");'."\n";
+		$map .= "	let map_canvas = document.getElementById('$id');"."\n";
+		$map .= '	let map_options = {'."\n";
 		$map .= '		center: {lat: '.$latitude.', lng: '.$longitude.'},'."\n";
 		$map .= '		zoom: '.$zoom.','."\n";
 		$map .= '		mapTypeId: google.maps.MapTypeId.ROADMAP'."\n";
 		$map .= '	}'."\n";
-		$map .= '	var map = new google.maps.Map(map_canvas, map_options);'."\n";
+		$map .= '	let map = new google.maps.Map(map_canvas, map_options);'."\n";
 		$i = 1;
 		foreach ($markers as $marker) {
-			$map .= '	var marker'.$i.' = new google.maps.Marker({'."\n";
+			$map .= '	let marker'.$i.' = new google.maps.Marker({'."\n";
 			$map .= '		position: {lat: '.$marker['lat'].', lng: '.$marker['lng'].'},'."\n";
 			$map .= '		map: map'."\n";
 			$map .= '	});'."\n";
 			$i++;
 		}
 		$map .= '}'."\n";
+		$map .= 'spark_map_'.$id.'();'."\n";
 		$map .= '</script>'."\n";
-		$map .= '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key='.$api['key'].'&callback=spark_map_'.$id.'" async defer></script>'."\n";
 
 		if ($echo) {
 			echo $map;
