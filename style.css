@@ -162,6 +162,8 @@ img.aligncenter {display: block; margin: 0.25rem auto 0;}
 .has-large-font-size {font-size: 1.728rem;}
 .has-huge-font-size {font-size: 2.488rem;}
 
+body figure {margin: 0;}
+
 /**
  * Offcanvas Menu 
  */
@@ -312,6 +314,13 @@ body .gform_wrapper .gfield_description.validation_message {padding: 0 0 0.6rem;
 
     .wp-block-columns {gap: calc(2 * var(--gutter)); flex-wrap: unset;}
     .wp-block-column {margin-bottom: 0;}
+    
+    /**
+     * Add support for align-wide blocks
+     */
+    .no-sidebar .alignwide, .no-sidebar .alignfull {width: 100vw; max-width: var(--site-max-width); margin-left: calc(50% - min(50vw, calc(var(--site-max-width) / 2))); /* to "break free" of container */}
+    .no-sidebar .wp-block-column :is(.alignwide, .alignfull) {max-width: var(--row-max-width); margin: 0 auto;}
+    .no-sidebar :is(.alignwide, .alignfull) > *:not(.alignwide, .alignfull, .full, .full-width-image, img, .wp-block-cover__background, .wp-block-cover__image-background, .panel-slider-wrapper) {max-width: var(--row-max-width); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter);}
 
     /**
      * Add support for multi-column Gravity Forms 
@@ -336,14 +345,7 @@ body .gform_wrapper .gfield_description.validation_message {padding: 0 0 0.6rem;
 /**
  * Large and up 
  */
-@media only screen and (min-width: 64em) {
-    /**
-     * Add support for align-wide blocks
-     */
-    .no-sidebar .alignwide, .no-sidebar .alignfull {width: 100vw; max-width: var(--site-max-width); margin-left: calc(50% - min(50vw, calc(var(--site-max-width) / 2))); /* to "break free" of container */}
-    .no-sidebar .wp-block-column :is(.alignwide, .alignfull) {width: auto; max-width: var(--row-max-width); margin: 0 auto;}
-    .no-sidebar :is(.alignwide, .alignfull) > *:not(.alignwide, .alignfull, .full, img, .wp-block-cover__background, .wp-block-cover__image-background, .panel-slider-wrapper) {max-width: var(--row-max-width); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter);}
-    
+@media only screen and (min-width: 64em) {    
     /**
      * Panels 
      */
