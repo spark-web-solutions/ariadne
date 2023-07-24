@@ -43,7 +43,7 @@ class Spark_Transients {
 		if ($post instanceof WP_Post && strpos(get_post_type($post), 'sfwd') !== false) { // Don't cache any LearnDash content
 			return false;
 		}
-		if ('' === $str || strpos($str, '<form') !== false) {
+		if (empty($str) || strpos($str, '<form') !== false) {
 			return false;
 		}
 		if (defined('SPARK_USE_TRANSIENTS')) {
