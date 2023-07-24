@@ -7,7 +7,7 @@ Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WordPress theme boilerplate built on Zurb Foundation 6.
+WordPress theme boilerplate built on Foundation 6: https://get.foundation/
 
 == Description ==
 According to Greek mythology, Ariadne was the daughter of Minos, king of Crete. She helped Theseus solve the labyrinth and defeat the minotaur, and later
@@ -23,6 +23,24 @@ to fork the theme and create your own version - as long as you are aware that yo
 To make the best use of this boilerplate, pair it with Gravity Forms and Advanced Custom Fields Pro.
 
 == Changelog ==
+
+= 2.1.0 =
+24th July 2023
+
+* Allow selection of hierarchical post types for recent/random posts blocks
+* Added logic to exclude posts from search results if marked as noindex via Yoast
+* Added support for post type-specific card templates, using similar logic to the default WP template hierarchy. The theme will now look for a template '$cardname-$posttype-.php' first before falling back to the default '$cardname.php' if the post type version doesn't exist.
+* Added new accordion block
+* Added new tabs block
+* Added new map block. Includes rework of map logic to use latest recommended approach and addition of support for multiple maps on a page.
+* Moved various blocks into more logical sections
+* Updated logic to get featured image with fallback in both post preview and tile blocks
+* Fixed issue with width of full width blocks in certain nesting scenarios
+* Fixed issue where legitimate users without full administrator access were unable to access WP Admin area
+* Fixed layout issue with full width images
+* Fixed various PHP notices
+* Fixed PHP warning in transients check when content is not a string
+* Replaced deprecated .click() jQuery method with .on('click')
 
 = 2.0.1 =
 11th May 2023
