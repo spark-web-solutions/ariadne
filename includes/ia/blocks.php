@@ -19,6 +19,21 @@ if (function_exists('acf_register_block_type')) {
 		));
 
 		acf_register_block_type(array(
+				'name'              => 'accordion',
+				'title'             => __('Accordion', 'spark_theme'),
+				'description'       => __('Build content as an accordion', 'spark_theme'),
+				'render_template'   => locate_template('templates/blocks/accordion.php'),
+				'category'          => 'layout',
+				'icon'              => 'arrow-down',
+				'keywords'          => array('accordion'),
+				'mode'              => 'auto',
+				'align'             => 'center',
+				'supports'          => array(
+						'align' => false,
+				),
+		));
+
+		acf_register_block_type(array(
 				'name'              => 'slider',
 				'title'             => __('Slider', 'spark_theme'),
 				'description'       => __('Create a slider', 'spark_theme'),
@@ -94,7 +109,9 @@ if (function_exists('acf_register_block_type')) {
 		));
 	}
 
-	add_action('admin_init', 'spark_block_meta'); // Has to be registered after init so that CPTs are registered
+	// Has to be registered after init so that CPTs are registered
+	// We used to use admin_init, but repeater fields in blocks don't work unless the meta is registered on the front end as well
+	add_action('wp_loaded', 'spark_block_meta');
 	function spark_block_meta() {
 		if (function_exists("register_field_group")) {
 			register_field_group(array(
@@ -124,12 +141,55 @@ if (function_exists('acf_register_block_type')) {
 			));
 
 			register_field_group(array(
+					'id' => 'acf_block_accordion_settings',
+					'title' => __('Block: Accordion', 'spark_theme'),
+					'fields' => array(
+							array(
+									'key' => 'spark_block_accordion_field_items',
+									'label' => __('Items', 'spark_theme'),
+									'name' => 'items',
+									'type' => 'repeater',
+									'layout' => 'row',
+									'button_label' => __('Add Item', 'spark_theme'),
+									'collapsed' => 'spark_block_accordion_field_title',
+									'sub_fields' => array(
+											array(
+													'key' => 'spark_block_accordion_field_title',
+													'label' => __('Title', 'spark_theme'),
+													'name' => 'title',
+													'type' => 'text',
+													'required' => true,
+											),
+											array(
+													'key' => 'spark_block_accordion_field_content',
+													'label' => __('Text', 'spark_theme'),
+													'name' => 'text',
+													'type' => 'wysiwyg',
+													'required' => true,
+											)
+									)
+							)
+					),
+					'location' => array(
+							array(
+									array(
+											'param' => 'block',
+											'operator' => '==',
+											'value' => 'acf/accordion',
+											'order_no' => 0,
+											'group_no' => 0
+									)
+							)
+					)
+			));
+
+			register_field_group(array(
 					'id' => 'acf_block_slider_settings',
 					'title' => __('Block: Slider', 'spark_theme'),
 					'fields' => array(
 							array(
 									'key' => 'spark_block_slider_field_slider_height',
-									'label' => 'Slider Height',
+									'label' => __('Slider Height', 'spark_theme'),
 									'name' => 'slider_height',
 									'type' => 'number',
 									'append' => 'px',
